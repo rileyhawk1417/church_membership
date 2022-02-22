@@ -4,6 +4,7 @@ public class MemberModel {
 
     public String id_ = new String();
     public String fname = new String();
+    public String lname = new String();
     public String Title_ = new String();
     public String Address = new String();
     public String DOB_ = new String();
@@ -16,6 +17,7 @@ public class MemberModel {
     public String KidsNo_ = new String();
     public String MStatus_ = new String();
     public String MobilePhone = new String();
+    public String Email = new String();
     public String Salvation = new String();
     public String Sex = new String();
     public String waterBapt = new String();
@@ -37,6 +39,14 @@ public class MemberModel {
 
     public void setFname(String name) {
         this.fname = name;
+    }
+
+    public String getLname() {
+        return this.lname;
+    }
+
+    public void setLname(String Lname) {
+        this.lname = Lname;
     }
 
     public String getTitle() {
@@ -126,6 +136,14 @@ public class MemberModel {
 
     public void setMobile(String phone) {
         this.MobilePhone = phone;
+    }
+
+    public String getEmail() {
+        return this.Email;
+    }
+
+    public void setEmail(String email) {
+        this.Email = email;
     }
 
     public String getSalvation() {
