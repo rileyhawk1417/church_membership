@@ -22,6 +22,7 @@
                      <children>
                         <Label layoutX="10.0" layoutY="40.0" text="Title" />
                         <Label layoutX="10.0" layoutY="40.0" text="Name" />
+                        <Label layoutX="10.0" layoutY="87.0" text="Surname" />
                         <Label layoutX="10.0" layoutY="85.0" text="Gender" />
                         <Label layoutX="10.0" layoutY="130.0" text="ID No:" />
                         <Label layoutX="10.0" layoutY="130.0" text="No Of Children" />
@@ -33,12 +34,13 @@
                   </VBox>
                   <VBox fx:id="rightBox" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                      <children>
-                        <ComboBox fx:id="titleBox" prefWidth="150.0" />
-                        <TextField fx:id="nameBox" layoutX="10.0" layoutY="40.0" />
-                        <ComboBox fx:id="genderBox" layoutX="10.0" layoutY="274.0" prefWidth="150.0" />
-                        <TextField fx:id="idBox" layoutX="10.0" layoutY="126.0" />
-                        <TextField fx:id="num_Children" layoutX="10.0" layoutY="126.0" />
-                        <ComboBox fx:id="maritial_status" layoutX="10.0" layoutY="134.0" prefWidth="150.0" />
+                        <ComboBox fx:id="titleBox" prefWidth="150.0" promptText="Select" />
+                        <TextField fx:id="nameBox" layoutX="10.0" layoutY="40.0" promptText="First Name" />
+                        <TextField fx:id="lnameBox" layoutX="10.0" layoutY="87.0" promptText="Surname" />
+                        <ComboBox fx:id="genderBox" layoutX="10.0" layoutY="274.0" prefWidth="150.0" promptText="Select" />
+                        <TextField fx:id="idBox" layoutX="10.0" layoutY="126.0" promptText="National ID" />
+                        <TextField fx:id="num_Children" layoutX="10.0" layoutY="126.0" promptText="No. Of Kids" />
+                        <ComboBox fx:id="maritial_status" layoutX="10.0" layoutY="134.0" prefWidth="150.0" promptText="Select" />
                      </children>
                      <padding>
                         <Insets top="30.0" />
@@ -63,12 +65,12 @@
                   </VBox>
                   <VBox fx:id="rightBox" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                      <children>
-                        <TextField fx:id="dateJoined" />
-                        <TextField fx:id="dob" layoutX="10.0" layoutY="40.0" />
-                        <TextField fx:id="address" />
+                        <TextField fx:id="dateJoined" promptText="Date Joined" />
+                        <TextField fx:id="dob" layoutX="10.0" layoutY="40.0" promptText="D.O.B" />
+                        <TextField fx:id="address" promptText="Home Address" />
                         <ComboBox fx:id="surbub" prefWidth="150.0" />
-                        <TextField fx:id="homePhone" layoutX="10.0" layoutY="126.0" />
-                        <TextField fx:id="workPhone" layoutX="10.0" layoutY="227.0" />
+                        <TextField fx:id="homePhone" layoutX="10.0" layoutY="126.0" promptText="LandLine" />
+                        <TextField fx:id="workPhone" layoutX="10.0" layoutY="227.0" promptText="Work Number" />
                      </children>
                      <padding>
                         <Insets top="30.0" />
@@ -93,12 +95,12 @@
                   </VBox>
                   <VBox fx:id="rightBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                      <children>
-                        <TextField fx:id="mobilePhone" />
-                        <TextField fx:id="employer" layoutX="10.0" layoutY="40.0" />
-                        <TextField fx:id="position" />
-                        <TextField fx:id="email" layoutX="10.0" layoutY="126.0" />
-                        <TextField fx:id="homeGroupLeader" layoutX="10.0" layoutY="126.0" />
-                        <TextField fx:id="departmentLeader" layoutX="10.0" layoutY="227.0" />
+                        <TextField fx:id="mobilePhone" promptText="Cell Number" />
+                        <TextField fx:id="employer" layoutX="10.0" layoutY="40.0" promptText="Workplace" />
+                        <TextField fx:id="position" promptText="Work Info" />
+                        <TextField fx:id="email" layoutX="10.0" layoutY="126.0" promptText="Email" />
+                        <TextField fx:id="homeGroupLeader" layoutX="10.0" layoutY="126.0" promptText="Cell Leader" />
+                        <TextField fx:id="departmentLeader" layoutX="10.0" layoutY="227.0" promptText="Dep Leader" />
                      </children>
                      <padding>
                         <Insets top="30.0" />
