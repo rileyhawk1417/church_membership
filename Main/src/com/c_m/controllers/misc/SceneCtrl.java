@@ -16,7 +16,7 @@ public class SceneCtrl {
     String admin_login = "/resources/fxml/admin/login_screen.fxml";
     String cashier_login = "/resources/fxml/cashier/login_screen.fxml";
     String decision_screen = "/resources/fxml/misc/login_choice.fxml";
-    String add_screen = "/resources/fxml/admin/insert_screen.fxml";
+    String add_screen = "/resources/fxml/user/add_records.fxml";
     String admin_records = "/resources/fxml/user/records_view.fxml";
     String cashier_records = "/resources/fxml/cashier/records_view.fxml";
     String greeting_screen = "/resources/fxml/greeting_banner.fxml";
