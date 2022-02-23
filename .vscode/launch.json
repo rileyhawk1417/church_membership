@@ -14,7 +14,7 @@
             "type": "java",
             "name": "Launch App",
             "request": "launch",
-            "mainClass": "com.schoolAdmin.app.App",
+            "mainClass": "com.c_m.app.App",
             "vmArgs": "--module-path Main/lib/jfx/ --add-modules javafx.controls,javafx.fxml,javafx.media",
             "projectName": "church_membership_a89d4182"
         },

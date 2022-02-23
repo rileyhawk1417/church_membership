@@ -19,6 +19,7 @@
         "Main/lib/jfx/javafx.media.jar",
         "Main/lib/jfx/javafx.swing.jar",
         "Main/lib/jfx/javafx.web.jar",
-        "Main/lib/jfx/javafx-swt.jar"
+        "Main/lib/jfx/javafx-swt.jar",
+        "Main/lib/postgresql-42.3.3.jar"
     ]
 }
