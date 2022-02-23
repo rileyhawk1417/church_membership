@@ -25,7 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.*;
-// import com.schoolAdmin.controllers.admin.UpdateCtrl;
+// import com.c_m.controllers.admin.UpdateCtrl;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -335,12 +335,12 @@ public class Table_View implements Initializable {
 
       ResultSet res = con
         .createStatement()
-        .executeQuery("SELECT * FROM ace_hardware");
+        .executeQuery("SELECT * FROM members");
 
       while (res.next()) {
         loadList.add(
           new MemberModel(
-            res.getString("id_num"),
+            res.getString("id"),
             res.getString("title"),
             res.getString("fname"),
             res.getString("lname"),
@@ -383,7 +383,7 @@ public class Table_View implements Initializable {
   ) {
     ObservableList<MemberModel> queryList = FXCollections.observableArrayList();
     String search =
-      "select * from ace_hardware WHERE name LIKE '" + query + "%'";
+      "select * from members WHERE name LIKE '" + query + "%'";
     try (
       Connection conn = Psql.connector();
       PreparedStatement pstmt = conn.prepareStatement(search);
@@ -490,19 +490,19 @@ public class Table_View implements Initializable {
    */
 
   public void mouse_listener() {
-    psqlTable
-      .getSelectionModel()
-      .selectedItemProperty()
-      .addListener(
-        (obs, old_selection, new_selection) -> {
-          // side_id_entry.setText(new_selection.getIdCol());
-          // side_name_entry.setText(new_selection.getItem_name());
-          // side_detail_entry.setText(new_selection.getDesc());
-          // side_units_used_entry.setText(new_selection.getUnits_used());
-          // side_units_left_entry.setText(new_selection.getUnits_left());
-          // side_unit_price_entry.setText(new_selection.getUnit_price());
-        }
-      );
+    // psqlTable
+    //   .getSelectionModel()
+    //   .selectedItemProperty()
+    //   .addListener(
+    //     (obs, old_selection, new_selection) -> {
+    //       side_id_entry.setText(new_selection.getIdCol());
+    //       side_name_entry.setText(new_selection.getItem_name());
+    //       side_detail_entry.setText(new_selection.getDesc());
+    //       side_units_used_entry.setText(new_selection.getUnits_used());
+    //       side_units_left_entry.setText(new_selection.getUnits_left());
+    //       side_unit_price_entry.setText(new_selection.getUnit_price());
+    //     }
+    //   );
   }
 
   @FXML
