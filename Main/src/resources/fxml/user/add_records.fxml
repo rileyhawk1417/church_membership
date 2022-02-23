@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="1246.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.admin.Insert_Update">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="1246.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.user.Insert_update">
    <children>
       <Pane fx:id="detailsPane" layoutX="52.0" layoutY="158.0">
          <children>
@@ -35,7 +36,7 @@
                   <VBox fx:id="rightBox" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                      <children>
                         <ComboBox fx:id="titleBox" prefWidth="150.0" promptText="Select" />
-                        <TextField fx:id="nameBox" layoutX="10.0" layoutY="40.0" promptText="First Name" />
+                        <TextField fx:id="fnameBox" layoutX="10.0" layoutY="40.0" promptText="First Name" />
                         <TextField fx:id="lnameBox" layoutX="10.0" layoutY="87.0" promptText="Surname" />
                         <ComboBox fx:id="genderBox" layoutX="10.0" layoutY="274.0" prefWidth="150.0" promptText="Select" />
                         <TextField fx:id="idBox" layoutX="10.0" layoutY="126.0" promptText="National ID" />
@@ -65,8 +66,8 @@
                   </VBox>
                   <VBox fx:id="rightBox" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                      <children>
-                        <TextField fx:id="dateJoined" promptText="Date Joined" />
-                        <TextField fx:id="dob" layoutX="10.0" layoutY="40.0" promptText="D.O.B" />
+                        <DatePicker fx:id="dateJoined" />
+                        <DatePicker fx:id="dob" layoutX="10.0" layoutY="40.0" />
                         <TextField fx:id="address" promptText="Home Address" />
                         <ComboBox fx:id="surbub" prefWidth="150.0" />
                         <TextField fx:id="homePhone" layoutX="10.0" layoutY="126.0" promptText="LandLine" />

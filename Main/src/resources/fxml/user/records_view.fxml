@@ -15,12 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="790.0" prefWidth="1952.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.admin.TableCtrl">
+<SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="790.0" prefWidth="1952.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.user.Table_View">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <HBox prefHeight="33.0" prefWidth="750.0">
+            <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="33.0" prefWidth="750.0">
                <children>
                   <MenuBar>
                           <menus>
@@ -64,11 +63,12 @@
                   <Button fx:id="subQuery" mnemonicParsing="false" onAction="#searchBtn" prefHeight="23.0" prefWidth="76.0" text="Search" />
                </children>
             </HBox>
-            <TableView fx:id="pqslTable" editable="true" fixedCellSize="20.0" prefHeight="400.0" prefWidth="1949.0" tableMenuButtonVisible="true">
+            <TableView fx:id="psqlTable" editable="true" fixedCellSize="20.0" layoutX="1.0" layoutY="34.0" prefHeight="360.0" prefWidth="1950.0" tableMenuButtonVisible="true">
               <columns>
                 <TableColumn fx:id="id_" prefWidth="55.0" text="ID" />
                 <TableColumn fx:id="Title_" prefWidth="64.0" text="Title" />
                   <TableColumn fx:id="fname" prefWidth="69.0" text="Name" />
+                  <TableColumn fx:id="lname" prefWidth="69.0" text="Surname" />
                   <TableColumn fx:id="Sex" prefWidth="73.0" text="Gender" />
                   <TableColumn fx:id="IDNum" prefWidth="73.0" text="ID No" />
                   <TableColumn fx:id="KidsNo_" prefWidth="117.68994140625" text="No. of Children" />
@@ -80,6 +80,7 @@
                   <TableColumn fx:id="Homephone" prefWidth="110.70831298828125" text="Home Phone" />
                   <TableColumn fx:id="WorkPhone" prefWidth="101.73193359375" text="Work Phone" />
                   <TableColumn fx:id="MobilePhone" prefWidth="107.7161865234375" text="Mobile Phone" />
+                  <TableColumn fx:id="Email" prefWidth="107.7161865234375" text="Email" />
                   <TableColumn fx:id="HomeGroup" prefWidth="138.634765625" text="Home Group Leader" />
                   <TableColumn fx:id="DeptLeader" prefWidth="105.0562744140625" text="Dept Leader" />
                   <TableColumn fx:id="Dept" prefWidth="110.0433349609375" text="Department" />
@@ -102,7 +103,7 @@
             </TableView>
          </children>
       </AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="1952.0">
          <children>
             <HBox alignment="CENTER" layoutX="3.0" layoutY="84.0" prefHeight="264.0" prefWidth="1947.0" spacing="120.0">
                <children>
