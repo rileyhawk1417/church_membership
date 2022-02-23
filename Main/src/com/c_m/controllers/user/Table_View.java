@@ -253,7 +253,7 @@ public class Table_View implements Initializable {
     assert psqlTable != null : "Failed to load table";
 
     id_.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("id_")
+      new PropertyValueFactory<MemberModel, String>("ID")
     );
     fname.setCellValueFactory(
       new PropertyValueFactory<MemberModel, String>("fname")
@@ -262,40 +262,40 @@ public class Table_View implements Initializable {
       new PropertyValueFactory<MemberModel, String>("lname")
     );
     Title_.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("Title_")
+      new PropertyValueFactory<MemberModel, String>("Title")
     );
     Address.setCellValueFactory(
       new PropertyValueFactory<MemberModel, String>("Address")
     );
     DOB_.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("DOB_")
+      new PropertyValueFactory<MemberModel, String>("DOB")
     );
     DateJoined_.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("DateJoined_")
+      new PropertyValueFactory<MemberModel, String>("Datejoined")
     );
     Dept.setCellValueFactory(
       new PropertyValueFactory<MemberModel, String>("Dept")
     );
     DeptLeader.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("DeptLeader")
+      new PropertyValueFactory<MemberModel, String>("deptLeader_")
     );
     HomeGroup.setCellValueFactory(
       new PropertyValueFactory<MemberModel, String>("HomeGroup")
     );
     Homephone.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("Homephone")
+      new PropertyValueFactory<MemberModel, String>("HomePhone")
     );
     IDNum.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("IDNum")
+      new PropertyValueFactory<MemberModel, String>("ID_Num")
     );
     KidsNo_.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("KidsNo_")
+      new PropertyValueFactory<MemberModel, String>("childrenNo_")
     );
     MStatus_.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("MStatus_")
+      new PropertyValueFactory<MemberModel, String>("M_status")
     );
     MobilePhone.setCellValueFactory(
-      new PropertyValueFactory<MemberModel, String>("MobilePhone")
+      new PropertyValueFactory<MemberModel, String>("cellNumber")
     );
     Email.setCellValueFactory(
       new PropertyValueFactory<MemberModel, String>("Email")
