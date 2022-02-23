@@ -250,7 +250,7 @@ public class Psql {
     // }
 
     public void delete_row_by_id( String id_){
-        String update = "DELETE FROM members WHERE id_num = ? ";
+        String update = "DELETE FROM members WHERE id = ? ";
         try{
             Connection conn = connector();
             PreparedStatement pstmt = conn.prepareStatement(update);

@@ -24,6 +24,8 @@ public class MemberModel {
   public String SpiritBapt = new String();
   public String Surbub = new String();
   public String WorkPhone = new String();
+  public String Employer_ = new String();
+  public String Position_ = new String();
 
   public String getID() {
     return this.ID;
@@ -201,6 +203,22 @@ public class MemberModel {
     this.WorkPhone = WorkPhone;
   }
 
+  public String getEmployer_(){
+    return this.Employer_;
+  }
+
+  public void setEmployer_(String Employer_){
+    this.Employer_ = Employer_;
+  }
+
+  public String getPosition_(){
+    return this.Position_;
+  }
+
+  public void setPosition_(String Position_){
+    this.Position_ = Position_;
+  }
+
   public MemberModel(
     String ID_,
     String title_,
@@ -249,5 +267,7 @@ public class MemberModel {
     this.SpiritBapt = spiritBapt_;
     this.Surbub = surbub_;
     this.WorkPhone = workPhone_;
+    this.Employer_ = employer_;
+    this.Position_ = position_;
   }
 }
