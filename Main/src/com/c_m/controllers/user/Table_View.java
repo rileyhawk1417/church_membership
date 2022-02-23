@@ -38,6 +38,7 @@ public class Table_View implements Initializable {
   Stage stage = new Stage();
   Psql psql = new Psql();
   App app = new App();
+  static String recordSize = "";
 
   Window owner = stage.getOwner();
   SceneCtrl scene_switcher = new SceneCtrl();
@@ -110,6 +111,9 @@ public class Table_View implements Initializable {
   private TableColumn<MemberModel, String> Surbub;
 
   @FXML
+  private TableColumn<MemberModel, String> Employer;
+
+  @FXML
   private TableColumn<MemberModel, String> WorkPhone;
 
   //Table Properties End
@@ -122,7 +126,7 @@ public class Table_View implements Initializable {
   private Text childrenTotal_;
 
   @FXML
-  private Text chldrenNo_;
+  private Text children_No_;
 
   @FXML
   private Text dateJoined_;
@@ -318,8 +322,12 @@ public class Table_View implements Initializable {
     WorkPhone.setCellValueFactory(
       new PropertyValueFactory<MemberModel, String>("WorkPhone")
     );
+    Employer.setCellValueFactory(
+      new PropertyValueFactory<MemberModel, String>("Employer_")
+    );
 
     try {
+      reload();
       records = loadTable();
       mouse_listener();
     } catch (Exception e) {
@@ -367,6 +375,8 @@ public class Table_View implements Initializable {
           )
         );
       }
+      int rowSize = loadList.size();
+      recordSize = Integer.toString(rowSize);
       System.out.println(loadList.size());
     } catch (Exception e) {
       // TODO: handle exception
@@ -376,6 +386,20 @@ public class Table_View implements Initializable {
     }
     return loadList;
   }
+
+  // public static String childrenSize(){
+  //     try{Connection con = Psql.connector();
+
+  //       Statement stmt = con.createStatement();
+  //       ResultSet res = stmt.executeQuery("SELECT SUM (children_num) FROM members");
+  //       ResultSetMetaData rs = res.getMetaData();
+  //       int children = 
+  //     } catch (Exception e){
+  //       e.printStackTrace();
+  //     };
+  
+  //     return children = childrenSize;
+  //   }
 
   public static ObservableList<MemberModel> searchDB(
     String query,
@@ -421,7 +445,7 @@ public class Table_View implements Initializable {
             )
           );
         }
-        // Error still triggered even if results are found
+        // TODO:Error still triggered even if results are found
         // if(!res.next()){
         // AlertModule.showAlert(Alert.AlertType.ERROR, owner, "System Error", "Failed to load results from DB");
 
@@ -490,24 +514,45 @@ public class Table_View implements Initializable {
    */
 
   public void mouse_listener() {
-    // psqlTable
-    //   .getSelectionModel()
-    //   .selectedItemProperty()
-    //   .addListener(
-    //     (obs, old_selection, new_selection) -> {
-    //       side_id_entry.setText(new_selection.getIdCol());
-    //       side_name_entry.setText(new_selection.getItem_name());
-    //       side_detail_entry.setText(new_selection.getDesc());
-    //       side_units_used_entry.setText(new_selection.getUnits_used());
-    //       side_units_left_entry.setText(new_selection.getUnits_left());
-    //       side_unit_price_entry.setText(new_selection.getUnit_price());
-    //     }
-    //   );
+    psqlTable
+      .getSelectionModel()
+      .selectedItemProperty()
+      .addListener(
+        (obs, old_selection, new_selection) -> {
+        title_.setText(new_selection.getTitle());
+        name_.setText(new_selection.getFname());
+        gender_.setText(new_selection.getSex());
+        idNo_.setText(new_selection.getID_Num());
+        children_No_.setText(new_selection.getChildrenNo_());
+        maritial_.setText(new_selection.getM_status());
+        dateJoined_.setText(new_selection.getDatejoined());
+        dob_.setText(new_selection.getDOB());
+        address_.setText(new_selection.getAddress());
+        surbub_.setText(new_selection.getSurbub());
+        homePhone_.setText(new_selection.getHomePhone());
+        workPhone_.setText(new_selection.getWorkPhone());
+        mobilePhone_.setText(new_selection.getCellNumber());
+        employer_.setText(new_selection.getEmployer_());
+        position_.setText(new_selection.getPosition_());
+        email_.setText(new_selection.getEmail());
+        homeGroup_.setText(new_selection.getHomeGroup());
+        depLeader_.setText(new_selection.getDeptLeader_());
+        dep.setText(new_selection.getDept());
+        salvation_.setText(new_selection.getSalvation());
+        water_.setText(new_selection.getWaterBapt());
+        spirit_.setText(new_selection.getSpiritBapt());
+        membersTotal_.setText(recordSize);
+        
+        //TODO: Set childrens totals.
+
+        }
+      );
   }
 
   @FXML
   private void confirm_update() {
     try {
+      //TODO: Fix this function
       // psql.updateValues(side_name_entry.getText(), side_detail_entry.getText(), side_units_used_entry.getText(), side_units_left_entry.getText(), side_unit_price_entry.getText(), side_restock_entry.getText(), side_id_entry.getText());
       AlertModule.showAlert(
         Alert.AlertType.CONFIRMATION,
