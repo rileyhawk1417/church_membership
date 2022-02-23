@@ -125,7 +125,7 @@ public class Psql {
         ) {
         String values = 
         "INSERT INTO members (title, fname, lname, gender, id_no, children_num, maritial_status, date_joined, dob, address, surbub, home_phone, work_phone, mobile_phone, employer, position, email, home_group_leader, department_leader, department, salvation, water_baptism, spirit_baptism)" + 
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
         try {
             Connection conn = connector();
