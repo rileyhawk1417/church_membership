@@ -250,7 +250,7 @@ public class Table_View implements Initializable {
   @FXML
   private Button subQuery;
 
-  ObservableList<MemberModel> records;
+  static ObservableList<MemberModel> records;
 
   @Override
   public void initialize(URL location, ResourceBundle bundle) {
@@ -327,7 +327,7 @@ public class Table_View implements Initializable {
     );
 
     try {
-      reload();
+      // reload();
       records = loadTable();
       mouse_listener();
     } catch (Exception e) {
@@ -735,7 +735,7 @@ public class Table_View implements Initializable {
   @FXML
   private void switch_user() {
     psqlTable.getScene().getWindow().hide();
-    scene_switcher.decision_scene();
+    scene_switcher.kids_records_scene();
   }
 
   @FXML
