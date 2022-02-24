@@ -1,0 +1,928 @@
+Index: .vscode/launch.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n    // Use IntelliSense to learn about possible attributes.\n    // Hover to view descriptions of existing attributes.\n    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387\n    \"version\": \"0.2.0\",\n    \"configurations\": [\n        {\n            \"type\": \"java\",\n            \"name\": \"Launch Current File\",\n            \"request\": \"launch\",\n            \"mainClass\": \"${file}\"\n        },\n        {\n            \"type\": \"java\",\n            \"name\": \"Launch App\",\n            \"request\": \"launch\",\n            \"mainClass\": \"com.c_m.app.App\",\n            \"vmArgs\": \"--module-path Main/lib/jfx/ --add-modules javafx.controls,javafx.fxml,javafx.media\",\n            \"projectName\": \"church_membership_a89d4182\"\n        },\n        {\n            \"type\": \"java\",\n            \"name\": \"Launch Mysql\",\n            \"request\": \"launch\",\n            \"mainClass\": \"com.schoolAdmin.database.Mysql\",\n            // \"projectName\": \"school_Admin_Management_a07eedf2\"\n        },\n        {\n            \"type\": \"java\",\n            \"name\": \"Launch Sqlite\",\n            \"request\": \"launch\",\n            \"mainClass\": \"com.schoolAdmin.database.Sqlite\",\n            \"projectName\": \"school_Admin_Management_a07eedf2\"\n        }\n    ]\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.vscode/launch.json b/.vscode/launch.json
+--- a/.vscode/launch.json	
++++ b/.vscode/launch.json	
+@@ -13,24 +13,8 @@
+         {
+             "type": "java",
+             "name": "Launch App",
+-            "request": "launch",
++            "request": "launch", 
+             "mainClass": "com.c_m.app.App",
+-            "vmArgs": "--module-path Main/lib/jfx/ --add-modules javafx.controls,javafx.fxml,javafx.media",
+-            "projectName": "church_membership_a89d4182"
+-        },
+-        {
+-            "type": "java",
+-            "name": "Launch Mysql",
+-            "request": "launch",
+-            "mainClass": "com.schoolAdmin.database.Mysql",
+-            // "projectName": "school_Admin_Management_a07eedf2"
+-        },
+-        {
+-            "type": "java",
+-            "name": "Launch Sqlite",
+-            "request": "launch",
+-            "mainClass": "com.schoolAdmin.database.Sqlite",
+-            "projectName": "school_Admin_Management_a07eedf2"
+         }
+     ]
+ }
+\ No newline at end of file
+Index: Main/src/resources/fxml/cashier/records_view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.ContextMenu?>\n<?import javafx.scene.control.Menu?>\n<?import javafx.scene.control.MenuBar?>\n<?import javafx.scene.control.MenuItem?>\n<?import javafx.scene.control.Separator?>\n<?import javafx.scene.control.SplitPane?>\n<?import javafx.scene.control.TableColumn?>\n<?import javafx.scene.control.TableView?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.layout.AnchorPane?>\n\n<AnchorPane fx:id=\"parent_\" maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.schoolAdmin.controllers.cashier.TableCtrl\">\n   <children>\n      <Separator layoutY=\"30.0\" prefWidth=\"600.0\" />\n      <SplitPane layoutX=\"7.0\" layoutY=\"30.0\" AnchorPane.bottomAnchor=\"0.0\" AnchorPane.leftAnchor=\"0.0\" AnchorPane.rightAnchor=\"0.0\" AnchorPane.topAnchor=\"35.0\">\n        <items>\n            <TableView fx:id=\"mysqlTable\" editable=\"true\" fixedCellSize=\"20.0\" tableMenuButtonVisible=\"true\">\n              <columns>\n                <TableColumn fx:id=\"idColmn\" prefWidth=\"55.0\" text=\"ID\" />\n                <TableColumn fx:id=\"itemName\" prefWidth=\"64.0\" text=\"Name\" />\n                  <TableColumn fx:id=\"description\" prefWidth=\"69.0\" text=\"Detail\" />\n                  <TableColumn fx:id=\"unitsConsumed\" prefWidth=\"73.0\" text=\"Units Used\" />\n                  <TableColumn fx:id=\"unitsLeft\" prefWidth=\"73.0\" text=\"Units Left\" />\n                  <TableColumn fx:id=\"unitPrice\" prefWidth=\"73.0\" text=\"Restock\" />\n                  <TableColumn fx:id=\"restock\" prefWidth=\"73.0\" text=\"Unit Price\" />\n              </columns>\n               <opaqueInsets>\n                  <Insets top=\"25.0\" />\n               </opaqueInsets>\n               <contextMenu>\n                  <ContextMenu>\n                    <items>\n                      <MenuItem fx:id=\"delete_by_id_context\" mnemonicParsing=\"false\" onAction=\"#delete_by_id_btn\" text=\"Delete Selected Record\" />\n                    </items>\n                  </ContextMenu>\n               </contextMenu>\n            </TableView>\n        </items>\n      </SplitPane>\n      <MenuBar layoutX=\"2.0\" layoutY=\"4.0\">\n              <menus>\n          <Menu mnemonicParsing=\"false\" text=\"File\">\n            <items>\n              <MenuItem fx:id=\"log_out\" mnemonicParsing=\"false\" onAction=\"#switch_user\" text=\"Log out\" />\n              <MenuItem fx:id=\"close\" mnemonicParsing=\"false\" onAction=\"#exitBtn\" text=\"Exit App\" />\n            </items>\n          </Menu>\n          <Menu mnemonicParsing=\"false\" text=\"Edit\">\n            <items>\n            <MenuItem fx:id=\"refresh\" mnemonicParsing=\"false\" onAction=\"#reloadBtn\" text=\"Refresh Records\" />\n            <MenuItem fx:id=\"delete_by_id\" mnemonicParsing=\"false\" onAction=\"#delete_by_id_btn\" text=\"Delete Selected Record\" />\n            </items>\n          </Menu>\n            <Menu mnemonicParsing=\"false\" text=\"Navigate\">\n               <items>\n                  <MenuItem fx:id=\"switch_user_\" mnemonicParsing=\"false\" onAction=\"#switch_user\" text=\"Switch to Admin user\" />\n                  <MenuItem fx:id=\"exit\" mnemonicParsing=\"false\" onAction=\"#exitBtn\" text=\"Exit App\" />\n               </items>\n            </Menu>\n          <Menu mnemonicParsing=\"false\" text=\"Help\">\n            <items>\n              <MenuItem fx:id=\"manual_\" mnemonicParsing=\"false\" onAction=\"#manual_btn\" text=\"Manual\" />\n              <MenuItem fx:id=\"about_\" mnemonicParsing=\"false\" onAction=\"#about_btn\" text=\"About\" />\n            </items>\n          </Menu>\n        </menus>\n      </MenuBar> \n      <TextField fx:id=\"searchBar\" layoutX=\"264.0\" layoutY=\"4.0\" />\n      <Button fx:id=\"subQuery\" layoutX=\"474.0\" layoutY=\"5.0\" mnemonicParsing=\"false\" onAction=\"#searchBtn\" prefHeight=\"23.0\" prefWidth=\"76.0\" text=\"Search\" />\n   </children>\n   <padding>\n      <Insets bottom=\"10.0\" left=\"30.0\" right=\"10.0\" top=\"10.0\" />\n   </padding>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/cashier/records_view.fxml b/Main/src/resources/fxml/cashier/records_view.fxml
+--- a/Main/src/resources/fxml/cashier/records_view.fxml	
++++ b/Main/src/resources/fxml/cashier/records_view.fxml	
+@@ -13,7 +13,7 @@
+ <?import javafx.scene.control.TextField?>
+ <?import javafx.scene.layout.AnchorPane?>
+ 
+-<AnchorPane fx:id="parent_" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.cashier.TableCtrl">
++<AnchorPane fx:id="parent_" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.cashier.TableCtrl">
+    <children>
+       <Separator layoutY="30.0" prefWidth="600.0" />
+       <SplitPane layoutX="7.0" layoutY="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+Index: Main/src/resources/fxml/greeting_banner.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.image.ImageView?>\n<?import javafx.scene.layout.ColumnConstraints?>\n<?import javafx.scene.layout.GridPane?>\n<?import javafx.scene.layout.RowConstraints?>\n<?import javafx.scene.text.Text?>\n\n<GridPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.schoolAdmin.misc.WelcomeCtrl\">\n  <columnConstraints>\n      <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\n    <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\n    <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\n  </columnConstraints>\n  <rowConstraints>\n    <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\n    <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\n    <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\n  </rowConstraints>\n   <children>\n      <ImageView fitHeight=\"150.0\" fitWidth=\"200.0\" pickOnBounds=\"true\" preserveRatio=\"true\" />\n      <ImageView fitHeight=\"150.0\" fitWidth=\"200.0\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.rowIndex=\"1\" />\n      <ImageView fitHeight=\"150.0\" fitWidth=\"200.0\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.rowIndex=\"2\" />\n      <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Admin\" GridPane.columnIndex=\"1\" />\n      <Text layoutX=\"210.0\" layoutY=\"82.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Cashier\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"1\" />\n      <Text layoutX=\"210.0\" layoutY=\"215.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Help\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"2\" />\n      <Button fx:id=\"admin_\" mnemonicParsing=\"false\" onAction=\"#admin_login\" text=\"Admin Login\" GridPane.columnIndex=\"2\" />\n      <Button fx:id=\"cashier_\" mnemonicParsing=\"false\" onAction=\"#cashier_login\" text=\"Cashier Login\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"1\" />\n      <Button fx:id=\"manual_\" mnemonicParsing=\"false\" onAction=\"#view_manual\" text=\"View Manual\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"2\" />\n   </children>\n</GridPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/greeting_banner.fxml b/Main/src/resources/fxml/greeting_banner.fxml
+--- a/Main/src/resources/fxml/greeting_banner.fxml	
++++ b/Main/src/resources/fxml/greeting_banner.fxml	
+@@ -7,7 +7,7 @@
+ <?import javafx.scene.layout.RowConstraints?>
+ <?import javafx.scene.text.Text?>
+ 
+-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.misc.WelcomeCtrl">
++<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.misc.WelcomeCtrl">
+   <columnConstraints>
+       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+Index: Main/src/resources/fxml/cashier/login_screen.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.control.Menu?>\n<?import javafx.scene.control.MenuBar?>\n<?import javafx.scene.control.MenuItem?>\n<?import javafx.scene.control.PasswordField?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.image.Image?>\n<?import javafx.scene.image.ImageView?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.layout.HBox?>\n<?import javafx.scene.layout.TilePane?>\n<?import javafx.scene.layout.VBox?>\n<?import javafx.scene.text.Font?>\n<?import javafx.scene.text.Text?>\n\n<AnchorPane xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.schoolAdmin.controllers.cashier.LoginCtrl\">\n   <children>\n      <VBox id=\"VBOX_Parent\" alignment=\"CENTER\" maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"550.0\" prefWidth=\"840.0\">\n         <children>\n            <MenuBar>\n              <menus>\n                <Menu mnemonicParsing=\"false\" text=\"File\">\n                  <items>\n                    <MenuItem mnemonicParsing=\"false\" text=\"Close\" />\n                  </items>\n                </Menu>\n                <Menu mnemonicParsing=\"false\" text=\"Edit\">\n                  <items>\n                    <MenuItem mnemonicParsing=\"false\" text=\"Delete\" />\n                  </items>\n                </Menu>\n                <Menu mnemonicParsing=\"false\" text=\"Help\">\n                  <items>\n                    <MenuItem mnemonicParsing=\"false\" text=\"About\" />\n                  </items>\n                </Menu>\n              </menus>\n            </MenuBar>\n            <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Login\" textAlignment=\"CENTER\">\n               <font>\n                  <Font name=\"Times New Roman\" size=\"36.0\" />\n               </font>\n               <VBox.margin>\n                  <Insets bottom=\"30.0\" />\n               </VBox.margin>\n            </Text>\n            <ImageView fitHeight=\"257.0\" fitWidth=\"295.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\n               <image>\n                  <Image url=\"@../../images/register.png\" />\n               </image>\n            </ImageView>\n            <HBox alignment=\"CENTER\">\n               <children>\n                  <TilePane alignment=\"CENTER\" hgap=\"10.0\" prefColumns=\"1\" prefHeight=\"200.0\" prefRows=\"3\" prefTileHeight=\"25.0\" prefTileWidth=\"200.0\" prefWidth=\"200.0\" vgap=\"8.0\">\n                     <HBox.margin>\n                        <Insets right=\"10.0\" top=\"10.0\" />\n                     </HBox.margin>\n                     <children>\n                        <Label text=\"UserName\" />\n                        <TextField id=\"user\" fx:id=\"userField\" />\n                        <Label text=\"Password\" />\n                        <PasswordField id=\"pass\" fx:id=\"passField\" />\n                        <Button id=\"submitBtn\" fx:id=\"subBtn\" onAction=\"#subKey\" text=\"Login\" />\n                     </children>\n                  </TilePane> \n               </children>\n            </HBox>\n         </children>\n      </VBox>\n   </children>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/cashier/login_screen.fxml b/Main/src/resources/fxml/cashier/login_screen.fxml
+--- a/Main/src/resources/fxml/cashier/login_screen.fxml	
++++ b/Main/src/resources/fxml/cashier/login_screen.fxml	
+@@ -17,7 +17,7 @@
+ <?import javafx.scene.text.Font?>
+ <?import javafx.scene.text.Text?>
+ 
+-<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.cashier.LoginCtrl">
++<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.cashier.LoginCtrl">
+    <children>
+       <VBox id="VBOX_Parent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="840.0">
+          <children>
+Index: Main/src/resources/fxml/admin/login_screen.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.control.Menu?>\n<?import javafx.scene.control.MenuBar?>\n<?import javafx.scene.control.MenuItem?>\n<?import javafx.scene.control.PasswordField?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.image.Image?>\n<?import javafx.scene.image.ImageView?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.layout.HBox?>\n<?import javafx.scene.layout.TilePane?>\n<?import javafx.scene.layout.VBox?>\n<?import javafx.scene.text.Font?>\n<?import javafx.scene.text.Text?>\n\n<AnchorPane xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.schoolAdmin.controllers.admin.LoginCtrl\">\n   <children>\n      <VBox id=\"VBOX_Parent\" alignment=\"CENTER\" maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"550.0\" prefWidth=\"840.0\">\n         <children>\n            <MenuBar>\n              <menus>\n                <Menu mnemonicParsing=\"false\" text=\"File\">\n                  <items>\n                    <MenuItem mnemonicParsing=\"false\" text=\"Close\" />\n                  </items>\n                </Menu>\n                <Menu mnemonicParsing=\"false\" text=\"Edit\">\n                  <items>\n                    <MenuItem mnemonicParsing=\"false\" text=\"Delete\" />\n                  </items>\n                </Menu>\n                <Menu mnemonicParsing=\"false\" text=\"Help\">\n                  <items>\n                    <MenuItem mnemonicParsing=\"false\" text=\"About\" />\n                  </items>\n                </Menu>\n              </menus>\n            </MenuBar>\n            <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Login\" textAlignment=\"CENTER\">\n               <font>\n                  <Font name=\"Times New Roman\" size=\"36.0\" />\n               </font>\n               <VBox.margin>\n                  <Insets bottom=\"30.0\" />\n               </VBox.margin>\n            </Text>\n            <ImageView fitHeight=\"257.0\" fitWidth=\"295.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\n               <image>\n                  <Image url=\"@../../images/gear.jpg\" />\n               </image>\n            </ImageView>\n            <HBox alignment=\"CENTER\">\n               <children>\n                  <TilePane alignment=\"CENTER\" hgap=\"10.0\" prefColumns=\"1\" prefHeight=\"200.0\" prefRows=\"3\" prefTileHeight=\"25.0\" prefTileWidth=\"200.0\" prefWidth=\"200.0\" vgap=\"8.0\">\n                     <HBox.margin>\n                        <Insets right=\"10.0\" top=\"10.0\" />\n                     </HBox.margin>\n                     <children>\n                        <Label text=\"UserName\" />\n                        <TextField id=\"user\" fx:id=\"userField\" />\n                        <Label text=\"Password\" />\n                        <PasswordField id=\"pass\" fx:id=\"passField\" />\n                        <Button id=\"submitBtn\" fx:id=\"subBtn\" onAction=\"#subKey\" text=\"Login\" />\n                     </children>\n                  </TilePane> \n               </children>\n            </HBox>\n         </children>\n      </VBox>\n   </children>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/admin/login_screen.fxml b/Main/src/resources/fxml/admin/login_screen.fxml
+--- a/Main/src/resources/fxml/admin/login_screen.fxml	
++++ b/Main/src/resources/fxml/admin/login_screen.fxml	
+@@ -17,7 +17,7 @@
+ <?import javafx.scene.text.Font?>
+ <?import javafx.scene.text.Text?>
+ 
+-<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.admin.LoginCtrl">
++<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.admin.LoginCtrl">
+    <children>
+       <VBox id="VBOX_Parent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="840.0">
+          <children>
+Index: Main/src/resources/fxml/admin/records_view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.ButtonBar?>\n<?import javafx.scene.control.ContextMenu?>\n<?import javafx.scene.control.Menu?>\n<?import javafx.scene.control.MenuBar?>\n<?import javafx.scene.control.MenuItem?>\n<?import javafx.scene.control.Separator?>\n<?import javafx.scene.control.SplitPane?>\n<?import javafx.scene.control.TableColumn?>\n<?import javafx.scene.control.TableView?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.layout.VBox?>\n<?import javafx.scene.text.Text?>\n\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.schoolAdmin.controllers.admin.TableCtrl\">\n   <children>\n      <Separator layoutY=\"30.0\" prefWidth=\"600.0\" />\n      <SplitPane dividerPositions=\"0.7047781569965871\" layoutX=\"7.0\" layoutY=\"30.0\" AnchorPane.bottomAnchor=\"0.0\" AnchorPane.leftAnchor=\"0.0\" AnchorPane.rightAnchor=\"0.0\" AnchorPane.topAnchor=\"35.0\">\n        <items>\n            <TableView fx:id=\"mysqlTable\" editable=\"true\" fixedCellSize=\"20.0\" tableMenuButtonVisible=\"true\">\n              <columns>\n                <TableColumn fx:id=\"idColmn\" prefWidth=\"55.0\" text=\"ID\" />\n                <TableColumn fx:id=\"itemName\" prefWidth=\"64.0\" text=\"Name\" />\n                  <TableColumn fx:id=\"description\" prefWidth=\"69.0\" text=\"Detail\" />\n                  <TableColumn fx:id=\"unitsConsumed\" prefWidth=\"73.0\" text=\"Units Used\" />\n                  <TableColumn fx:id=\"unitsLeft\" prefWidth=\"73.0\" text=\"Units Left\" />\n                  <TableColumn fx:id=\"unitPrice\" prefWidth=\"73.0\" text=\"Unit Price\" />\n                  <TableColumn fx:id=\"restock\" prefWidth=\"73.0\" text=\"Restock\" />\n              </columns>\n               <opaqueInsets>\n                  <Insets top=\"25.0\" />\n               </opaqueInsets>\n               <contextMenu>\n                  <ContextMenu>\n                    <items>\n                      <MenuItem fx:id=\"update_option\" mnemonicParsing=\"false\" text=\"Update Record\" />\n                      <MenuItem fx:id=\"export_current_view\" mnemonicParsing=\"false\" onAction=\"#export_tableView\" text=\"Export Current Records\" />\n                      <MenuItem fx:id=\"delete_by_id_context\" mnemonicParsing=\"false\" onAction=\"#delete_by_id_btn\" text=\"Delete Selected Record\" />\n                    </items>\n                  </ContextMenu>\n               </contextMenu>\n            </TableView>\n          <AnchorPane minHeight=\"0.0\" minWidth=\"0.0\" prefHeight=\"366.0\" prefWidth=\"69.0\">\n               <children>\n                  <VBox fx:id=\"sideBar_1\" alignment=\"CENTER_LEFT\" layoutX=\"5.0\" layoutY=\"5.0\" prefHeight=\"320.0\" prefWidth=\"82.0\" spacing=\"30.0\">\n                     <children>\n                        <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"ID\" />\n                        <Text layoutX=\"38.0\" layoutY=\"210.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Name\" />\n                        <Text layoutX=\"38.0\" layoutY=\"217.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Detail\" />\n                        <Text layoutX=\"38.0\" layoutY=\"225.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Units Used\" />\n                        <Text layoutX=\"38.0\" layoutY=\"232.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Units Left\" />\n                        <Text layoutX=\"10.0\" layoutY=\"265.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Restock\" />\n                        <Text layoutX=\"38.0\" layoutY=\"232.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Unit Price\" />\n                     </children>\n                  </VBox>\n                  <VBox fx:id=\"sideBar_2\" alignment=\"CENTER_RIGHT\" layoutX=\"81.0\" layoutY=\"6.0\" prefHeight=\"320.0\" prefWidth=\"82.0\" spacing=\"24.0\">\n                     <children>\n                        <TextField fx:id=\"side_id_entry\" />\n                        <TextField fx:id=\"side_name_entry\" layoutX=\"10.0\" layoutY=\"194.0\" />\n                        <TextField fx:id=\"side_detail_entry\" layoutX=\"10.0\" layoutY=\"205.0\" />\n                        <TextField fx:id=\"side_units_used_entry\" layoutX=\"10.0\" layoutY=\"217.0\" />\n                        <TextField fx:id=\"side_units_left_entry\" layoutX=\"10.0\" layoutY=\"228.0\" />\n                        <TextField fx:id=\"side_unit_price_entry\" layoutX=\"10.0\" layoutY=\"228.0\" />\n                        <TextField fx:id=\"side_restock_entry\" layoutX=\"10.0\" layoutY=\"65.0\" />\n                     </children>\n                  </VBox>\n                  <ButtonBar layoutX=\"-19.0\" layoutY=\"333.0\" prefHeight=\"40.0\" prefWidth=\"200.0\">\n                    <buttons>\n                      <Button fx:id=\"discard_\" mnemonicParsing=\"false\" onAction=\"#discard_changes\" text=\"Cancel\" />\n                        <Button fx:id=\"update_btn\" layoutX=\"125.0\" layoutY=\"19.0\" mnemonicParsing=\"false\" onAction=\"#confirm_update\"  text=\"Update\" />\n                    </buttons>\n                  </ButtonBar>\n               </children>\n            </AnchorPane>\n        </items>\n      </SplitPane>\n      <MenuBar layoutX=\"2.0\" layoutY=\"4.0\">\n              <menus>\n          <Menu mnemonicParsing=\"false\" text=\"File\">\n            <items>\n              <MenuItem fx:id=\"exportBtn\" mnemonicParsing=\"false\" onAction=\"#export_rec\" text=\"Export All Records\" />\n              <MenuItem fx:id=\"export_view\" mnemonicParsing=\"false\" onAction=\"#export_tableView\" text=\"Export Selected Records\" />\n              <MenuItem fx:id=\"log_out\" mnemonicParsing=\"false\" onAction=\"#switch_user\" text=\"Log out\" />\n              <MenuItem fx:id=\"close\" mnemonicParsing=\"false\" onAction=\"#exitBtn\" text=\"Exit App\" />\n            </items>\n          </Menu>\n          <Menu mnemonicParsing=\"false\" text=\"Edit\">\n            <items>\n                  <MenuItem fx:id=\"add_rec\" mnemonicParsing=\"false\" onAction=\"#add_screen\" text=\"Add Record\" /> \n                  <MenuItem fx:id=\"reload_\" mnemonicParsing=\"false\" onAction=\"#reload\" text=\"Reload Records\" /> \n                  <Menu mnemonicParsing=\"false\" text=\"Delete\">\n                  <items>\n                  <MenuItem fx:id=\"delete_by_name\" mnemonicParsing=\"false\" onAction=\"#delete_by_name_btn\" text=\"Delete By Name\" />\n                  <MenuItem fx:id=\"delete_by_id\" mnemonicParsing=\"false\" onAction=\"#delete_by_id_btn\" text=\"Delete Selected Record\" />\n                </items>\n              </Menu>\n                  <MenuItem fx:id=\"export_btn\" mnemonicParsing=\"false\" onAction=\"#export_rec\" text=\"Export All Records\" />\n                  <MenuItem fx:id=\"export_view_btn\" mnemonicParsing=\"false\" onAction=\"#export_tableView\" text=\"Export Selected Records\" />\n            </items>\n          </Menu>\n            <Menu mnemonicParsing=\"false\" text=\"Navigate\">\n               <items>\n                  <MenuItem fx:id=\"switch_user_\" mnemonicParsing=\"false\" onAction=\"#switch_user\" text=\"Switch to normal user\" />\n                  <MenuItem fx:id=\"exit\" mnemonicParsing=\"false\" onAction=\"#exitBtn\" text=\"Exit App\" />\n               </items>\n            </Menu>\n          <Menu mnemonicParsing=\"false\" text=\"Help\">\n            <items>\n              <MenuItem fx:id=\"manual_\" mnemonicParsing=\"false\" onAction=\"#manual_btn\" text=\"Manual\" />\n              <MenuItem fx:id=\"about_\" mnemonicParsing=\"false\" onAction=\"#about_btn\" text=\"About\" />\n            </items>\n          </Menu>\n        </menus>\n      </MenuBar> \n      <TextField fx:id=\"searchBar\" layoutX=\"264.0\" layoutY=\"4.0\" />\n      <Button fx:id=\"subQuery\" layoutX=\"474.0\" layoutY=\"5.0\" mnemonicParsing=\"false\" onAction=\"#searchBtn\" prefHeight=\"23.0\" prefWidth=\"76.0\" text=\"Search\" />\n   </children>\n   <padding>\n      <Insets bottom=\"10.0\" left=\"30.0\" right=\"10.0\" top=\"10.0\" />\n   </padding>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/admin/records_view.fxml b/Main/src/resources/fxml/admin/records_view.fxml
+--- a/Main/src/resources/fxml/admin/records_view.fxml	
++++ b/Main/src/resources/fxml/admin/records_view.fxml	
+@@ -16,7 +16,7 @@
+ <?import javafx.scene.layout.VBox?>
+ <?import javafx.scene.text.Text?>
+ 
+-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.admin.TableCtrl">
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.admin.TableCtrl">
+    <children>
+       <Separator layoutY="30.0" prefWidth="600.0" />
+       <SplitPane dividerPositions="0.7047781569965871" layoutX="7.0" layoutY="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+Index: Main/src/resources/fxml/admin/delete_by_name.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.ButtonBar?>\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.text.Font?>\n\n\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.schoolAdmin.controllers.admin.BulkDeleteCtrl\">\n   <children>\n      <TextField fx:id=\"search_\" layoutX=\"218.0\" layoutY=\"141.0\" promptText=\"Search for name\" />\n      <ButtonBar layoutX=\"190.0\" layoutY=\"238.0\" prefHeight=\"40.0\" prefWidth=\"200.0\">\n        <buttons>\n          <Button fx:id=\"cancel_\" mnemonicParsing=\"false\" onAction=\"#cancel_delete\" text=\"Cancel\" />\n            <Button fx:id=\"bulk_delete\" layoutX=\"125.0\" layoutY=\"19.0\" mnemonicParsing=\"false\" onAction=\"#confirm_delete\" text=\"Delete\" />\n        </buttons>\n      </ButtonBar>\n      <Label layoutX=\"180.0\" layoutY=\"60.0\" prefHeight=\"40.0\" prefWidth=\"260.0\" text=\"Delete By Name\">\n         <font>\n            <Font size=\"35.0\" />\n         </font>\n      </Label>\n   </children>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/admin/delete_by_name.fxml b/Main/src/resources/fxml/admin/delete_by_name.fxml
+--- a/Main/src/resources/fxml/admin/delete_by_name.fxml	
++++ b/Main/src/resources/fxml/admin/delete_by_name.fxml	
+@@ -8,7 +8,7 @@
+ <?import javafx.scene.text.Font?>
+ 
+ 
+-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.admin.BulkDeleteCtrl">
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.admin.BulkDeleteCtrl">
+    <children>
+       <TextField fx:id="search_" layoutX="218.0" layoutY="141.0" promptText="Search for name" />
+       <ButtonBar layoutX="190.0" layoutY="238.0" prefHeight="40.0" prefWidth="200.0">
+Index: Main/src/resources/fxml/admin/insert_screen.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.ButtonBar?>\n<?import javafx.scene.control.ChoiceBox?>\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.layout.VBox?>\n<?import javafx.scene.text.Font?>\n\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.schoolAdmin.controllers.admin.Insert_Update\">\n   <children>\n      <VBox layoutX=\"77.0\" layoutY=\"101.0\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"28.0\">\n         <children>\n            <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Name\" />\n            <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Detail\" />\n            <Label layoutX=\"10.0\" layoutY=\"85.0\" text=\"Units Used\" />\n            <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"Units Left\" />\n            <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"Unit Price\" />\n            <Label layoutX=\"10.0\" layoutY=\"175.0\" text=\"Restock\" />\n         </children>\n         <padding>\n            <Insets top=\"30.0\" />\n         </padding>\n      </VBox>\n      <VBox layoutX=\"231.0\" layoutY=\"95.0\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"20.0\">\n         <children>\n            <TextField fx:id=\"name_entry\" />\n            <TextField fx:id=\"detail_entry\" layoutX=\"10.0\" layoutY=\"40.0\" />\n            <TextField fx:id=\"units_used_entry\" />\n            <TextField fx:id=\"units_left_entry\" layoutX=\"10.0\" layoutY=\"126.0\" />\n            <TextField fx:id=\"unit_price_entry\" layoutX=\"10.0\" layoutY=\"126.0\" />\n            <ChoiceBox fx:id=\"choice\" prefWidth=\"150.0\" />\n         </children>\n         <padding>\n            <Insets top=\"30.0\" />\n         </padding>\n      </VBox>\n      <ButtonBar layoutX=\"344.0\" layoutY=\"210.0\" prefHeight=\"40.0\" prefWidth=\"224.0\">\n         <buttons>\n          <Button fx:id=\"cancel_insert\" mnemonicParsing=\"false\" onAction=\"#cancel\" text=\"Cancel\" />\n            <Button fx:id=\"insert_update\" layoutX=\"125.0\" layoutY=\"19.0\" mnemonicParsing=\"false\" onAction=\"#insert_rec\" prefHeight=\"23.0\" prefWidth=\"118.0\" text=\"Add/Update\" />\n         </buttons>\n      </ButtonBar>\n      <Label layoutX=\"194.0\" layoutY=\"49.0\" text=\"Add Records\">\n         <font>\n            <Font size=\"30.0\" />\n         </font></Label>\n   </children>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/admin/insert_screen.fxml b/Main/src/resources/fxml/admin/insert_screen.fxml
+--- a/Main/src/resources/fxml/admin/insert_screen.fxml	
++++ b/Main/src/resources/fxml/admin/insert_screen.fxml	
+@@ -10,7 +10,7 @@
+ <?import javafx.scene.layout.VBox?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.admin.Insert_Update">
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.admin.Insert_Update">
+    <children>
+       <VBox layoutX="77.0" layoutY="101.0" prefHeight="200.0" prefWidth="100.0" spacing="28.0">
+          <children>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_16\" project-jdk-name=\"17\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -6,6 +6,11 @@
+         <option value="$PROJECT_DIR$/pom.xml" />
+       </list>
+     </option>
++    <option name="ignoredFiles">
++      <set>
++        <option value="$PROJECT_DIR$/OpenJFX/pom.xml" />
++      </set>
++    </option>
+   </component>
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="17" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+Index: .idea/libraries/Maven__org_openjfx_javafx_base_17_0_2.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_2.xml b/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_2.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_2.xml	
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.openjfx:javafx-base:17.0.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_openjfx_javafx_controls_17_0_2.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_2.xml b/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_2.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_2.xml	
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.openjfx:javafx-controls:17.0.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_openjfx_javafx_base_linux_17_0_2.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_openjfx_javafx_base_linux_17_0_2.xml b/.idea/libraries/Maven__org_openjfx_javafx_base_linux_17_0_2.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/libraries/Maven__org_openjfx_javafx_base_linux_17_0_2.xml	
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.openjfx:javafx-base:linux:17.0.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-linux.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.2/javafx-base-17.0.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_2.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_2.xml b/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_2.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_2.xml	
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.openjfx:javafx-fxml:17.0.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_openjfx_javafx_controls_linux_17_0_2.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_openjfx_javafx_controls_linux_17_0_2.xml b/.idea/libraries/Maven__org_openjfx_javafx_controls_linux_17_0_2.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/libraries/Maven__org_openjfx_javafx_controls_linux_17_0_2.xml	
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.openjfx:javafx-controls:linux:17.0.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-linux.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.2/javafx-controls-17.0.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_2.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_2.xml b/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_2.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_2.xml	
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.openjfx:javafx-graphics:17.0.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_openjfx_javafx_fxml_linux_17_0_2.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_openjfx_javafx_fxml_linux_17_0_2.xml b/.idea/libraries/Maven__org_openjfx_javafx_fxml_linux_17_0_2.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/libraries/Maven__org_openjfx_javafx_fxml_linux_17_0_2.xml	
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.openjfx:javafx-fxml:linux:17.0.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-linux.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17.0.2/javafx-fxml-17.0.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectModuleManager\">\n    <modules>\n      <module fileurl=\"file://$PROJECT_DIR$/Church_Membership.iml\" filepath=\"$PROJECT_DIR$/Church_Membership.iml\" />\n      <module fileurl=\"file://$PROJECT_DIR$/OpenJFX/OpenJFX.iml\" filepath=\"$PROJECT_DIR$/OpenJFX/OpenJFX.iml\" />\n    </modules>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	
++++ b/.idea/modules.xml	
+@@ -3,7 +3,6 @@
+   <component name="ProjectModuleManager">
+     <modules>
+       <module fileurl="file://$PROJECT_DIR$/Church_Membership.iml" filepath="$PROJECT_DIR$/Church_Membership.iml" />
+-      <module fileurl="file://$PROJECT_DIR$/OpenJFX/OpenJFX.iml" filepath="$PROJECT_DIR$/OpenJFX/OpenJFX.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_openjfx_javafx_graphics_linux_17_0_2.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_openjfx_javafx_graphics_linux_17_0_2.xml b/.idea/libraries/Maven__org_openjfx_javafx_graphics_linux_17_0_2.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/libraries/Maven__org_openjfx_javafx_graphics_linux_17_0_2.xml	
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.openjfx:javafx-graphics:linux:17.0.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-linux.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.2/javafx-graphics-17.0.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: Main/src/resources/fxml/user/records_view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.ContextMenu?>\n<?import javafx.scene.control.Menu?>\n<?import javafx.scene.control.MenuBar?>\n<?import javafx.scene.control.MenuItem?>\n<?import javafx.scene.control.SplitPane?>\n<?import javafx.scene.control.TableColumn?>\n<?import javafx.scene.control.TableView?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.layout.HBox?>\n<?import javafx.scene.layout.VBox?>\n<?import javafx.scene.text.Text?>\n\n<SplitPane dividerPositions=\"0.5\" orientation=\"VERTICAL\" prefHeight=\"790.0\" prefWidth=\"1952.0\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.c_m.controllers.user.Table_View\">\n  <items>\n    <AnchorPane minHeight=\"0.0\" minWidth=\"0.0\" prefHeight=\"100.0\" prefWidth=\"160.0\">\n         <children>\n            <HBox alignment=\"CENTER\" blendMode=\"SRC_ATOP\" prefHeight=\"33.0\" prefWidth=\"750.0\">\n               <children>\n                  <MenuBar>\n                          <menus>\n                      <Menu mnemonicParsing=\"false\" text=\"File\">\n                        <items>\n                          <MenuItem fx:id=\"exportBtn\" mnemonicParsing=\"false\" onAction=\"#export_rec\" text=\"Export All Records\" />\n                          <MenuItem fx:id=\"export_view\" mnemonicParsing=\"false\" onAction=\"#export_tableView\" text=\"Export Selected Records\" />\n                          <MenuItem fx:id=\"log_out\" mnemonicParsing=\"false\" onAction=\"#switch_user\" text=\"Log out\" />\n                          <MenuItem fx:id=\"close\" mnemonicParsing=\"false\" onAction=\"#exitBtn\" text=\"Exit App\" />\n                        </items>\n                      </Menu>\n                      <Menu mnemonicParsing=\"false\" text=\"Edit\">\n                        <items>\n                              <MenuItem fx:id=\"add_rec\" mnemonicParsing=\"false\" onAction=\"#add_screen\" text=\"Add Record\" /> \n                              <MenuItem fx:id=\"reload_\" mnemonicParsing=\"false\" onAction=\"#reload\" text=\"Reload Records\" /> \n                              <Menu mnemonicParsing=\"false\" text=\"Delete\">\n                              <items>\n                              <MenuItem fx:id=\"delete_by_name\" mnemonicParsing=\"false\" onAction=\"#delete_by_name_btn\" text=\"Delete By Name\" />\n                              <MenuItem fx:id=\"delete_by_id\" mnemonicParsing=\"false\" onAction=\"#delete_by_id_btn\" text=\"Delete Selected Record\" />\n                            </items>\n                          </Menu>\n                              <MenuItem fx:id=\"export_btn\" mnemonicParsing=\"false\" onAction=\"#export_rec\" text=\"Export All Records\" />\n                              <MenuItem fx:id=\"export_view_btn\" mnemonicParsing=\"false\" onAction=\"#export_tableView\" text=\"Export Selected Records\" />\n                        </items>\n                      </Menu>\n                        <Menu mnemonicParsing=\"false\" text=\"Navigate\">\n                           <items>\n                              <MenuItem fx:id=\"switch_user_\" mnemonicParsing=\"false\" onAction=\"#switch_user\" text=\"Switch to normal user\" />\n                              <MenuItem fx:id=\"exit\" mnemonicParsing=\"false\" onAction=\"#exitBtn\" text=\"Exit App\" />\n                           </items>\n                        </Menu>\n                      <Menu mnemonicParsing=\"false\" text=\"Help\">\n                        <items>\n                          <MenuItem fx:id=\"manual_\" mnemonicParsing=\"false\" onAction=\"#manual_btn\" text=\"Manual\" />\n                          <MenuItem fx:id=\"about_\" mnemonicParsing=\"false\" onAction=\"#about_btn\" text=\"About\" />\n                        </items>\n                      </Menu>\n                    </menus>\n                  </MenuBar> \n                  <TextField fx:id=\"searchBar\" prefHeight=\"27.0\" prefWidth=\"428.0\" />\n                  <Button fx:id=\"subQuery\" mnemonicParsing=\"false\" onAction=\"#searchBtn\" prefHeight=\"23.0\" prefWidth=\"76.0\" text=\"Search\" />\n               </children>\n            </HBox>\n            <TableView fx:id=\"psqlTable\" editable=\"true\" fixedCellSize=\"20.0\" layoutX=\"1.0\" layoutY=\"34.0\" prefHeight=\"360.0\" prefWidth=\"1950.0\" tableMenuButtonVisible=\"true\">\n              <columns>\n                <TableColumn fx:id=\"id_\" prefWidth=\"55.0\" text=\"ID\" />\n                <TableColumn fx:id=\"Title_\" prefWidth=\"64.0\" text=\"Title\" />\n                  <TableColumn fx:id=\"fname\" prefWidth=\"69.0\" text=\"Name\" />\n                  <TableColumn fx:id=\"lname\" prefWidth=\"69.0\" text=\"Surname\" />\n                  <TableColumn fx:id=\"Sex\" prefWidth=\"73.0\" text=\"Gender\" />\n                  <TableColumn fx:id=\"IDNum\" prefWidth=\"73.0\" text=\"ID No\" />\n                  <TableColumn fx:id=\"KidsNo_\" prefWidth=\"117.68994140625\" text=\"No. of Children\" />\n                  <TableColumn fx:id=\"MStatus_\" prefWidth=\"106.71878051757812\" text=\"Maritial Status\" />\n                  <TableColumn fx:id=\"DateJoined_\" prefWidth=\"106.71878051757812\" text=\"Date Joined\" />\n                  <TableColumn fx:id=\"DOB_\" prefWidth=\"89.76348876953125\" text=\"D.O.B\" />\n                  <TableColumn fx:id=\"Address\" prefWidth=\"109.7109375\" text=\"Address\" />\n                  <TableColumn fx:id=\"Surbub\" prefWidth=\"101.73193359375\" text=\"Surbub\" />\n                  <TableColumn fx:id=\"Homephone\" prefWidth=\"110.70831298828125\" text=\"Home Phone\" />\n                  <TableColumn fx:id=\"WorkPhone\" prefWidth=\"101.73193359375\" text=\"Work Phone\" />\n                  <TableColumn fx:id=\"MobilePhone\" prefWidth=\"107.7161865234375\" text=\"Mobile Phone\" />\n                  <TableColumn fx:id=\"Email\" prefWidth=\"107.7161865234375\" text=\"Email\" />\n                  <TableColumn fx:id=\"HomeGroup\" prefWidth=\"138.634765625\" text=\"Home Group Leader\" />\n                  <TableColumn fx:id=\"DeptLeader\" prefWidth=\"105.0562744140625\" text=\"Dept Leader\" />\n                  <TableColumn fx:id=\"Dept\" prefWidth=\"110.0433349609375\" text=\"Department\" />\n                  <TableColumn fx:id=\"Salvation\" prefWidth=\"82.1170654296875\" text=\"Salvation\" />\n                  <TableColumn fx:id=\"waterBapt\" prefWidth=\"103.3944091796875\" text=\"Water Baptism\" />\n                  <TableColumn fx:id=\"SpiritBapt\" prefWidth=\"103.39453125\" text=\"Spirit Baptism\" />\n              </columns>\n               <opaqueInsets>\n                  <Insets top=\"25.0\" />\n               </opaqueInsets>\n               <contextMenu>\n                  <ContextMenu>\n                    <items>\n                      <MenuItem fx:id=\"update_option\" mnemonicParsing=\"false\" text=\"Update Record\" />\n                      <MenuItem fx:id=\"export_current_view\" mnemonicParsing=\"false\" onAction=\"#export_tableView\" text=\"Export Current Records\" />\n                      <MenuItem fx:id=\"delete_by_id_context\" mnemonicParsing=\"false\" onAction=\"#delete_by_id_btn\" text=\"Delete Selected Record\" />\n                    </items>\n                  </ContextMenu>\n               </contextMenu>\n            </TableView>\n         </children>\n      </AnchorPane>\n    <AnchorPane minHeight=\"0.0\" minWidth=\"0.0\" prefHeight=\"344.0\" prefWidth=\"1952.0\">\n         <children>\n            <HBox alignment=\"CENTER\" layoutX=\"3.0\" layoutY=\"84.0\" prefHeight=\"264.0\" prefWidth=\"1947.0\" spacing=\"120.0\">\n               <children>\n                  <HBox alignment=\"CENTER\" prefHeight=\"264.0\" prefWidth=\"258.0\" spacing=\"50.0\">\n                     <children>\n                        <VBox prefHeight=\"200.0\" prefWidth=\"100.0\">\n                           <children>\n                              <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Title\" />\n                              <Text layoutX=\"10.0\" layoutY=\"24.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Name\" />\n                              <Text layoutX=\"10.0\" layoutY=\"43.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Gender\" />\n                              <Text layoutX=\"10.0\" layoutY=\"62.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"ID No.\" />\n                              <Text layoutX=\"10.0\" layoutY=\"81.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Children No.\" />\n                              <Text layoutX=\"10.0\" layoutY=\"100.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Maritial Status\" />\n                              <Text layoutX=\"10.0\" layoutY=\"119.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Date Joined\" />\n                              <Text layoutX=\"10.0\" layoutY=\"136.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"D.O.B\" />\n                              <Text layoutX=\"10.0\" layoutY=\"138.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Address\" />\n                           </children>\n                        </VBox>\n                        <VBox layoutX=\"10.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"100.0\">\n                           <children>\n                              <Text fx:id=\"title_\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"name_\" layoutX=\"10.0\" layoutY=\"24.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"gender_\" layoutX=\"10.0\" layoutY=\"43.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"idNo_\" layoutX=\"10.0\" layoutY=\"62.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"chldrenNo_\" layoutX=\"10.0\" layoutY=\"81.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"maritial_\" layoutX=\"10.0\" layoutY=\"100.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"dateJoined_\" layoutX=\"10.0\" layoutY=\"119.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"dob_\" layoutX=\"10.0\" layoutY=\"132.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"address_\" layoutX=\"10.0\" layoutY=\"138.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                           </children>\n                        </VBox>\n                     </children>\n                  </HBox>\n                  <HBox alignment=\"CENTER\" layoutX=\"10.0\" layoutY=\"10.0\" prefHeight=\"100.0\" prefWidth=\"200.0\" spacing=\"50.0\">\n                     <children>\n                        <VBox layoutX=\"10.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"100.0\">\n                           <children>\n                              <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Surbub\" />\n                              <Text layoutX=\"10.0\" layoutY=\"24.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Home Phone\" />\n                              <Text layoutX=\"10.0\" layoutY=\"43.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Work Phone\" />\n                              <Text layoutX=\"10.0\" layoutY=\"62.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Mobile Phone\" />\n                              <Text layoutX=\"10.0\" layoutY=\"81.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Employer\" />\n                              <Text layoutX=\"10.0\" layoutY=\"100.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Position\" />\n                              <Text layoutX=\"10.0\" layoutY=\"119.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Email\" />\n                              <Text layoutX=\"10.0\" layoutY=\"138.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Home Group Leader\" />\n                           </children>\n                        </VBox>\n                        <VBox prefHeight=\"200.0\" prefWidth=\"100.0\">\n                           <children>\n                              <Text fx:id=\"surbub_\" layoutX=\"10.0\" layoutY=\"157.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"homePhone_\" layoutX=\"10.0\" layoutY=\"176.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"workPhone_\" layoutX=\"10.0\" layoutY=\"195.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"mobilePhone_\" layoutX=\"10.0\" layoutY=\"214.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"employer_\" layoutX=\"10.0\" layoutY=\"232.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"position_\" layoutX=\"10.0\" layoutY=\"251.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"email_\" layoutX=\"10.0\" layoutY=\"270.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"homeGroup_\" layoutX=\"10.0\" layoutY=\"289.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                           </children>\n                        </VBox>\n                     </children>\n                  </HBox>\n                  <HBox alignment=\"CENTER\" layoutX=\"210.0\" layoutY=\"10.0\" prefHeight=\"100.0\" prefWidth=\"200.0\" spacing=\"50.0\">\n                     <children>\n                        <VBox prefHeight=\"200.0\" prefWidth=\"100.0\">\n                           <children>\n                              <Text layoutX=\"10.0\" layoutY=\"307.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Department Leader\" />\n                              <Text layoutX=\"10.0\" layoutY=\"327.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Department\" />\n                              <Text layoutX=\"10.0\" layoutY=\"346.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Salvation\" />\n                              <Text layoutX=\"10.0\" layoutY=\"365.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Water Baptism\" />\n                              <Text layoutX=\"10.0\" layoutY=\"384.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Spirit Baptism\" />\n                              <Text layoutX=\"10.0\" layoutY=\"119.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Total No. of Members\" />\n                              <Text layoutX=\"10.0\" layoutY=\"97.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Total No. of Children\" />\n                           </children>\n                        </VBox>\n                        <VBox layoutX=\"10.0\" layoutY=\"10.0\" prefHeight=\"200.0\" prefWidth=\"100.0\">\n                           <children>\n                              <Text fx:id=\"depLeader_\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"dep\" layoutX=\"10.0\" layoutY=\"24.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"salvation_\" layoutX=\"10.0\" layoutY=\"43.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"water_\" layoutX=\"10.0\" layoutY=\"62.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"spirit_\" layoutX=\"10.0\" layoutY=\"81.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"membersTotal_\" layoutX=\"10.0\" layoutY=\"119.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                              <Text fx:id=\"childrenTotal_\" layoutX=\"10.0\" layoutY=\"96.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"No Data\" />\n                           </children>\n                        </VBox>\n                     </children>\n                  </HBox>\n               </children>\n               <opaqueInsets>\n                  <Insets />\n               </opaqueInsets>\n            </HBox>\n         </children>\n      </AnchorPane>\n  </items>\n</SplitPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/user/records_view.fxml b/Main/src/resources/fxml/user/records_view.fxml
+--- a/Main/src/resources/fxml/user/records_view.fxml	
++++ b/Main/src/resources/fxml/user/records_view.fxml	
+@@ -47,7 +47,7 @@
+                       </Menu>
+                         <Menu mnemonicParsing="false" text="Navigate">
+                            <items>
+-                              <MenuItem fx:id="switch_user_" mnemonicParsing="false" onAction="#switch_user" text="Switch to normal user" />
++                              <MenuItem fx:id="switch_user_" mnemonicParsing="false" onAction="#switch_user" text="Switch to Kids" />
+                               <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitBtn" text="Exit App" />
+                            </items>
+                         </Menu>
+@@ -77,6 +77,7 @@
+                   <TableColumn fx:id="DOB_" prefWidth="89.76348876953125" text="D.O.B" />
+                   <TableColumn fx:id="Address" prefWidth="109.7109375" text="Address" />
+                   <TableColumn fx:id="Surbub" prefWidth="101.73193359375" text="Surbub" />
++                  <TableColumn fx:id="Employer" prefWidth="101.73193359375" text="Employer" />
+                   <TableColumn fx:id="Homephone" prefWidth="110.70831298828125" text="Home Phone" />
+                   <TableColumn fx:id="WorkPhone" prefWidth="101.73193359375" text="Work Phone" />
+                   <TableColumn fx:id="MobilePhone" prefWidth="107.7161865234375" text="Mobile Phone" />
+@@ -128,7 +129,7 @@
+                               <Text fx:id="name_" layoutX="10.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                               <Text fx:id="gender_" layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                               <Text fx:id="idNo_" layoutX="10.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+-                              <Text fx:id="chldrenNo_" layoutX="10.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
++                              <Text fx:id="children_No_" layoutX="10.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                               <Text fx:id="maritial_" layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                               <Text fx:id="dateJoined_" layoutX="10.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                               <Text fx:id="dob_" layoutX="10.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+@@ -175,7 +176,7 @@
+                               <Text layoutX="10.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Water Baptism" />
+                               <Text layoutX="10.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spirit Baptism" />
+                               <Text layoutX="10.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total No. of Members" />
+-                              <Text layoutX="10.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total No. of Children" />
++                              <!-- <Text layoutX="10.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total No. of Children" /> -->
+                            </children>
+                         </VBox>
+                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+@@ -186,7 +187,7 @@
+                               <Text fx:id="water_" layoutX="10.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                               <Text fx:id="spirit_" layoutX="10.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                               <Text fx:id="membersTotal_" layoutX="10.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+-                              <Text fx:id="childrenTotal_" layoutX="10.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
++                              <!-- <Text fx:id="childrenTotal_" layoutX="10.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" /> -->
+                            </children>
+                         </VBox>
+                      </children>
+Index: .vscode/settings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n    \"java.project.referencedLibraries\": [\n        \"lib/**/*.jar\",\n        \"Main/lib/commons-collections4-4.1.jar\",\n        \"Main/lib/commons-compress-1.21.jar\",\n        \"Main/lib/commons-math3-3.0.jar\",\n        \"Main/lib/jPDFViewerFX.jar\",\n        \"Main/lib/log4j-1.2-api-2.14.1.jar\",\n        \"Main/lib/log4j-api-2.14.1.jar\",\n        \"Main/lib/log4j-core-2.14.1.jar\",\n        \"Main/lib/poi-5.0.0.jar\",\n        \"Main/lib/poi-ooxml-5.0.0.jar\",\n        \"Main/lib/sqlite-jdbc-3.36.0.3.jar\",\n        \"Main/lib/xmlbeans-5.0.1.jar\",\n        \"Main/lib/jfx/javafx.base.jar\",\n        \"Main/lib/jfx/javafx.controls.jar\",\n        \"Main/lib/jfx/javafx.fxml.jar\",\n        \"Main/lib/jfx/javafx.graphics.jar\",\n        \"Main/lib/jfx/javafx.media.jar\",\n        \"Main/lib/jfx/javafx.swing.jar\",\n        \"Main/lib/jfx/javafx.web.jar\",\n        \"Main/lib/jfx/javafx-swt.jar\",\n        \"Main/lib/postgresql-42.3.3.jar\"\n    ]\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+--- a/.vscode/settings.json	
++++ b/.vscode/settings.json	
+@@ -21,5 +21,6 @@
+         "Main/lib/jfx/javafx.web.jar",
+         "Main/lib/jfx/javafx-swt.jar",
+         "Main/lib/postgresql-42.3.3.jar"
+-    ]
++    ],
++    "java.configuration.updateBuildConfiguration": "automatic"
+ }
+\ No newline at end of file
+Index: Main/src/com/c_m/controllers/misc/SceneCtrl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.c_m.controllers.misc;\n\nimport javafx.stage.*;\nimport javafx.scene.*;\n\nimport java.io.IOException;\nimport java.util.Objects;\n\nimport javafx.fxml.FXMLLoader;\n\n/*\n* Similar to a cheat script\n* To avoid repetition in several files\n*/\npublic class SceneCtrl {\n    // TODO not seeing resources folder\n    String admin_login = \"/resources/fxml/admin/login_screen.fxml\";\n    String cashier_login = \"/resources/fxml/cashier/login_screen.fxml\";\n    String decision_screen = \"/resources/fxml/misc/login_choice.fxml\";\n    String add_screen = \"/resources/fxml/user/add_records.fxml\";\n    String admin_records = \"/resources/fxml/user/records_view.fxml\";\n    String cashier_records = \"/resources/fxml/cashier/records_view.fxml\";\n    String greeting_screen = \"/resources/fxml/greeting_banner.fxml\";\n    String bulk_delete_screen = \"/resources/fxml/admin/delete_by_name.fxml\";\n    String about_screen = \"/resources/fxml/misc/about.fxml\";\n    String kids_records = \"/resources/fxml/user/kids_records_view.fxml\";\n\n    public static void switchScene(Scene scene, boolean truth, String title, boolean option) {\n        Stage stage = new Stage();\n        stage.setScene(scene);\n        stage.setResizable(truth);\n        stage.setTitle(title);\n        if (option == true) {\n            stage.show();\n        } else if (option == false) {\n            stage.showAndWait();\n        } else {\n            System.out.println(\"Invalid Option\");\n        }\n\n        // stage.show();\n\n    }\n    public void decision_scene() {\n        try {\n            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(decision_screen)));\n            Scene login = new Scene(root);\n            switchScene(login, true, \"Select Login Type\", false);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n\n\n    public void admin_login_scene() {\n        try {\n            Parent root = FXMLLoader.load(getClass().getResource(admin_login));\n            Scene login = new Scene(root);\n            switchScene(login, true, \"Admin Login\", false);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n    \n    public void cashier_login_scene() {\n        try {\n            Parent root = FXMLLoader.load(getClass().getResource(cashier_login));\n            Scene login = new Scene(root);\n            switchScene(login, true, \"Employee Login\", false);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n\n\n    public void admin_rec_scene() {\n        try {\n            Parent root = FXMLLoader.load(getClass().getResource(admin_records));\n            Scene records = new Scene(root);\n            switchScene(records, true, \"View Inventory \", true);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n    \n    public void cashier_rec_scene() {\n        try {\n            Parent root = FXMLLoader.load(getClass().getResource(cashier_records));\n            Scene records = new Scene(root);\n            switchScene(records, true, \"View Inventory \", true);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n\n\n    public void add_scene() {\n        try {\n            Parent root = FXMLLoader.load(getClass().getResource(add_screen));\n            Scene add = new Scene(root);\n            switchScene(add, true, \"Add Record\", false);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n    \n    public void bulk_delete_scene() {\n        try {\n            Parent root = FXMLLoader.load(getClass().getResource(bulk_delete_screen));\n            Scene bulk_delete = new Scene(root);\n            switchScene(bulk_delete, true, \"Delete Records By Name\", false);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n\n    public void about_scene() {\n        try {\n            Parent root = FXMLLoader.load(getClass().getResource(about_screen));\n            Scene about = new Scene(root);\n            switchScene(about, true, \"About Screen\", false);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n    \n    public void kids_records_scene() {\n        try {\n            Parent root = FXMLLoader.load(getClass().getResource(kids_records));\n            Scene kids_rec = new Scene(root);\n            switchScene(kids_rec, true, \"Kids Records\", true);\n        } catch (IOException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n\n}\n
+===================================================================
+diff --git a/Main/src/com/c_m/controllers/misc/SceneCtrl.java b/Main/src/com/c_m/controllers/misc/SceneCtrl.java
+--- a/Main/src/com/c_m/controllers/misc/SceneCtrl.java	
++++ b/Main/src/com/c_m/controllers/misc/SceneCtrl.java	
+@@ -43,7 +43,7 @@
+     }
+     public void decision_scene() {
+         try {
+-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(decision_screen)));
++            Parent root = FXMLLoader.load(getClass().getResource(decision_screen));
+             Scene login = new Scene(root);
+             switchScene(login, true, "Select Login Type", false);
+         } catch (IOException e) {
+Index: Main/src/com/c_m/controllers/user/Kids_Table_View.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.c_m.controllers.user;\n\nimport java.io.*;\nimport java.net.URL;\nimport java.nio.file.*;\nimport java.sql.*;\nimport java.sql.SQLException;\nimport java.util.ResourceBundle;\n\nimport com.c_m.app.App;\nimport com.c_m.controllers.admin.ExportExcel;\nimport com.c_m.controllers.misc.SceneCtrl;\nimport com.c_m.database.Psql;\nimport com.c_m.modals.AlertModule;\nimport com.c_m.modals.MemberModel;\n\n//TODO:Finish tweaking the files\n//TODO: Work on loading up the Table\nimport javafx.collections.FXCollections;\nimport javafx.collections.ObservableList;\nimport javafx.event.*;\nimport javafx.fxml.*;\nimport javafx.scene.control.*;\nimport javafx.scene.control.cell.PropertyValueFactory;\nimport javafx.scene.layout.VBox;\nimport javafx.scene.text.Text;\nimport javafx.stage.*;\n// import com.c_m.controllers.admin.UpdateCtrl;\nimport javafx.stage.FileChooser;\nimport javafx.stage.Window;\nimport org.apache.poi.hssf.usermodel.HSSFWorkbook;\nimport org.apache.poi.ss.usermodel.Row;\nimport org.apache.poi.ss.usermodel.Sheet;\nimport org.apache.poi.ss.usermodel.Workbook;\n\npublic class Kids_Table_View implements Initializable{\n    Stage stage = new Stage();\n    Psql psql = new Psql();\n    App app = new App();\n    static String recordSize= \"\";\n\n    Window owner = stage.getOwner();\n    SceneCtrl scene_switcher = new SceneCtrl();\n\n    @FXML\n    private TableView<MemberModel> psqlTable;\n\n    @FXML\n    private TableColumn<MemberModel, String> id_;\n\n    @FXML\n    private TableColumn<MemberModel, String> fname;\n\n    @FXML\n    private TableColumn<MemberModel, String> lname;\n\n    @FXML\n    private TableColumn<MemberModel, String> Title_;\n\n    @FXML\n    private TableColumn<MemberModel, String> Address;\n\n    @FXML\n    private TableColumn<MemberModel, String> DOB_;\n\n    @FXML\n    private TableColumn<MemberModel, String> DateJoined_;\n\n    @FXML\n    private TableColumn<MemberModel, String> Dept;\n\n    @FXML\n    private TableColumn<MemberModel, String> DeptLeader;\n\n    @FXML\n    private TableColumn<MemberModel, String> HomeGroup;\n\n    @FXML\n    private TableColumn<MemberModel, String> Homephone;\n\n    @FXML\n    private TableColumn<MemberModel, String> IDNum;\n\n    @FXML\n    private TableColumn<MemberModel, String> KidsNo_;\n\n    @FXML\n    private TableColumn<MemberModel, String> MStatus_;\n\n    @FXML\n    private TableColumn<MemberModel, String> MobilePhone;\n\n    @FXML\n    private TableColumn<MemberModel, String> Email;\n\n    @FXML\n    private TableColumn<MemberModel, String> Salvation;\n\n    @FXML\n    private TableColumn<MemberModel, String> Sex;\n\n    @FXML\n    private TableColumn<MemberModel, String> waterBapt;\n\n    @FXML\n    private TableColumn<MemberModel, String> SpiritBapt;\n\n    @FXML\n    private TableColumn<MemberModel, String> Surbub;\n\n    @FXML\n    private TableColumn<MemberModel, String> Employer;\n\n    @FXML\n    private TableColumn<MemberModel, String> WorkPhone;\n\n    //Table Properties End\n\n    //Text Properties Start\n    @FXML\n    private Text address_;\n\n    @FXML\n    private Text childrenTotal_;\n\n    @FXML\n    private Text children_No_;\n\n    @FXML\n    private Text dateJoined_;\n\n    @FXML\n    private Text dep;\n\n    @FXML\n    private Text depLeader_;\n\n    @FXML\n    private Text dob_;\n\n    @FXML\n    private Text email_;\n\n    @FXML\n    private Text employer_;\n\n    @FXML\n    private Text gender_;\n\n    @FXML\n    private Text homeGroup_;\n\n    @FXML\n    private Text homePhone_;\n\n    @FXML\n    private Text idNo_;\n\n    @FXML\n    private Text maritial_;\n\n    @FXML\n    private Text membersTotal_;\n\n    @FXML\n    private Text mobilePhone_;\n\n    @FXML\n    private Text name_;\n\n    @FXML\n    private Text position_;\n\n    @FXML\n    private Text salvation_;\n\n    @FXML\n    private TextField searchBar;\n\n    @FXML\n    private Text spirit_;\n\n    @FXML\n    private Text title_;\n\n    @FXML\n    private Text surbub_;\n\n    @FXML\n    private Text water_;\n\n    @FXML\n    private Text workPhone_;\n\n    //Menu Items Start\n    @FXML\n    private MenuItem switch_user_;\n\n    @FXML\n    private MenuItem update_option;\n\n    @FXML\n    private MenuItem exit;\n\n    @FXML\n    private MenuItem exportBtn;\n\n    @FXML\n    private MenuItem export_btn;\n\n    @FXML\n    private MenuItem export_current_view;\n\n    @FXML\n    private MenuItem export_view;\n\n    @FXML\n    private MenuItem export_view_btn;\n\n    @FXML\n    private MenuItem about_;\n\n    @FXML\n    private MenuItem add_rec;\n\n    @FXML\n    private MenuItem log_out;\n\n    @FXML\n    private MenuItem manual_;\n\n    @FXML\n    private MenuItem delete_by_id;\n\n    @FXML\n    private MenuItem delete_by_id_context;\n\n    @FXML\n    private MenuItem delete_by_name;\n\n    @FXML\n    private MenuItem close;\n\n    @FXML\n    private MenuItem reload_;\n\n    //Button Start\n    @FXML\n    private Button subQuery;\n\n    static ObservableList<MemberModel> records;\n\n    @Override\n    public void initialize(URL location, ResourceBundle bundle) {\n        assert psqlTable != null : \"Failed to load table\";\n\n        id_.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"ID\")\n        );\n        fname.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"fname\")\n        );\n        lname.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"lname\")\n        );\n        Title_.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Title\")\n        );\n        Address.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Address\")\n        );\n        DOB_.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"DOB\")\n        );\n        DateJoined_.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Datejoined\")\n        );\n        Dept.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Dept\")\n        );\n        DeptLeader.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"deptLeader_\")\n        );\n        HomeGroup.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"HomeGroup\")\n        );\n        Homephone.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"HomePhone\")\n        );\n        IDNum.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"ID_Num\")\n        );\n        KidsNo_.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"childrenNo_\")\n        );\n        MStatus_.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"M_status\")\n        );\n        MobilePhone.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"cellNumber\")\n        );\n        Email.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Email\")\n        );\n        Salvation.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Salvation\")\n        );\n        Sex.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Sex\")\n        );\n        waterBapt.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"waterBapt\")\n        );\n        SpiritBapt.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"SpiritBapt\")\n        );\n        Surbub.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Surbub\")\n        );\n        WorkPhone.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"WorkPhone\")\n        );\n        Employer.setCellValueFactory(\n                new PropertyValueFactory<MemberModel, String>(\"Employer_\")\n        );\n\n        try {\n            // reload();\n            records = loadTable();\n            mouse_listener();\n        } catch (Exception e) {\n            e.printStackTrace();\n        }\n    }\n\n    public static ObservableList<MemberModel> loadTable() {\n        ObservableList<MemberModel> loadList = FXCollections.observableArrayList();\n\n        try {\n            Connection con = Psql.connector();\n\n            ResultSet res = con\n                    .createStatement()\n                    .executeQuery(\"SELECT * FROM members\");\n\n            while (res.next()) {\n                loadList.add(\n                        new MemberModel(\n                                res.getString(\"id\"),\n                                res.getString(\"title\"),\n                                res.getString(\"fname\"),\n                                res.getString(\"lname\"),\n                                res.getString(\"gender\"),\n                                res.getString(\"id_no\"),\n                                res.getString(\"children_num\"),\n                                res.getString(\"maritial_status\"),\n                                res.getString(\"date_joined\"),\n                                res.getString(\"dob\"),\n                                res.getString(\"address\"),\n                                res.getString(\"surbub\"),\n                                res.getString(\"home_phone\"),\n                                res.getString(\"work_phone\"),\n                                res.getString(\"mobile_phone\"),\n                                res.getString(\"employer\"),\n                                res.getString(\"position\"),\n                                res.getString(\"email\"),\n                                res.getString(\"home_group_leader\"),\n                                res.getString(\"department_leader\"),\n                                res.getString(\"department\"),\n                                res.getString(\"salvation\"),\n                                res.getString(\"water_baptism\"),\n                                res.getString(\"spirit_baptism\")\n                        )\n                );\n            }\n            int rowSize = loadList.size();\n            recordSize = Integer.toString(rowSize);\n            System.out.println(loadList.size());\n        } catch (Exception e) {\n            // TODO: handle exception\n            e.printStackTrace();\n            System.out.println(e.getMessage());\n            System.out.println(\"Error loading Table\");\n        }\n        return loadList;\n    }\n\n    public static ObservableList<MemberModel> searchDB(\n            String query,\n            Window owner\n    ) {\n        ObservableList<MemberModel> queryList = FXCollections.observableArrayList();\n        String search =\n                \"select * from members WHERE name LIKE '\" + query + \"%'\";\n        try (\n                Connection conn = Psql.connector();\n                PreparedStatement pstmt = conn.prepareStatement(search);\n        ) {\n            ResultSet res = pstmt.executeQuery();\n\n            try {\n                while (res.next()) {\n                    queryList.add(\n                            new MemberModel(\n                                    res.getString(\"id_num\"),\n                                    res.getString(\"title\"),\n                                    res.getString(\"fname\"),\n                                    res.getString(\"lname\"),\n                                    res.getString(\"gender\"),\n                                    res.getString(\"id_no\"),\n                                    res.getString(\"children_num\"),\n                                    res.getString(\"maritial_status\"),\n                                    res.getString(\"date_joined\"),\n                                    res.getString(\"dob\"),\n                                    res.getString(\"address\"),\n                                    res.getString(\"surbub\"),\n                                    res.getString(\"home_phone\"),\n                                    res.getString(\"work_phone\"),\n                                    res.getString(\"mobile_phone\"),\n                                    res.getString(\"employer\"),\n                                    res.getString(\"position\"),\n                                    res.getString(\"email\"),\n                                    res.getString(\"home_group_leader\"),\n                                    res.getString(\"department_leader\"),\n                                    res.getString(\"department\"),\n                                    res.getString(\"salvation\"),\n                                    res.getString(\"water_baptism\"),\n                                    res.getString(\"spirit_baptism\")\n                            )\n                    );\n                }\n                // TODO:Error still triggered even if results are found\n                // if(!res.next()){\n                // AlertModule.showAlert(Alert.AlertType.ERROR, owner, \"System Error\", \"Failed to load results from DB\");\n\n                //     System.out.println(\"Search failed\");\n                // }\n            } catch (Exception e) {\n                AlertModule.showAlert(\n                        Alert.AlertType.ERROR,\n                        owner,\n                        \"System Error\",\n                        \"Nothing matches your search\"\n                );\n                System.out.println(e);\n                System.out.println(\"Nothing found\");\n            }\n        } catch (SQLException e) {\n            e.printStackTrace();\n            // TODO: handle exception\n        }\n        return queryList;\n    }\n\n    public void addScreen() {\n        try {\n            scene_switcher.add_scene();\n            loadTable();\n        } catch (Exception e) {\n            // TODO Auto-generated catch block\n            System.out.println(e.getMessage());\n            e.printStackTrace();\n        }\n    }\n\n    public void deleteRow() {\n        ObservableList<MemberModel> selectedRow, allRows;\n        allRows = psqlTable.getItems();\n        selectedRow = psqlTable.getSelectionModel().getSelectedItems();\n\n        String id_ = psqlTable.getSelectionModel().getSelectedItem().getID();\n        System.out.println(id_);\n        psql.delete_row_by_id(id_);\n        selectedRow.forEach(allRows::remove);\n    }\n\n    //File actions\n    @FXML\n    private void add_screen() {\n        addScreen();\n    }\n\n  /*\n  *Reference methods or reminders\n  * to show that when dealing with private values\n  * they cant be passed to another class\n  //TODO Method 1\n  // update.setField(\"150\", \"25\", \"3\", \"4\", \"5\");\n\n  //TODO Method 2\n  // UpdateCtrl update = new UpdateCtrl(\"1\", \"2\", \"3\", \"4\", \"5\");\n  */\n\n    /*\n     * Method 3 or function table_click_listener\n     * This method listens for a selected record then\n     * displays it on the side panel for update.\n     */\n\n    public void mouse_listener() {\n        psqlTable\n                .getSelectionModel()\n                .selectedItemProperty()\n                .addListener(\n                        (obs, old_selection, new_selection) -> {\n                            title_.setText(new_selection.getTitle());\n                            name_.setText(new_selection.getFname());\n                            gender_.setText(new_selection.getSex());\n                            idNo_.setText(new_selection.getID_Num());\n                            children_No_.setText(new_selection.getChildrenNo_());\n                            maritial_.setText(new_selection.getM_status());\n                            dateJoined_.setText(new_selection.getDatejoined());\n                            dob_.setText(new_selection.getDOB());\n                            address_.setText(new_selection.getAddress());\n                            surbub_.setText(new_selection.getSurbub());\n                            homePhone_.setText(new_selection.getHomePhone());\n                            workPhone_.setText(new_selection.getWorkPhone());\n                            mobilePhone_.setText(new_selection.getCellNumber());\n                            employer_.setText(new_selection.getEmployer_());\n                            position_.setText(new_selection.getPosition_());\n                            email_.setText(new_selection.getEmail());\n                            homeGroup_.setText(new_selection.getHomeGroup());\n                            depLeader_.setText(new_selection.getDeptLeader_());\n                            dep.setText(new_selection.getDept());\n                            salvation_.setText(new_selection.getSalvation());\n                            water_.setText(new_selection.getWaterBapt());\n                            spirit_.setText(new_selection.getSpiritBapt());\n                            membersTotal_.setText(recordSize);\n\n                            //TODO: Set childrens totals.\n\n                        }\n                );\n    }\n\n    @FXML\n    private void confirm_update() {\n        try {\n            //TODO: Fix this function\n            // psql.updateValues(side_name_entry.getText(), side_detail_entry.getText(), side_units_used_entry.getText(), side_units_left_entry.getText(), side_unit_price_entry.getText(), side_restock_entry.getText(), side_id_entry.getText());\n            AlertModule.showAlert(\n                    Alert.AlertType.CONFIRMATION,\n                    owner,\n                    \"Action Completed\",\n                    \"Record updated successfully\"\n            );\n            reloadBtn();\n        } catch (Exception e) {\n            AlertModule.showAlert(\n                    Alert.AlertType.ERROR,\n                    owner,\n                    \"Failed to complete action\",\n                    \"Failed to update record\"\n            );\n            e.getMessage();\n            e.printStackTrace();\n        }\n    }\n\n    @FXML\n    private void discard_changes() {\n        // side_id_entry.clear();\n        // side_name_entry.clear();\n        // side_detail_entry.clear();\n        // side_units_used_entry.clear();\n        // side_units_left_entry.clear();\n        // side_unit_price_entry.clear();\n\n    }\n\n    @FXML\n    private void delete_by_id_btn() {\n        deleteRow();\n    }\n\n    @FXML\n    private void delete_by_name_btn() {\n        scene_switcher.bulk_delete_scene();\n    }\n\n    @FXML\n    private void searchBtn(ActionEvent event) {\n        Window owner = subQuery.getScene().getWindow();\n        try {\n            records.removeAll();\n            records = searchDB(searchBar.getText(), owner);\n            psqlTable.setItems(records);\n        } catch (Exception e) {\n            e.printStackTrace();\n            AlertModule.showAlert(\n                    Alert.AlertType.ERROR,\n                    owner,\n                    \"Action Error\",\n                    \"Unable to complete search\"\n            );\n        }\n    }\n\n    //TODO cannot make static reference to FXML as they would crash program\n    // @FXML\n    private void reloadBtn() {\n        //Clear current view then load results\n        records.removeAll();\n        records = loadTable();\n        psqlTable.setItems(records);\n    }\n\n    @FXML\n    private void reload() {\n        reloadBtn();\n    }\n\n    /**\n     *\n     * *The methods to export records to excel\n     * *ExportExcel.exportToExcel() exports all records in database.\n     * *export_tableView() exports the current table view of the records.\n     */\n    @FXML\n    private void export_rec(ActionEvent event) throws IOException {\n        Window owner = psqlTable.getScene().getWindow();\n        ExportExcel.exportToExcel(owner);\n    }\n\n    @FXML\n    private void export_tableView() {\n        Workbook wb = new HSSFWorkbook();\n        Sheet spreadsheet = wb.createSheet(\"Current TableView\");\n\n        Row row = spreadsheet.createRow(0);\n\n        for (int i = 0; i < psqlTable.getColumns().size(); i++) {\n            row.createCell(i).setCellValue(psqlTable.getColumns().get(i).getText());\n        }\n\n        for (int x = 0; x < psqlTable.getItems().size(); x++) {\n            row = spreadsheet.createRow(x + 1);\n            for (int y = 0; y < psqlTable.getColumns().size(); y++) {\n                if (psqlTable.getColumns().get(y).getCellData(x) != null) {\n                    row\n                            .createCell(y)\n                            .setCellValue(\n                                    psqlTable.getColumns().get(y).getCellData(x).toString()\n                            );\n                } else {\n                    row.createCell(y).setCellValue(\"\");\n                }\n            }\n        }\n        FileChooser fileChooser = new FileChooser();\n        fileChooser.setTitle(\"Export Excel Document\");\n        fileChooser\n                .getExtensionFilters()\n                .addAll(\n                        new FileChooser.ExtensionFilter(\"XLSX files (*.xlsx)\", \"*.xlsx\"),\n                        new FileChooser.ExtensionFilter(\"XLS files (*.xls)\", \"*.xls\"),\n                        new FileChooser.ExtensionFilter(\"ODS files (*.ods)\", \"*.ods\"),\n                        new FileChooser.ExtensionFilter(\"CSV files (*.csv)\", \"*.csv\"),\n                        new FileChooser.ExtensionFilter(\"HTML files (*.html)\", \"*.html\")\n                );\n        try {\n            File saveFile = fileChooser.showSaveDialog(owner);\n            String savePath = \"Exported TableView.xlsx\";\n            FileOutputStream save_file = new FileOutputStream(savePath);\n            fileChooser.setInitialFileName(\"Exported Table\");\n            //TODO Set initial filename not working when saving?\n\n            Path src = Paths.get(savePath);\n            Path dest = Paths.get(saveFile.getAbsolutePath());\n\n            StandardCopyOption REPLACE_EXISTING = StandardCopyOption.REPLACE_EXISTING;\n            StandardCopyOption COPY_ATTRIBUTES = StandardCopyOption.COPY_ATTRIBUTES;\n            LinkOption NOFOLLOW_LINKS = LinkOption.NOFOLLOW_LINKS;\n\n            if (saveFile != null) {\n                try {\n                    //try to save workbook\n                    wb.write(save_file);\n\n                    //try to copy and delete file\n                    Files.copy(\n                            src,\n                            dest,\n                            REPLACE_EXISTING,\n                            COPY_ATTRIBUTES,\n                            NOFOLLOW_LINKS\n                    );\n                    Files.delete(src);\n                    wb.close();\n                } catch (IOException e) {\n                    e.getMessage();\n                    e.printStackTrace();\n                }\n            }\n        } catch (FileNotFoundException e) {\n            e.getMessage();\n            e.printStackTrace();\n        }\n    }\n\n    /*\n     *User actions\n     */\n    @FXML\n    private void manual_btn() {\n        try {\n            app.manual_pdf();\n        } catch (Exception e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n\n    @FXML\n    private void about_btn() {\n        scene_switcher.about_scene();\n    }\n\n    @FXML\n    private void switch_user() {\n        psqlTable.getScene().getWindow().hide();\n        scene_switcher.admin_rec_scene();\n    }\n\n    @FXML\n    private void exitBtn(ActionEvent event) {\n        App.closeApp();\n    }\n}\n
+===================================================================
+diff --git a/Main/src/com/c_m/controllers/user/Kids_Table_View.java b/Main/src/com/c_m/controllers/user/Kids_Table_View.java
+--- a/Main/src/com/c_m/controllers/user/Kids_Table_View.java	
++++ b/Main/src/com/c_m/controllers/user/Kids_Table_View.java	
+@@ -160,7 +160,7 @@
+     private Text maritial_;
+ 
+     @FXML
+-    private Text membersTotal_;
++    private Text kids_membersTotal_;
+ 
+     @FXML
+     private Text mobilePhone_;
+@@ -341,7 +341,7 @@
+ 
+             ResultSet res = con
+                     .createStatement()
+-                    .executeQuery("SELECT * FROM members");
++                    .executeQuery("SELECT * FROM kids_members");
+ 
+             while (res.next()) {
+                 loadList.add(
+@@ -391,7 +391,7 @@
+     ) {
+         ObservableList<MemberModel> queryList = FXCollections.observableArrayList();
+         String search =
+-                "select * from members WHERE name LIKE '" + query + "%'";
++                "SELECT * FROM kids_members WHERE name LIKE '" + query + "%'";
+         try (
+                 Connection conn = Psql.connector();
+                 PreparedStatement pstmt = conn.prepareStatement(search);
+@@ -470,7 +470,7 @@
+ 
+         String id_ = psqlTable.getSelectionModel().getSelectedItem().getID();
+         System.out.println(id_);
+-        psql.delete_row_by_id(id_);
++        psql.delete_row_by_id_Kids(id_);
+         selectedRow.forEach(allRows::remove);
+     }
+ 
+@@ -525,7 +525,7 @@
+                             salvation_.setText(new_selection.getSalvation());
+                             water_.setText(new_selection.getWaterBapt());
+                             spirit_.setText(new_selection.getSpiritBapt());
+-                            membersTotal_.setText(recordSize);
++                            kids_membersTotal_.setText(recordSize);
+ 
+                             //TODO: Set childrens totals.
+ 
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>groupId</groupId>\n    <artifactId>Church_Membership</artifactId>\n    <packaging>pom</packaging>\n    <version>1.0-SNAPSHOT</version>\n    <modules>\n        <module>OpenJFX</module>\n    </modules>\n\n    <properties>\n        <maven.compiler.source>17</maven.compiler.source>\n        <maven.compiler.target>17</maven.compiler.target>\n    </properties>\n    \n</project>
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	
++++ b/pom.xml	
+@@ -5,16 +5,49 @@
+     <modelVersion>4.0.0</modelVersion>
+ 
+     <groupId>groupId</groupId>
+-    <artifactId>Church_Membership</artifactId>
++    <artifactId>church_membership</artifactId>
+     <packaging>pom</packaging>
+     <version>1.0-SNAPSHOT</version>
+     <modules>
+-        <module>OpenJFX</module>
++        <module>church_membership</module>
+     </modules>
+ 
+     <properties>
+         <maven.compiler.source>17</maven.compiler.source>
+         <maven.compiler.target>17</maven.compiler.target>
++        <javafx.version>17.0.2</javafx.version>
++        <javafx.maven.plugin.version>0.0.6</javafx.maven.plugin.version>
+     </properties>
+-    
++    <dependencies>
++        <dependency>
++            <groupId>org.openjfx</groupId>
++            <artifactId>javafx-controls</artifactId>
++            <version>${javafx.version}</version>
++        </dependency>
++        <dependency>
++            <groupId>org.openjfx</groupId>
++            <artifactId>javafx-fxml</artifactId>
++            <version>${javafx.version}</version>
++        </dependency>
++    </dependencies>
++    <build>
++        <plugins>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-compiler-plugin</artifactId>
++                <version>3.8.1</version>
++                <configuration>
++                    <release>${maven.compiler.release}</release>
++                </configuration>
++            </plugin>
++            <plugin>
++                <groupId>org.openjfx</groupId>
++                <artifactId>javafx-maven-plugin</artifactId>
++                <version>${javafx.maven.plugin.version}</version>
++                <configuration>
++                    <mainClass>com.c_m.App</mainClass>
++                </configuration>
++            </plugin>
++        </plugins>
++    </build>
+ </project>
+\ No newline at end of file
+Index: Main/src/com/c_m/database/Psql.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.c_m.database;\n//TODO: Fix up file and the functions.\nimport java.sql.*;\n\npublic class Psql {\n    private final static String db = \"jdbc:postgresql://localhost/church\";\n    private final static String user = \"guest\";\n    private final static String password = \"1234567890\";\n\n    public static Connection connector() throws SQLException {\n        return DriverManager.getConnection(db, user, password);\n    }\n\n    public boolean check(String search) throws SQLException {\n        String QUERY = \"SELECT * FROM user_login WHERE name LIKE ?\";\n\n        try (Connection conn = connector();\n\n                PreparedStatement pstmt = conn.prepareStatement(QUERY);) {\n\n            ResultSet res = pstmt.executeQuery();\n            if (res.next()) {\n                return true;\n            }\n\n        } catch (SQLException e) {\n            printSQLException(e);\n            // TODO: handle exception\n        }\n        return false;\n    }\n\n    public boolean validateAdmin(String user, String pass) throws SQLException {\n\n        String QUERY = \"SELECT * FROM admin_login WHERE name = ? AND password = ? \";\n\n        try (Connection conn = connector();\n\n                PreparedStatement pstmt = conn.prepareStatement(QUERY);) {\n            pstmt.setString(1, user);\n            pstmt.setString(2, pass);\n\n            ResultSet res = pstmt.executeQuery();\n            if (res.next()) {\n                return true;\n            }\n\n        } catch (SQLException e) {\n            printSQLException(e);\n            // TODO: handle exception\n        }\n        return false;\n    }\n    \n    public boolean validateCashier(String user, String pass) throws SQLException {\n\n        String QUERY = \"SELECT * FROM employee_login WHERE name = ? AND password = ? \";\n\n        try (Connection conn = connector();\n\n                PreparedStatement pstmt = conn.prepareStatement(QUERY);) {\n            pstmt.setString(1, user);\n            pstmt.setString(2, pass);\n\n            ResultSet res = pstmt.executeQuery();\n            if (res.next()) {\n                return true;\n            }\n\n        } catch (SQLException e) {\n            printSQLException(e);\n            // TODO: handle exception\n        }\n        return false;\n    }\n\n\n    public void searchDB(String query) {\n        String search = \"select * from members WHERE name LIKE '\" + query + \"%'\";\n        try (Connection conn = connector();\n\n                PreparedStatement pstmt = conn.prepareStatement(search);) {\n            ResultSet res = pstmt.executeQuery();\n            try {\n                while (res.next()) {\n                    System.out.println(res.getString(\"id\") + res.getString(\"name\") + res.getString(\"detail\"));\n                }\n                if (!res.next()) {\n                    System.out.println(\"Search failed\");\n                }\n            } catch (Exception e) {\n                System.out.println(e);\n                System.out.println(\"Nothing found\");\n            }\n        } catch (SQLException e) {\n            printSQLException(e);\n            // TODO: handle exception\n        }\n    }\n\n    public void insertValues( \n        String title,\n        String fname,\n        String lname, \n        String gender, \n        String id_no, \n        String children_num, \n        String maritial_status, \n        String date_joined,\n        String dob,\n        String address,\n        String surbub,\n        String homePhone,\n        String workPhone,\n        String mobilePhone,\n        String employer,\n        String position,\n        String email,\n        String homeLeader,\n        String deptLeader,\n        String dept,\n        String salvation,\n        String water_bapt,\n        String spirit_bapt\n        ) {\n        String values = \n        \"INSERT INTO members (title, fname, lname, gender, id_no, children_num, maritial_status, date_joined, dob, address, surbub, home_phone, work_phone, mobile_phone, employer, position, email, home_group_leader, department_leader, department, salvation, water_baptism, spirit_baptism)\" + \n        \" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )\";\n\n        try {\n            Connection conn = connector();\n            PreparedStatement pstmt = conn.prepareStatement(values);\n            \n            pstmt.setString(1, title);\n            pstmt.setString(2, fname);\n            pstmt.setString(3, lname);\n            pstmt.setString(4, gender);\n            pstmt.setString(5, id_no);\n            pstmt.setString(6, children_num);\n            pstmt.setString(7, maritial_status);\n            pstmt.setString(8, date_joined);\n            pstmt.setString(9, dob);\n            pstmt.setString(10, address);\n            pstmt.setString(11, surbub);\n            pstmt.setString(12, homePhone);\n            pstmt.setString(13, workPhone);\n            pstmt.setString(14, mobilePhone);\n            pstmt.setString(15, employer);\n            pstmt.setString(16, position);\n            pstmt.setString(17, email);\n            pstmt.setString(18, homeLeader);\n            pstmt.setString(19, deptLeader);\n            pstmt.setString(20, dept);\n            pstmt.setString(21, salvation);\n            pstmt.setString(22, water_bapt);\n            pstmt.setString(23, spirit_bapt);\n\n            pstmt.execute();\n\n        } catch (SQLException e) {\n            System.out.println(e.getMessage());\n            e.printStackTrace();\n        }\n\n    }\n    \n    public void updateValues(\n        String title,\n        String fname,\n        String lname, \n        String gender, \n        String id_no, \n        String children_num, \n        String maritial_status, \n        String date_joined,\n        String dob,\n        String address,\n        String surbub,\n        String homePhone,\n        String workPhone,\n        String mobilePhone,\n        String employer,\n        String position,\n        String email,\n        String homeLeader,\n        String deptLeader,\n        String dept,\n        String salvation,\n        String water_bapt,\n        String spirit_bapt\n        ) {\n        \n            String values = \n        \"UPDATE members SET title=?, fname=?, lname=? gender=?, id_no=?, children_num=?, maritial_status=?, date_joined=?, dob=?, address=?, surbub=?, home_phone=?, work_phone=?, mobile_phone=?, employer=?, position=?, email=?, home_group_leader=?, department_leader=?, department=?, salvation=?, water_baptism=?, spirit_baptism=? \";\n\n        try {\n            Connection conn = connector();\n            PreparedStatement pstmt = conn.prepareStatement(values);\n            pstmt.setString(1, title);\n            pstmt.setString(2, fname);\n            pstmt.setString(3, lname);\n            pstmt.setString(4, gender);\n            pstmt.setString(5, id_no);\n            pstmt.setString(6, children_num);\n            pstmt.setString(7, maritial_status);\n            pstmt.setString(8, date_joined);\n            pstmt.setString(9, dob);\n            pstmt.setString(10, address);\n            pstmt.setString(11, surbub);\n            pstmt.setString(12, homePhone);\n            pstmt.setString(13, workPhone);\n            pstmt.setString(14, mobilePhone);\n            pstmt.setString(15, employer);\n            pstmt.setString(16, position);\n            pstmt.setString(17, email);\n            pstmt.setString(18, homeLeader);\n            pstmt.setString(19, deptLeader);\n            pstmt.setString(20, dept);\n            pstmt.setString(21, salvation);\n            pstmt.setString(22, water_bapt);\n            pstmt.setString(23, spirit_bapt);\n\n            pstmt.execute();\n\n        } catch (SQLException e) {\n            System.out.println(e.getMessage());\n            e.printStackTrace();\n        }\n\n    }\n\n    // public void updateValues( String name, String detail, String units_used, String units_left, String unit_price, String restock, String id){\n    //     String update = \"UPDATE ace_hardware SET name=?, detail=?, units_used=?, units_left=?, unit_price=?, restock=? WHERE id=?\";\n    //     try{\n    //         Connection conn = connector();\n    //         PreparedStatement pstmt = conn.prepareStatement(update);\n    //         pstmt.setString(1, name);\n    //         pstmt.setString(2, detail);\n    //         pstmt.setString(3, units_used);\n    //         pstmt.setString(4, units_left);\n    //         pstmt.setString(5, unit_price);\n    //         pstmt.setString(6, restock);\n    //         pstmt.setString(7, id);\n\n    //         pstmt.execute();\n    //     } catch(SQLException e){\n    //         System.out.println(e.getMessage());\n    //         e.printStackTrace();\n    //     }\n    // }\n\n    public void delete_row_by_id( String id_){\n        String update = \"DELETE FROM members WHERE id = ? \";\n        try{\n            Connection conn = connector();\n            PreparedStatement pstmt = conn.prepareStatement(update);\n            pstmt.setString(1, id_);\n            \n            pstmt.execute();\n        } catch(SQLException e){\n            System.out.println(e.getMessage());\n            e.printStackTrace();\n        }\n    }\n\n    //TODO: Rewrite function to avoid deletion of names\n    public void delete_row_by_name( String name_){\n        // String update = \"DELETE FROM members WHERE name LIKE '\" +name_ + \"%'\";\n       \n        // try(\n        //     Connection conn = connector();\n        //     PreparedStatement pstmt = conn.prepareStatement(update);){\n        //     // pstmt.setString(1, name_);\n            \n        //     pstmt.executeQuery();\n        // } catch(SQLException e){\n        //     System.out.println(e.getMessage());\n        //     e.printStackTrace();\n        // }\n            System.out.println(\"'Delete By Name' : Function needs to be fixed\");\n    }\n\n\n\n    public void printSQLException(SQLException ex) {\n        for (Throwable e : ex) {\n            if (e instanceof SQLException) {\n                e.printStackTrace(System.err);\n                System.err.println(\"SQLState: \" + ((SQLException) e).getSQLState());\n                System.err.println(\"Error Code: \" + ((SQLException) e).getErrorCode());\n                System.err.println(\"Message: \" + e.getMessage());\n                Throwable t = ex.getCause();\n                while (t != null) {\n                    System.out.println(\"Cause: \" + t);\n                    t = t.getCause();\n                }\n\n            }\n        }\n    }\n\n    public Connection checkConnection() {\n        Connection conn = null;\n\n        try {\n\n            conn = DriverManager.getConnection(db, user, password);\n\n            if (conn != null) {\n                System.out.println(\"DB Connection ok!\");\n            } else {\n                System.out.println(\"Connection Failed\");\n            }\n\n        } catch (Exception e) {\n            // TODO: handle exception\n            System.out.println(e.getMessage());\n        }\n        return conn;\n    }\n\n    public static void main(String[] args) throws SQLException {\n        Psql psql = new Psql();\n        psql.checkConnection(); \n    }\n\n}\n
+===================================================================
+diff --git a/Main/src/com/c_m/database/Psql.java b/Main/src/com/c_m/database/Psql.java
+--- a/Main/src/com/c_m/database/Psql.java	
++++ b/Main/src/com/c_m/database/Psql.java	
+@@ -97,7 +97,30 @@
+             // TODO: handle exception
+         }
+     }
++    
++    public void searchDBKids(String query) {
++        String search = "SELECT * FROM kids_members WHERE name LIKE '" + query + "%'";
++        try (Connection conn = connector();
+ 
++                PreparedStatement pstmt = conn.prepareStatement(search);) {
++            ResultSet res = pstmt.executeQuery();
++            try {
++                while (res.next()) {
++                    System.out.println(res.getString("id") + res.getString("name") + res.getString("detail"));
++                }
++                if (!res.next()) {
++                    System.out.println("Search failed");
++                }
++            } catch (Exception e) {
++                System.out.println(e);
++                System.out.println("Nothing found");
++            }
++        } catch (SQLException e) {
++            printSQLException(e);
++            // TODO: handle exception
++        }
++    }
++
+     public void insertValues( 
+         String title,
+         String fname,
+@@ -163,6 +186,72 @@
+         }
+ 
+     }
++
++     public void insertValuesKids( 
++        String title,
++        String fname,
++        String lname, 
++        String gender, 
++        String id_no, 
++        String children_num, 
++        String maritial_status, 
++        String date_joined,
++        String dob,
++        String address,
++        String surbub,
++        String homePhone,
++        String workPhone,
++        String mobilePhone,
++        String employer,
++        String position,
++        String email,
++        String homeLeader,
++        String deptLeader,
++        String dept,
++        String salvation,
++        String water_bapt,
++        String spirit_bapt
++        ) {
++        String values = 
++        "INSERT INTO kids_members (title, fname, lname, gender, id_no, children_num, maritial_status, date_joined, dob, address, surbub, home_phone, work_phone, mobile_phone, employer, position, email, home_group_leader, department_leader, department, salvation, water_baptism, spirit_baptism)" + 
++        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
++
++        try {
++            Connection conn = connector();
++            PreparedStatement pstmt = conn.prepareStatement(values);
++            
++            pstmt.setString(1, title);
++            pstmt.setString(2, fname);
++            pstmt.setString(3, lname);
++            pstmt.setString(4, gender);
++            pstmt.setString(5, id_no);
++            pstmt.setString(6, children_num);
++            pstmt.setString(7, maritial_status);
++            pstmt.setString(8, date_joined);
++            pstmt.setString(9, dob);
++            pstmt.setString(10, address);
++            pstmt.setString(11, surbub);
++            pstmt.setString(12, homePhone);
++            pstmt.setString(13, workPhone);
++            pstmt.setString(14, mobilePhone);
++            pstmt.setString(15, employer);
++            pstmt.setString(16, position);
++            pstmt.setString(17, email);
++            pstmt.setString(18, homeLeader);
++            pstmt.setString(19, deptLeader);
++            pstmt.setString(20, dept);
++            pstmt.setString(21, salvation);
++            pstmt.setString(22, water_bapt);
++            pstmt.setString(23, spirit_bapt);
++
++            pstmt.execute();
++
++        } catch (SQLException e) {
++            System.out.println(e.getMessage());
++            e.printStackTrace();
++        }
++
++    }
+     
+     public void updateValues(
+         String title,
+@@ -228,7 +317,72 @@
+         }
+ 
+     }
++    
++    public void updateValuesKids(
++        String title,
++        String fname,
++        String lname, 
++        String gender, 
++        String id_no, 
++        String children_num, 
++        String maritial_status, 
++        String date_joined,
++        String dob,
++        String address,
++        String surbub,
++        String homePhone,
++        String workPhone,
++        String mobilePhone,
++        String employer,
++        String position,
++        String email,
++        String homeLeader,
++        String deptLeader,
++        String dept,
++        String salvation,
++        String water_bapt,
++        String spirit_bapt
++        ) {
++        
++            String values = 
++        "UPDATE kids_members SET title=?, fname=?, lname=? gender=?, id_no=?, children_num=?, maritial_status=?, date_joined=?, dob=?, address=?, surbub=?, home_phone=?, work_phone=?, mobile_phone=?, employer=?, position=?, email=?, home_group_leader=?, department_leader=?, department=?, salvation=?, water_baptism=?, spirit_baptism=? ";
+ 
++        try {
++            Connection conn = connector();
++            PreparedStatement pstmt = conn.prepareStatement(values);
++            pstmt.setString(1, title);
++            pstmt.setString(2, fname);
++            pstmt.setString(3, lname);
++            pstmt.setString(4, gender);
++            pstmt.setString(5, id_no);
++            pstmt.setString(6, children_num);
++            pstmt.setString(7, maritial_status);
++            pstmt.setString(8, date_joined);
++            pstmt.setString(9, dob);
++            pstmt.setString(10, address);
++            pstmt.setString(11, surbub);
++            pstmt.setString(12, homePhone);
++            pstmt.setString(13, workPhone);
++            pstmt.setString(14, mobilePhone);
++            pstmt.setString(15, employer);
++            pstmt.setString(16, position);
++            pstmt.setString(17, email);
++            pstmt.setString(18, homeLeader);
++            pstmt.setString(19, deptLeader);
++            pstmt.setString(20, dept);
++            pstmt.setString(21, salvation);
++            pstmt.setString(22, water_bapt);
++            pstmt.setString(23, spirit_bapt);
++
++            pstmt.execute();
++
++        } catch (SQLException e) {
++            System.out.println(e.getMessage());
++            e.printStackTrace();
++        }
++
++    }
++
+     // public void updateValues( String name, String detail, String units_used, String units_left, String unit_price, String restock, String id){
+     //     String update = "UPDATE ace_hardware SET name=?, detail=?, units_used=?, units_left=?, unit_price=?, restock=? WHERE id=?";
+     //     try{
+@@ -255,6 +409,20 @@
+             Connection conn = connector();
+             PreparedStatement pstmt = conn.prepareStatement(update);
+             pstmt.setString(1, id_);
++            
++            pstmt.execute();
++        } catch(SQLException e){
++            System.out.println(e.getMessage());
++            e.printStackTrace();
++        }
++    }
++    
++    public void delete_row_by_id_Kids( String id_){
++        String update = "DELETE FROM kids_members WHERE id = ? ";
++        try{
++            Connection conn = connector();
++            PreparedStatement pstmt = conn.prepareStatement(update);
++            pstmt.setString(1, id_);
+             
+             pstmt.execute();
+         } catch(SQLException e){
+Index: Main/src/com/c_m/controllers/user/Insert_update.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.c_m.controllers.user;\n\nimport com.c_m.database.Psql;\nimport com.c_m.modals.AlertModule;\nimport java.net.URL;\nimport java.util.ResourceBundle;\nimport javafx.beans.value.ChangeListener;\nimport javafx.beans.value.ObservableValue;\nimport javafx.collections.FXCollections;\nimport javafx.collections.ObservableList;\nimport javafx.event.ActionEvent;\nimport javafx.fxml.FXML;\nimport javafx.fxml.Initializable;\nimport javafx.scene.control.Alert;\nimport javafx.scene.control.Button;\nimport javafx.scene.control.ComboBox;\nimport javafx.scene.control.DatePicker;\nimport javafx.scene.control.TextField;\nimport javafx.stage.Window;\n\npublic class Insert_update implements Initializable {\n\n  Psql psql = new Psql();\n\n  @FXML\n  private Button cancel_insert;\n\n  @FXML\n  private Button insert_update;\n\n  //Start Of TextField\n  @FXML\n  private TextField fnameBox;\n\n  @FXML\n  private TextField lnameBox;\n\n  @FXML\n  private TextField idBox;\n\n  @FXML\n  private TextField num_Children;\n\n  @FXML\n  private DatePicker dateJoined;\n\n  @FXML\n  private DatePicker dob;\n\n  @FXML\n  private TextField address;\n\n  @FXML\n  private TextField homePhone;\n\n  @FXML\n  private TextField workPhone;\n\n  @FXML\n  private TextField mobilePhone;\n\n  @FXML\n  private TextField employer;\n\n  @FXML\n  private TextField position;\n\n  @FXML\n  private TextField email;\n\n  @FXML\n  private TextField homeGroupLeader;\n\n  @FXML\n  private TextField departmentLeader;\n\n  @FXML\n  private ComboBox<String> titleBox;\n\n  @FXML\n  private ComboBox<String> genderBox;\n\n  @FXML\n  private ComboBox<String> maritial_status;\n\n  @FXML\n  private ComboBox<String> surbub;\n\n  @FXML\n  private ComboBox<String> depBox;\n\n  @FXML\n  private ComboBox<String> salvationBox;\n\n  @FXML\n  private ComboBox<String> baptismBox_1;\n\n  @FXML\n  private ComboBox<String> baptismBox_2;\n\n  // Weekdays\n  String titles[] = { \"Mr\", \"Mrs\", \"Miss\" };\n\n  String maritial_status_[] = { \"Single\", \"Married\" };\n\n  String gender[] = { \"Male\", \"Female\" };\n\n  String surbubs[] = {\n    \"Aerodrome\",\n    \"Mkhosana\",\n    \"Mfelandawonye\",\n    \"Zambezi Camp\",\n    \"Chinotimba\",\n    \"Industrial\",\n    \"Monde\",\n  };\n\n  String deps[] = {\n    \"Ushers\",\n    \"Worship/Music Team\",\n    \"Media\",\n    \"Intercessors\",\n    \"Hosting\",\n  };\n\n  String bools[] = { \"Yes\", \"No\" };\n\n  int year = 2024;\n  int month = 12;\n  int dayOfMonth = 02;\n  // Create a combo box\n  //   ComboBox combo_box = new ComboBox(\n  //     FXCollections.observableArrayList(week_days)\n  //   );\n\n  ObservableList<String> title = FXCollections.observableArrayList(titles);\n  ObservableList<String> status = FXCollections.observableArrayList(\n    maritial_status_\n  );\n  ObservableList<String> sex = FXCollections.observableArrayList(gender);\n  ObservableList<String> region = FXCollections.observableArrayList(surbubs);\n  ObservableList<String> dep = FXCollections.observableArrayList(deps);\n  ObservableList<String> truths = FXCollections.observableArrayList(bools);\n\n  @Override\n  public void initialize(URL url, ResourceBundle resource) {\n    titleBox.setItems(title);\n    maritial_status.setItems(status);\n    genderBox.setItems(sex);\n    surbub.setItems(region);\n    depBox.setItems(dep);\n    salvationBox.setItems(truths);\n    baptismBox_1.setItems(truths);\n    baptismBox_2.setItems(truths);\n  }\n\n  @FXML\n  private void insert_rec(ActionEvent event) {\n    Window owner = insert_update.getScene().getWindow();\n    grabTxt(owner);\n  }\n\n  public void grabTxt(Window owner) {\n    try {\n      if (fnameBox.getText().isEmpty() || lnameBox.getText().isEmpty()) {\n        AlertModule.showAlert(\n          Alert.AlertType.ERROR,\n          owner,\n          \"Input Error\",\n          \"Please enter all fields\"\n        );\n      } else {\n        psql.insertValues(\n          titleBox.getValue(),\n          fnameBox.getText(),\n          lnameBox.getText(),\n          genderBox.getValue(),\n          idBox.getText(),\n          num_Children.getText(),\n          maritial_status.getValue(),\n          dateJoined.getValue().of(year, month, dayOfMonth).toString(),\n          dob.getValue().of(year, month, dayOfMonth).toString(),\n          address.getText(),\n          surbub.getValue(),\n          homePhone.getText(),\n          workPhone.getText(),\n          mobilePhone.getText(),\n          employer.getText(),\n          position.getText(),\n          email.getText(),\n          homeGroupLeader.getText(),\n          departmentLeader.getText(),\n          depBox.getValue(),\n          salvationBox.getValue(),\n          baptismBox_1.getValue(),\n          baptismBox_2.getValue()\n        );\n        // System.out.println(dob.getValue() + \" \" + dateJoined.getValue());\n        AlertModule.showAlert(\n          Alert.AlertType.INFORMATION,\n          owner,\n          \"Record Added\",\n          \"Record added successfully\"\n        );\n        // TODO cannot auto reload results after entry\n        // TODO Reload is done manually after window closes\n        // TableCtrl.reloadTable();;\n        insert_update.getScene().getWindow().hide();\n      }\n      // choiceSelector();\n\n    } catch (Exception e) {\n      AlertModule.showAlert(\n        Alert.AlertType.ERROR,\n        owner,\n        \"System Error\",\n        \"Something is broken :(\"\n      );\n      System.out.println(e.getMessage());\n      e.printStackTrace();\n    }\n  }\n\n  @FXML\n  private void cancel(ActionEvent event) {\n    cancel_insert.getScene().getWindow().hide();\n  }\n}\n
+===================================================================
+diff --git a/Main/src/com/c_m/controllers/user/Insert_update.java b/Main/src/com/c_m/controllers/user/Insert_update.java
+--- a/Main/src/com/c_m/controllers/user/Insert_update.java	
++++ b/Main/src/com/c_m/controllers/user/Insert_update.java	
+@@ -160,6 +160,12 @@
+     grabTxt(owner);
+   }
+ 
++  @FXML
++  private void insert_rec_kids(ActionEvent event){
++    Window owner = insert_update.getScene().getWindow();
++    grabTxt_2(owner);
++  }
++
+   public void grabTxt(Window owner) {
+     try {
+       if (fnameBox.getText().isEmpty() || lnameBox.getText().isEmpty()) {
+@@ -208,6 +214,67 @@
+         insert_update.getScene().getWindow().hide();
+       }
+       // choiceSelector();
++
++    } catch (Exception e) {
++      AlertModule.showAlert(
++        Alert.AlertType.ERROR,
++        owner,
++        "System Error",
++        "Something is broken :("
++      );
++      System.out.println(e.getMessage());
++      e.printStackTrace();
++    }
++  }
++
++  public void grabTxt_2(Window owner) {
++    try {
++      if (fnameBox.getText().isEmpty() || lnameBox.getText().isEmpty()) {
++        AlertModule.showAlert(
++          Alert.AlertType.ERROR,
++          owner,
++          "Input Error",
++          "Please enter all fields"
++        );
++      } else {
++        psql.insertValuesKids(
++          titleBox.getValue(),
++          fnameBox.getText(),
++          lnameBox.getText(),
++          genderBox.getValue(),
++          idBox.getText(),
++          num_Children.getText(),
++          maritial_status.getValue(),
++          dateJoined.getValue().of(year, month, dayOfMonth).toString(),
++          dob.getValue().of(year, month, dayOfMonth).toString(),
++          address.getText(),
++          surbub.getValue(),
++          homePhone.getText(),
++          workPhone.getText(),
++          mobilePhone.getText(),
++          employer.getText(),
++          position.getText(),
++          email.getText(),
++          homeGroupLeader.getText(),
++          departmentLeader.getText(),
++          depBox.getValue(),
++          salvationBox.getValue(),
++          baptismBox_1.getValue(),
++          baptismBox_2.getValue()
++        );
++        // System.out.println(dob.getValue() + " " + dateJoined.getValue());
++        AlertModule.showAlert(
++          Alert.AlertType.INFORMATION,
++          owner,
++          "Record Added",
++          "Record added successfully"
++        );
++        // TODO cannot auto reload results after entry
++        // TODO Reload is done manually after window closes
++        // TableCtrl.reloadTable();;
++        insert_update.getScene().getWindow().hide();
++      }
++      // choiceSelector();
+ 
+     } catch (Exception e) {
+       AlertModule.showAlert(
+Index: Main/src/com/c_m/app/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.c_m.app;\n\nimport java.sql.SQLException;\n\nimport javafx.application.Application;\nimport javafx.application.Platform;\nimport javafx.scene.Scene;\nimport javafx.stage.Stage;\n\nimport com.c_m.controllers.misc.SceneCtrl;\nimport com.c_m.database.Sqlite;\nimport com.qoppa.pdf.PDFException;\nimport com.qoppa.pdfViewerFX.PDFViewer;\n\npublic class App extends Application {\n\n    public static Stage stage = new Stage();\n    public static Sqlite database = new Sqlite();\n    SceneCtrl scene_switcher = new SceneCtrl();\n\n    @Override\n    public void start(Stage stage) throws Exception {\n        // scene_switcher.rec_scene();\n           scene_switcher.decision_scene(); \n    }\n\n    public static void main(String[] args) throws SQLException {\n        Sqlite.main(args);\n        launch();\n    }\n\n    public static void hideWindow(Stage stage) throws Exception {\n        stage.getScene().getWindow().hide();\n    }\n\n    public void manual_pdf(){\n        PDFViewer pdf_ = new PDFViewer();\n        try {\n            pdf_.loadPDF(getClass().getResource(\"/resources/pdf/sample.pdf\"));\n            Scene pdf_manual = new Scene(pdf_);\n            stage.setScene(pdf_manual);\n            stage.show();\n        } catch (PDFException e) {\n            // TODO Auto-generated catch block\n            e.printStackTrace();\n        }\n    }\n\n    public static void closeApp() {\n        Platform.exit();\n        System.exit(0);\n    }\n\n}\n
+===================================================================
+diff --git a/Main/src/com/c_m/app/App.java b/Main/src/com/c_m/app/App.java
+--- a/Main/src/com/c_m/app/App.java	
++++ b/Main/src/com/c_m/app/App.java	
+@@ -21,11 +21,11 @@
+     @Override
+     public void start(Stage stage) throws Exception {
+         // scene_switcher.rec_scene();
+-           scene_switcher.decision_scene(); 
++           scene_switcher.decision_scene();
+     }
+ 
+     public static void main(String[] args) throws SQLException {
+-        Sqlite.main(args);
++        // Sqlite.main(args);
+         launch();
+     }
+ 
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"CompilerConfiguration\">\n    <annotationProcessing>\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\n        <outputRelativeToContentRoot value=\"true\" />\n        <module name=\"OpenJFX\" />\n      </profile>\n    </annotationProcessing>\n    <bytecodeTargetLevel>\n      <module name=\"Church_Membership\" target=\"17\" />\n      <module name=\"OpenJFX\" target=\"17\" />\n    </bytecodeTargetLevel>\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	
++++ b/.idea/compiler.xml	
+@@ -1,17 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="CompilerConfiguration">
+-    <annotationProcessing>
+-      <profile name="Maven default annotation processors profile" enabled="true">
+-        <sourceOutputDir name="target/generated-sources/annotations" />
+-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+-        <outputRelativeToContentRoot value="true" />
+-        <module name="OpenJFX" />
+-      </profile>
+-    </annotationProcessing>
+     <bytecodeTargetLevel>
+       <module name="Church_Membership" target="17" />
+-      <module name="OpenJFX" target="17" />
+     </bytecodeTargetLevel>
+   </component>
+ </project>
+\ No newline at end of file
