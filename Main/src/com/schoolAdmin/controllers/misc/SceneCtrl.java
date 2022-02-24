@@ -4,6 +4,7 @@ import javafx.stage.*;
 import javafx.scene.*;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javafx.fxml.FXMLLoader;
 
@@ -22,6 +23,7 @@ public class SceneCtrl {
     String greeting_screen = "/resources/fxml/greeting_banner.fxml";
     String bulk_delete_screen = "/resources/fxml/admin/delete_by_name.fxml";
     String about_screen = "/resources/fxml/misc/about.fxml";
+    String kids_records = "/resources/fxml/user/kids_records_view.fxml";
 
     public static void switchScene(Scene scene, boolean truth, String title, boolean option) {
         Stage stage = new Stage();
@@ -41,7 +43,7 @@ public class SceneCtrl {
     }
     public void decision_scene() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(decision_screen));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(decision_screen)));
             Scene login = new Scene(root);
             switchScene(login, true, "Select Login Type", false);
         } catch (IOException e) {
@@ -124,6 +126,17 @@ public class SceneCtrl {
             Parent root = FXMLLoader.load(getClass().getResource(about_screen));
             Scene about = new Scene(root);
             switchScene(about, true, "About Screen", false);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    public void kids_records_scene() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(kids_records));
+            Scene kids_rec = new Scene(root);
+            switchScene(kids_rec, true, "Kids Records", true);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
