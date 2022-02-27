@@ -1,0 +1,97 @@
+Index: Main/src/resources/fxml/user/add_records.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.ButtonBar?>\n<?import javafx.scene.control.ComboBox?>\n<?import javafx.scene.control.DatePicker?>\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.layout.HBox?>\n<?import javafx.scene.layout.Pane?>\n<?import javafx.scene.layout.VBox?>\n<?import javafx.scene.text.Font?>\n\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"579.0\" prefWidth=\"1246.0\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.c_m.controllers.user.Insert_update\">\n   <children>\n      <Pane fx:id=\"detailsPane\" layoutX=\"52.0\" layoutY=\"158.0\">\n         <children>\n            <HBox fx:id=\"group_1\" alignment=\"CENTER\">\n               <children>\n                  <VBox fx:id=\"leftBox\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"28.0\">\n                     <children>\n                        <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Title\" />\n                        <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Name\" />\n                        <Label layoutX=\"10.0\" layoutY=\"87.0\" text=\"Surname\" />\n                        <Label layoutX=\"10.0\" layoutY=\"85.0\" text=\"Gender\" />\n                        <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"ID No:\" />\n                        <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"No Of Children\" />\n                        <Label layoutX=\"10.0\" layoutY=\"175.0\" text=\"Maritial Status\" />\n                     </children>\n                     <padding>\n                        <Insets top=\"30.0\" />\n                     </padding>\n                  </VBox>\n                  <VBox fx:id=\"rightBox\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"20.0\">\n                     <children>\n                        <ComboBox fx:id=\"titleBox\" prefWidth=\"150.0\" promptText=\"Select\" />\n                        <TextField fx:id=\"fnameBox\" layoutX=\"10.0\" layoutY=\"40.0\" promptText=\"First Name\" />\n                        <TextField fx:id=\"lnameBox\" layoutX=\"10.0\" layoutY=\"87.0\" promptText=\"Surname\" />\n                        <ComboBox fx:id=\"genderBox\" layoutX=\"10.0\" layoutY=\"274.0\" prefWidth=\"150.0\" promptText=\"Select\" />\n                        <TextField fx:id=\"idBox\" layoutX=\"10.0\" layoutY=\"126.0\" promptText=\"National ID\" />\n                        <TextField fx:id=\"num_Children\" layoutX=\"10.0\" layoutY=\"126.0\" promptText=\"No. Of Kids\" />\n                        <ComboBox fx:id=\"maritial_status\" layoutX=\"10.0\" layoutY=\"134.0\" prefWidth=\"150.0\" promptText=\"Select\" />\n                     </children>\n                     <padding>\n                        <Insets top=\"30.0\" />\n                     </padding>\n                  </VBox>\n               </children>\n            </HBox>\n            <HBox fx:id=\"group_2\" alignment=\"CENTER\" layoutX=\"303.0\">\n               <children>\n                  <VBox fx:id=\"leftBox\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"28.0\">\n                     <children>\n                        <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Date Joined\" />\n                        <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Date Of Birth\" />\n                        <Label layoutX=\"10.0\" layoutY=\"85.0\" text=\"Address\" />\n                        <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"Surbub\" />\n                        <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"Home Phone\" />\n                        <Label layoutX=\"10.0\" layoutY=\"175.0\" text=\"Work Phone\" />\n                     </children>\n                     <padding>\n                        <Insets top=\"30.0\" />\n                     </padding>\n                  </VBox>\n                  <VBox fx:id=\"rightBox\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"20.0\">\n                     <children>\n                        <DatePicker fx:id=\"dateJoined\" />\n                        <DatePicker fx:id=\"dob\" layoutX=\"10.0\" layoutY=\"40.0\" />\n                        <TextField fx:id=\"address\" promptText=\"Home Address\" />\n                        <ComboBox fx:id=\"surbub\" prefWidth=\"150.0\" />\n                        <TextField fx:id=\"homePhone\" layoutX=\"10.0\" layoutY=\"126.0\" promptText=\"LandLine\" />\n                        <TextField fx:id=\"workPhone\" layoutX=\"10.0\" layoutY=\"227.0\" promptText=\"Work Number\" />\n                     </children>\n                     <padding>\n                        <Insets top=\"30.0\" />\n                     </padding>\n                  </VBox>\n               </children>\n            </HBox>\n            <HBox fx:id=\"group_3\" alignment=\"CENTER\" layoutX=\"609.0\" prefHeight=\"291.0\" prefWidth=\"224.0\">\n               <children>\n                  <VBox fx:id=\"leftBox\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"28.0\">\n                     <children>\n                        <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Mobile Phone\" />\n                        <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Employer\" />\n                        <Label layoutX=\"10.0\" layoutY=\"85.0\" text=\"Position\" />\n                        <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"Email Address\" />\n                        <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"Home Group Leader\" />\n                        <Label layoutX=\"10.0\" layoutY=\"175.0\" text=\"Department Leader\" />\n                     </children>\n                     <padding>\n                        <Insets top=\"30.0\" />\n                     </padding>\n                  </VBox>\n                  <VBox fx:id=\"rightBox\" alignment=\"CENTER\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"20.0\">\n                     <children>\n                        <TextField fx:id=\"mobilePhone\" promptText=\"Cell Number\" />\n                        <TextField fx:id=\"employer\" layoutX=\"10.0\" layoutY=\"40.0\" promptText=\"Workplace\" />\n                        <TextField fx:id=\"position\" promptText=\"Work Info\" />\n                        <TextField fx:id=\"email\" layoutX=\"10.0\" layoutY=\"126.0\" promptText=\"Email\" />\n                        <TextField fx:id=\"homeGroupLeader\" layoutX=\"10.0\" layoutY=\"126.0\" promptText=\"Cell Leader\" />\n                        <TextField fx:id=\"departmentLeader\" layoutX=\"10.0\" layoutY=\"227.0\" promptText=\"Dep Leader\" />\n                     </children>\n                     <padding>\n                        <Insets top=\"30.0\" />\n                     </padding>\n                  </VBox>\n               </children>\n            </HBox>\n            <HBox fx:id=\"group_4\" alignment=\"CENTER\" layoutX=\"939.0\">\n               <children>\n                  <VBox fx:id=\"leftBox\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"28.0\">\n                     <children>\n                        <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Department:\" />\n                        <Label layoutX=\"10.0\" layoutY=\"40.0\" text=\"Savlation:\" />\n                        <Label layoutX=\"10.0\" layoutY=\"85.0\" text=\"Water Baptism:\" />\n                        <Label layoutX=\"10.0\" layoutY=\"130.0\" text=\"Spirit Baptism\" />\n                     </children>\n                     <padding>\n                        <Insets top=\"30.0\" />\n                     </padding>\n                  </VBox>\n                  <VBox fx:id=\"rightBox\" prefHeight=\"200.0\" prefWidth=\"100.0\" spacing=\"20.0\">\n                     <children>\n                        <ComboBox fx:id=\"depBox\" prefWidth=\"150.0\" promptText=\"Select\" />\n                        <ComboBox fx:id=\"salvationBox\" layoutX=\"10.0\" layoutY=\"40.0\" prefWidth=\"150.0\" promptText=\"Select\" />\n                        <ComboBox fx:id=\"baptismBox_1\" layoutX=\"10.0\" layoutY=\"87.0\" prefWidth=\"150.0\" promptText=\"Select\" />\n                        <ComboBox fx:id=\"baptismBox_2\" layoutX=\"10.0\" layoutY=\"134.0\" prefWidth=\"150.0\" promptText=\"Select\" />\n                     </children>\n                     <padding>\n                        <Insets top=\"30.0\" />\n                     </padding>\n                  </VBox>\n               </children>\n            </HBox>\n         </children>\n      </Pane>\n      <ButtonBar layoutX=\"511.0\" layoutY=\"502.0\" prefHeight=\"40.0\" prefWidth=\"224.0\">\n         <buttons>\n          <Button fx:id=\"cancel_insert\" mnemonicParsing=\"false\" onAction=\"#cancel\" text=\"Cancel\" />\n            <Button fx:id=\"insert_update\" layoutX=\"125.0\" layoutY=\"19.0\" mnemonicParsing=\"false\" onAction=\"#insert_rec\" prefHeight=\"23.0\" prefWidth=\"118.0\" text=\"Add/Update\" />\n         </buttons>\n      </ButtonBar>\n      <Label layoutX=\"534.0\" layoutY=\"52.0\" text=\"Add Records\">\n         <font>\n            <Font size=\"30.0\" />\n         </font></Label>\n   </children>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/user/add_records.fxml b/Main/src/resources/fxml/user/add_records.fxml
+--- a/Main/src/resources/fxml/user/add_records.fxml	
++++ b/Main/src/resources/fxml/user/add_records.fxml	
+@@ -137,10 +137,11 @@
+             </HBox>
+          </children>
+       </Pane>
+-      <ButtonBar layoutX="511.0" layoutY="502.0" prefHeight="40.0" prefWidth="224.0">
++      <ButtonBar layoutX="410.0" layoutY="496.0" prefHeight="42.0" prefWidth="507.0">
+          <buttons>
+-          <Button fx:id="cancel_insert" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+-            <Button fx:id="insert_update" layoutX="125.0" layoutY="19.0" mnemonicParsing="false" onAction="#insert_rec" prefHeight="23.0" prefWidth="118.0" text="Add/Update" />
++          <Button fx:id="cancel_insert" minWidth="0.0" mnemonicParsing="false" onAction="#cancel" prefHeight="29.0" prefWidth="257.0" text="Cancel" />
++            <Button fx:id="insert_update" layoutX="125.0" layoutY="19.0" minWidth="57.0" mnemonicParsing="false" onAction="#insert_rec" prefHeight="27.0" prefWidth="118.0" text="Add/Update Adults" />
++            <Button fx:id="insert_update_kids" layoutX="138.0" layoutY="17.0" mnemonicParsing="false" onAction="#insert_rec_kids" prefHeight="23.0" prefWidth="118.0" text="Add/Update Kids" />
+          </buttons>
+       </ButtonBar>
+       <Label layoutX="534.0" layoutY="52.0" text="Add Records">
+Index: OpenJFX/pom.xml
+===================================================================
+diff --git a/OpenJFX/pom.xml b/OpenJFX/pom.xml
+deleted file mode 100644
+--- a/OpenJFX/pom.xml	
++++ /dev/null	
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project xmlns="http://maven.apache.org/POM/4.0.0"
+-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-    <parent>
+-        <artifactId>Church_Membership</artifactId>
+-        <groupId>groupId</groupId>
+-        <version>1.0-SNAPSHOT</version>
+-    </parent>
+-    <modelVersion>4.0.0</modelVersion>
+-
+-    <artifactId>OpenJFX</artifactId>
+-
+-    <properties>
+-        <maven.compiler.source>17</maven.compiler.source>
+-        <maven.compiler.target>17</maven.compiler.target>
+-    </properties>
+-
+-</project>
+\ No newline at end of file
+Index: Church_Membership.iml
+===================================================================
+diff --git a/Church_Membership.iml b/Church_Membership.iml
+deleted file mode 100644
+--- a/Church_Membership.iml	
++++ /dev/null	
+@@ -1,18 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+-    <output url="file://$MODULE_DIR$/target/classes" />
+-    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/Main/src" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+-      <excludeFolder url="file://$MODULE_DIR$/target" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" exported="" name="lib" level="project" />
+-    <orderEntry type="library" name="JFX" level="project" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: Main/src/resources/fxml/records_view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.MenuButton?>\n<?import javafx.scene.control.MenuItem?>\n<?import javafx.scene.control.Separator?>\n<?import javafx.scene.control.SplitPane?>\n<?import javafx.scene.control.TableColumn?>\n<?import javafx.scene.control.TableView?>\n<?import javafx.scene.control.TextField?>\n<?import javafx.scene.layout.AnchorPane?>\n<?import javafx.scene.text.Text?>\n\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" xmlns=\"http://javafx.com/javafx/17\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.schoolAdmin.controllers.TableCtrl\">\n   <children>\n      <Separator layoutY=\"30.0\" prefWidth=\"600.0\" />\n      <SplitPane dividerPositions=\"0.7047781569965871\" layoutX=\"7.0\" layoutY=\"30.0\" AnchorPane.bottomAnchor=\"0.0\" AnchorPane.leftAnchor=\"0.0\" AnchorPane.rightAnchor=\"0.0\" AnchorPane.topAnchor=\"35.0\">\n        <items>\n            <TableView fx:id=\"psqlTable\" editable=\"true\" fixedCellSize=\"20.0\" tableMenuButtonVisible=\"true\">\n              <columns>\n                <TableColumn fx:id=\"idColmn\" prefWidth=\"55.0\" text=\"ID\" />\n                <TableColumn fx:id=\"itemName\" prefWidth=\"64.0\" text=\"Name\" />\n                  <TableColumn fx:id=\"description\" prefWidth=\"69.0\" text=\"Detail\" />\n                  <TableColumn fx:id=\"unitsConsumed\" prefWidth=\"73.0\" text=\"Units Used\" />\n                  <TableColumn fx:id=\"unitsLeft\" prefWidth=\"73.0\" text=\"Units Left\" />\n                  <TableColumn fx:id=\"restock\" prefWidth=\"73.0\" text=\"Restock\" />\n              </columns>\n               <opaqueInsets>\n                  <Insets top=\"25.0\" />\n               </opaqueInsets>\n            </TableView>\n          <AnchorPane minHeight=\"0.0\" minWidth=\"0.0\" prefHeight=\"366.0\" prefWidth=\"69.0\">\n               <children>\n                  <!-- <Button fx:id=\"refresh\" layoutX=\"51.0\" layoutY=\"228.0\" mnemonicParsing=\"false\" onAction=\"#reloadBtn\" prefHeight=\"23.0\" prefWidth=\"76.0\" text=\"Reload\" />\n                  <Button fx:id=\"exportBtn\" layoutX=\"51.0\" layoutY=\"152.0\" mnemonicParsing=\"false\" onAction=\"#printBtn\" prefHeight=\"23.0\" prefWidth=\"76.0\" text=\"Export\" />\n                  <Button fx:id=\"exit\" layoutX=\"51.0\" layoutY=\"265.0\" mnemonicParsing=\"false\" onAction=\"#exitBtn\" prefHeight=\"23.0\" prefWidth=\"76.0\" text=\"Exit\" /> -->\n                  <Button fx:id=\"subQuery\" layoutX=\"51.0\" layoutY=\"189.0\" mnemonicParsing=\"false\" onAction=\"#searchBtn\" prefHeight=\"23.0\" prefWidth=\"76.0\" text=\"Search\" /> \n                  <TextField fx:id=\"searchBar\" layoutX=\"5.0\" layoutY=\"80.0\" />\n                  <Text layoutX=\"21.0\" layoutY=\"68.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Looking for something?\" />\n                  <!-- <Button fx:id=\"add_rec\" layoutX=\"51.0\" layoutY=\"307.0\" mnemonicParsing=\"false\" onAction=\"#add_screen\" prefHeight=\"23.0\" prefWidth=\"76.0\" text=\"Add\" /> -->\n                  <MenuButton fx:id=\"menu_Button\" layoutX=\"55.0\" layoutY=\"116.0\" mnemonicParsing=\"false\" text=\"Menu\">\n                    <items>\n                      <MenuItem fx:id=\"refresh\" mnemonicParsing=\"false\" onAction=\"#reloadBtn\" text=\"Reload\" />\n                      <MenuItem fx:id=\"exportBtn\" mnemonicParsing=\"false\" onAction=\"#printBtn\" text=\"Export\" />\n                        <MenuItem fx:id=\"add_rec\" mnemonicParsing=\"false\" onAction=\"#add_screen\" text=\"Add\" />\n                        <MenuItem fx:id=\"exit\" mnemonicParsing=\"false\" onAction=\"#exitBtn\" text=\"Exit\" />\n                    </items>\n                  </MenuButton>\n               </children>\n            </AnchorPane>\n        </items>\n      </SplitPane>\n   </children>\n   <padding>\n      <Insets bottom=\"10.0\" left=\"30.0\" right=\"10.0\" top=\"10.0\" />\n   </padding>\n</AnchorPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main/src/resources/fxml/records_view.fxml b/Main/src/resources/fxml/records_view.fxml
+--- a/Main/src/resources/fxml/records_view.fxml	
++++ b/Main/src/resources/fxml/records_view.fxml	
+@@ -12,7 +12,7 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Text?>
+ 
+-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.schoolAdmin.controllers.TableCtrl">
++<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c_m.controllers.TableCtrl">
+    <children>
+       <Separator layoutY="30.0" prefWidth="600.0" />
+       <SplitPane dividerPositions="0.7047781569965871" layoutX="7.0" layoutY="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
