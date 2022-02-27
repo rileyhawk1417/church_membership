@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="385a77f0-11ed-4435-9e3c-151558ac84db" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="385a77f0-11ed-4435-9e3c-151558ac84db" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +27,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="25MpakvJDXxgO1QPi2l5BHFa8t2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -48,11 +47,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Maven.cm [javafx:run]">
+  <component name="RunManager" selected="Application.JFX_Run">
     <configuration name="JFX_Run" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.c_m.cm.HelloApplication" />
+      <option name="MAIN_CLASS_NAME" value="com.cm.cm.Launcher" />
       <module name="cm" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -167,9 +166,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.JFX_Run" />
         <item itemvalue="Maven.cm [javafx:run]" />
         <item itemvalue="Maven.cm [compiler:compile]" />
-        <item itemvalue="Application.JFX_Run" />
         <item itemvalue="Maven.Church_Membership [javafx:run]" />
         <item itemvalue="Maven.church_membership [javafx:run]" />
       </list>
