@@ -10,7 +10,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Church_Membership" target="17" />
       <module name="cm" target="17" />
     </bytecodeTargetLevel>
   </component>
