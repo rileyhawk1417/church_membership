@@ -2,6 +2,7 @@ Main/lib/
 out
 sqlite
 target
+.idea
 
 *.class
 
