@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="cm:windows_jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="385a77f0-11ed-4435-9e3c-151558ac84db" name="Changes" comment="" />
+    <list default="true" id="385a77f0-11ed-4435-9e3c-151558ac84db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_3_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modifiedPom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/BulkDeleteCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/BulkDeleteCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/ExportExcel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/ExportExcel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/Insert_Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/Insert_Update.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/LoginCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/LoginCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/TableCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/TableCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/cashier/LoginCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/cashier/LoginCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/cashier/TableCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/cashier/TableCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Insert_update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Insert_update.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Kids_Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Kids_Table_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Table_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/database/Psql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/database/Psql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/kids_records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/kids_records_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/records_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/user/kids_records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/user/kids_records_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/user/records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/user/records_view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +40,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JavaFXApplication" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -41,13 +68,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cm/lib/xmlbeans-5.0.1.jar" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Compressed/toolKits/jfx_win/jfx_17/bin/vcruntime140_1.dll" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="project.structure.side.proportion" value="0.40075377" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager" selected="Application.JFX_Run">
+  <component name="RunManager" selected="JAR Application.cm-1.0-SNAPSHOT-shaded.jar">
     <configuration name="JFX_Run" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -57,29 +84,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Church_Membership [javafx:run]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="javafx:run" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$USER_HOME$/IdeaProjects/Church_Membership" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
+    <configuration name="cm-1.0-SNAPSHOT-shaded.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/cm-1.0-SNAPSHOT-shaded.jar" />
       <method v="2" />
     </configuration>
     <configuration name="church_membership [javafx:run]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
@@ -107,7 +113,7 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="cm [compiler:compile]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+    <configuration name="cm [javafx:jlink]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -118,7 +124,7 @@
             </option>
             <option name="goals">
               <list>
-                <option value="compiler:compile" />
+                <option value="javafx:jlink" />
               </list>
             </option>
             <option name="pomFileName" value="pom.xml" />
@@ -126,7 +132,7 @@
               <map />
             </option>
             <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$/cm" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
@@ -160,17 +166,17 @@
     <list>
       <item itemvalue="Application.JFX_Run" />
       <item itemvalue="Maven.church_membership [javafx:run]" />
-      <item itemvalue="Maven.Church_Membership [javafx:run]" />
       <item itemvalue="Maven.cm [javafx:run]" />
-      <item itemvalue="Maven.cm [compiler:compile]" />
+      <item itemvalue="Maven.cm [javafx:jlink]" />
+      <item itemvalue="JAR Application.cm-1.0-SNAPSHOT-shaded.jar" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.cm-1.0-SNAPSHOT-shaded.jar" />
+        <item itemvalue="Maven.cm [javafx:jlink]" />
         <item itemvalue="Application.JFX_Run" />
-        <item itemvalue="Maven.cm [javafx:run]" />
-        <item itemvalue="Maven.cm [compiler:compile]" />
-        <item itemvalue="Maven.Church_Membership [javafx:run]" />
         <item itemvalue="Maven.church_membership [javafx:run]" />
+        <item itemvalue="Maven.cm [javafx:run]" />
       </list>
     </recent_temporary>
   </component>
