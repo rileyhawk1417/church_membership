@@ -1,6 +1,6 @@
 package com.cm.cm.controllers.user;
 
-import com.cm.cm.database.Psql;
+import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class Insert_update implements Initializable {
 
-    Psql psql = new Psql();
+    Sqlite sqlite = new Sqlite();
 
     @FXML
     private Button cancel_insert;
@@ -175,7 +175,7 @@ public class Insert_update implements Initializable {
                         "Please enter all fields"
                 );
             } else {
-                psql.insertValues(
+                sqlite.insertValues(
                         titleBox.getValue(),
                         fnameBox.getText(),
                         lnameBox.getText(),
@@ -183,8 +183,8 @@ public class Insert_update implements Initializable {
                         idBox.getText(),
                         num_Children.getText(),
                         maritial_status.getValue(),
-                        dateJoined.getValue().of(year, month, dayOfMonth).toString(),
-                        dob.getValue().of(year, month, dayOfMonth).toString(),
+                        dateJoined.getValue().toString(),
+                        dob.getValue().toString(),
                         address.getText(),
                         surbub.getValue(),
                         homePhone.getText(),
@@ -236,7 +236,7 @@ public class Insert_update implements Initializable {
                         "Please enter all fields"
                 );
             } else {
-                psql.insertValuesKids(
+                sqlite.insertValuesKids(
                         titleBox.getValue(),
                         fnameBox.getText(),
                         lnameBox.getText(),

@@ -2,7 +2,7 @@ package com.cm.cm.controllers.admin;
 
 import com.cm.cm.app.App;
 import com.cm.cm.controllers.misc.SceneCtrl;
-import com.cm.cm.database.Psql;
+import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import com.cm.cm.modals.TableModel;
 import javafx.collections.FXCollections;
@@ -40,7 +40,7 @@ import java.util.ResourceBundle;
 
 public class TableCtrl implements Initializable {
     Stage stage = new Stage();
-    Psql psql = new Psql();
+    Sqlite sqlite = new Sqlite();
     SceneCtrl scene_switcher = new SceneCtrl();
     // UpdateCtrl update;
     Window owner = stage.getOwner();
@@ -208,7 +208,7 @@ public class TableCtrl implements Initializable {
         ObservableList<TableModel> loadList = FXCollections.observableArrayList();
 
         try {
-            Connection con = Psql.connector();
+            Connection con = Sqlite.connector();
 
             ResultSet res = con.createStatement().executeQuery("SELECT * FROM ace_hardware");
 
@@ -233,7 +233,7 @@ public class TableCtrl implements Initializable {
     public static ObservableList<TableModel> searchDB(String query, Window owner) {
         ObservableList<TableModel> queryList = FXCollections.observableArrayList();
         String search = "select * from ace_hardware WHERE name LIKE '" + query + "%'";
-        try (Connection conn = Psql.connector();
+        try (Connection conn = Sqlite.connector();
 
              PreparedStatement pstmt = conn.prepareStatement(search);) {
             ResultSet res = pstmt.executeQuery();
@@ -281,7 +281,7 @@ public class TableCtrl implements Initializable {
 
         String id_ = mysqlTable.getSelectionModel().getSelectedItem().getIdCol();
         System.out.println(id_);
-        psql.delete_row_by_id(id_);
+        sqlite.delete_row_by_id(id_);
         selectedRow.forEach(allRows::remove);
     }
 

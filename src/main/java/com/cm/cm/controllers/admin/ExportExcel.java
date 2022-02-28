@@ -1,6 +1,6 @@
 package com.cm.cm.controllers.admin;
 
-import com.cm.cm.database.Psql;
+import com.cm.cm.database.Sqlite;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -29,7 +29,7 @@ public class ExportExcel {
 //Fix function to export to excel whether kids table or adults table
             String query = "SELECT * FROM members";
 
-            Connection conn = Psql.connector();
+            Connection conn = Sqlite.connector();
             ResultSet res = conn.createStatement().executeQuery(query);
 
             XSSFWorkbook wb = new XSSFWorkbook();
@@ -120,7 +120,7 @@ public class ExportExcel {
 
             String query = "SELECT * FROM members";
 
-            Connection conn = Psql.connector();
+            Connection conn = Sqlite.connector();
             ResultSet res = conn.createStatement().executeQuery(query);
 
             XSSFWorkbook wb = new XSSFWorkbook();

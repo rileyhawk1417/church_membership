@@ -1,7 +1,7 @@
 package com.cm.cm.controllers.admin;
 
 import com.cm.cm.modals.AlertModule;
-import com.cm.cm.database.Psql;
+import com.cm.cm.database.Sqlite;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Window;
 
 public class BulkDeleteCtrl {
-    Psql psql = new Psql();
+    Sqlite sqlite = new Sqlite();
 
     @FXML
     private Button cancel_;
@@ -55,7 +55,7 @@ public class BulkDeleteCtrl {
             AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Empty Fields", "No empty fields allowed!");
             return false;
         } else {
-            psql.delete_row_by_name(search_.getText());
+            sqlite.delete_row_by_name(search_.getText());
             return true;
         }
     }

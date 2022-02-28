@@ -1,7 +1,7 @@
 package com.cm.cm.controllers.cashier;
 
 import com.cm.cm.controllers.misc.SceneCtrl;
-import com.cm.cm.database.Psql;
+import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +30,7 @@ public class LoginCtrl {
     @FXML
     private Button subBtn;
 
-    Psql database = new Psql();
+    Sqlite database = new Sqlite();
     Stage stage = new Stage();
     SceneCtrl scene_switcher = new SceneCtrl();
     // * This is just a reminder for when dealing with events

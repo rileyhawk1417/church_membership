@@ -2,7 +2,7 @@ package com.cm.cm.controllers.cashier;
 
 import com.cm.cm.app.App;
 import com.cm.cm.controllers.misc.SceneCtrl;
-import com.cm.cm.database.Psql;
+import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import com.cm.cm.modals.TableModel;
 import javafx.collections.FXCollections;
@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class TableCtrl implements Initializable {
     Stage stage = new Stage();
-    Psql psql = new Psql();
+    Sqlite sqlite = new Sqlite();
     SceneCtrl scene_switcher = new SceneCtrl();
     App app = new App();
 
@@ -121,7 +121,7 @@ public class TableCtrl implements Initializable {
         ObservableList<TableModel> loadList = FXCollections.observableArrayList();
 
         try {
-            Connection con = Psql.connector();
+            Connection con = Sqlite.connector();
 
             ResultSet res = con.createStatement().executeQuery("SELECT * FROM ace_hardware");
 
@@ -151,7 +151,7 @@ public class TableCtrl implements Initializable {
     public static ObservableList<TableModel> searchDB(String query, Window owner) {
         ObservableList<TableModel> queryList = FXCollections.observableArrayList();
         String search = "select * from ace_hardware WHERE name LIKE '"+query+"%'";
-        try (Connection conn = Psql.connector();
+        try (Connection conn = Sqlite.connector();
 
              PreparedStatement pstmt = conn.prepareStatement(search);) {
             ResultSet res = pstmt.executeQuery();

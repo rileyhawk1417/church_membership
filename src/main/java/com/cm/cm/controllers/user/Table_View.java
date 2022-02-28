@@ -2,7 +2,7 @@ package com.cm.cm.controllers.user;
 
 import com.cm.cm.app.App;
 import com.cm.cm.controllers.misc.SceneCtrl;
-import com.cm.cm.database.Psql;
+import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import com.cm.cm.modals.MemberModel;
 import com.cm.cm.controllers.admin.ExportExcel;
@@ -37,7 +37,7 @@ import java.util.ResourceBundle;
 public class Table_View implements Initializable {
 
     Stage stage = new Stage();
-    Psql psql = new Psql();
+    Sqlite sqlite = new Sqlite();
     App app = new App();
     static String recordSize = "";
 
@@ -294,7 +294,7 @@ public class Table_View implements Initializable {
         ObservableList<MemberModel> loadList = FXCollections.observableArrayList();
 
         try {
-            Connection con = Psql.connector();
+            Connection con = Sqlite.connector();
 
             ResultSet res = con.createStatement().executeQuery("SELECT * FROM members");
 
@@ -336,7 +336,7 @@ public class Table_View implements Initializable {
     public static ObservableList<MemberModel> searchDB(String query, Window owner) {
         ObservableList<MemberModel> queryList = FXCollections.observableArrayList();
         String search = "select * from members WHERE fname LIKE '" + query + "%'";
-        try (Connection conn = Psql.connector(); PreparedStatement pstmt = conn.prepareStatement(search);) {
+        try (Connection conn = Sqlite.connector(); PreparedStatement pstmt = conn.prepareStatement(search);) {
             ResultSet res = pstmt.executeQuery();
 
             try {
@@ -387,7 +387,7 @@ public class Table_View implements Initializable {
 
         String id_ = psqlTable.getSelectionModel().getSelectedItem().getID();
         System.out.println(id_);
-        psql.delete_row_by_id(id_);
+        sqlite.delete_row_by_id(id_);
         selectedRow.forEach(allRows::remove);
     }
 

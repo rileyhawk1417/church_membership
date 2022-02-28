@@ -1,7 +1,7 @@
 package com.cm.cm.controllers.admin;
 
 import com.cm.cm.modals.AlertModule;
-import com.cm.cm.database.Psql;
+import com.cm.cm.database.Sqlite;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Insert_Update implements Initializable {
-    Psql psql = new Psql();
+    Sqlite sqlite = new Sqlite();
 
     @FXML
     private Button cancel_insert;
