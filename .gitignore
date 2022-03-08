@@ -11,3 +11,7 @@ target
 *.lst
 
 target/
+.gradle
+build
+target
+gradle
