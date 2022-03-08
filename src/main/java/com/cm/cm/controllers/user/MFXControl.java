@@ -27,7 +27,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import com.cm.cm.controllers.user.Insert_update;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
@@ -52,27 +51,28 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 
 
-public class Table_View implements Initializable {
+public class MFXControl implements Initializable {
 
     Stage stage = new Stage();
     Sqlite sqlite = new Sqlite();
     App app = new App();
     static String recordSize = "";
-    Insert_update update = new Insert_update();
+
 
     Window owner = stage.getOwner();
     SceneCtrl scene_switcher = new SceneCtrl();
 
     @FXML
-    private ScrollPane scroll_pane;
+    private MFXScrollPane scroll_pane;
 
     @FXML
     private BorderPane BP;
 
 
     // Start Of Table Properties
-   @FXML
-   private TableView<MemberModel> psqlTable;
+
+    @FXML
+    private MFXTableView<MemberModel> psqlTable;
 
    @FXML
    private TableColumn<MemberModel, String> id_;
@@ -283,10 +283,23 @@ public class Table_View implements Initializable {
     public void initialize(URL location, ResourceBundle bundle) {
         assert psqlTable != null : "Failed to load table";
 
+
         try {
-            // reload();
             records = loadTable();
-            setUpTable();
+             setUpTable();
+            psqlTable.autosizeColumnsOnInitialization();
+             scroll_pane.setContent(psqlTable);
+            scroll_pane.setPrefSize(650, 200);
+            scroll_pane.setFitToHeight(true);
+            scroll_pane.setHmax(3);
+            scroll_pane.setHvalue(0);
+            scroll_pane.setDisable(false);
+
+            BP.setCenter(scroll_pane);
+            BorderPane.setMargin(scroll_pane, new Insets(0, 10, 10, 10));
+
+
+
             mouse_listener();
         } catch (Exception e) {
             e.printStackTrace();
@@ -337,42 +350,105 @@ public class Table_View implements Initializable {
     // }
 
     private void setUpTable(){
+         MFXTableColumn<MemberModel> id_ = new MFXTableColumn<>("ID", true, Comparator.comparing(MemberModel::getID));
 
-        id_.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("ID"));
-        fname.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("fname"));
-        lname.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("lname"));
-        Title_.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Title"));
-        Address.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Address"));
-        DOB_.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("DOB"));
-        DateJoined_.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Datejoined"));
-        Dept.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Dept"));
-        DeptLeader.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("deptLeader_"));
-        HomeGroup.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("HomeGroup"));
-        Homephone.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("HomePhone"));
-        IDNum.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("ID_Num"));
-        KidsNo_.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("childrenNo_"));
-        MStatus_.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("M_status"));
-        MobilePhone.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("cellNumber"));
-        Email.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Email"));
-        Salvation.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Salvation"));
-        Sex.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Sex"));
-        waterBapt.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("waterBapt"));
-        SpiritBapt.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("SpiritBapt"));
-        Surbub.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Surbub"));
-        WorkPhone.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("WorkPhone"));
-        Employer.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Employer_"));
+         MFXTableColumn<MemberModel> fname = new MFXTableColumn<>("Name", true, Comparator.comparing(MemberModel::getFname));
 
-//        psqlTable.setTableMenuButtonVisible(true);
-        scroll_pane.setContent(psqlTable);
-        scroll_pane.setPrefSize(600, 200);
-        scroll_pane.setFitToHeight(true);
-        scroll_pane.setHmax(3);
-        scroll_pane.setHvalue(0);
-        scroll_pane.setDisable(false);
+         MFXTableColumn<MemberModel> lname = new MFXTableColumn<>("Surname", true, Comparator.comparing(MemberModel::getLname));
 
-        BP.setCenter(scroll_pane);
-        BorderPane.setMargin(scroll_pane, new Insets(0, 10, 10, 10));
-        psqlTable.setItems(records);
+         MFXTableColumn<MemberModel> Title_ = new MFXTableColumn<>("Title", true, Comparator.comparing(MemberModel::getTitle));
+
+         MFXTableColumn<MemberModel> Address = new MFXTableColumn<>("Address", true, Comparator.comparing(MemberModel::getAddress));
+
+         MFXTableColumn<MemberModel> DOB_ = new MFXTableColumn<>("D.O.B", true, Comparator.comparing(MemberModel::getDOB));
+
+         MFXTableColumn<MemberModel> DateJoined_ = new MFXTableColumn<>("Date Joined", true, Comparator.comparing(MemberModel::getDatejoined));
+
+         MFXTableColumn<MemberModel> Dept = new MFXTableColumn<>("Department", true, Comparator.comparing(MemberModel::getDept));
+
+         MFXTableColumn<MemberModel> DeptLeader = new MFXTableColumn<>("Dept Leader", true, Comparator.comparing(MemberModel::getDeptLeader_));
+
+         MFXTableColumn<MemberModel> HomeGroup = new MFXTableColumn<>("Home Group", true, Comparator.comparing(MemberModel::getHomeGroup));
+
+         MFXTableColumn<MemberModel> Homephone = new MFXTableColumn<>("Landline", true, Comparator.comparing(MemberModel::getHomePhone));
+
+         MFXTableColumn<MemberModel> IDNum = new MFXTableColumn<>("ID No.", true, Comparator.comparing(MemberModel::getID_Num));
+
+         MFXTableColumn<MemberModel> KidsNo_ = new MFXTableColumn<>("No. Of Kids", true, Comparator.comparing(MemberModel::getChildrenNo_));
+
+         MFXTableColumn<MemberModel> MStatus_ = new MFXTableColumn<>("Maritial Status", true, Comparator.comparing(MemberModel::getM_status));
+
+         MFXTableColumn<MemberModel> MobilePhone = new MFXTableColumn<>("Mobile No.", true, Comparator.comparing(MemberModel::getCellNumber));
+
+         MFXTableColumn<MemberModel> Email = new MFXTableColumn<>("Email", true, Comparator.comparing(MemberModel::getEmail));
+
+         MFXTableColumn<MemberModel> Salvation = new MFXTableColumn<>("Salvation", true, Comparator.comparing(MemberModel::getSalvation));
+
+         MFXTableColumn<MemberModel> Sex = new MFXTableColumn<>("Gender", true, Comparator.comparing(MemberModel::getSex));
+
+         MFXTableColumn<MemberModel> waterBapt = new MFXTableColumn<>("Water Baptism", true, Comparator.comparing(MemberModel::getWaterBapt));
+
+         MFXTableColumn<MemberModel> SpiritBapt = new MFXTableColumn<>("Spirit Baptism", true, Comparator.comparing(MemberModel::getSpiritBapt));
+
+         MFXTableColumn<MemberModel> Surbub = new MFXTableColumn<>("Surbub", true, Comparator.comparing(MemberModel::getSurbub));
+
+         MFXTableColumn<MemberModel> Employer = new MFXTableColumn<>("Employer", true, Comparator.comparing(MemberModel::getEmployer_));
+
+         MFXTableColumn<MemberModel> WorkPhone = new MFXTableColumn<>("Work Phone", true, Comparator.comparing(MemberModel::getWorkPhone));
+
+         id_.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getID));
+         fname.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getFname));
+         lname.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getLname));
+         Title_.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getTitle));
+         Address.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getAddress));
+         DOB_.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getDOB));
+         DateJoined_.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getDatejoined));
+         Dept.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getDept));
+         DeptLeader.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getDeptLeader_));
+         HomeGroup.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getHomeGroup));
+         Homephone.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getHomePhone));
+         IDNum.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getID_Num));
+         KidsNo_.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getChildrenNo_));
+         MStatus_.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getM_status));
+         MobilePhone.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getCellNumber));
+         Email.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getEmail));
+         Salvation.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getSalvation));
+         Sex.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getSex));
+         waterBapt.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getWaterBapt));
+         SpiritBapt.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getSpiritBapt));
+         Surbub.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getSurbub));
+         WorkPhone.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getWorkPhone));
+         Employer.setRowCellFactory(memberModal -> new MFXTableRowCell<>(MemberModel::getEmployer_));
+
+         psqlTable.getTableColumns().addAll(
+                 id_,
+                 Title_,
+                 fname,
+                 lname,
+                 Sex,
+                 IDNum,
+                 KidsNo_,
+                 MStatus_,
+                 DateJoined_,
+                 DOB_,
+                 Address,
+                 Surbub,
+                 Homephone,
+                 WorkPhone,
+                 MobilePhone,
+                 Email,
+                 Employer,
+                 HomeGroup,
+                 DeptLeader,
+                 Dept,
+                 Salvation,
+                 waterBapt,
+                 SpiritBapt
+         );
+
+         psqlTable.setItems(records);
+
+
     }
 
     public static ObservableList<MemberModel> searchDB(String query, Window owner) {
@@ -413,9 +489,7 @@ public class Table_View implements Initializable {
 
     public void addScreen() {
         try {
-
             scene_switcher.add_scene();
-            update.updateBtn(false);
             loadTable();
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -425,15 +499,16 @@ public class Table_View implements Initializable {
     }
 
     public void deleteRow() {
+//        IMultipleSelectionModel<MemberModel> selectedRow;
         ObservableList<MemberModel> allRows, selectedRow;
         allRows = psqlTable.getItems();
-        selectedRow = psqlTable.getSelectionModel().getSelectedItems();
-        String id_ = psqlTable.getSelectionModel().getSelectedItem().getID();
+//        selectedRow = psqlTable.getSelectionModel().getSelectedItem();
 
+//        String id_ = String.valueOf(psqlTable.getSelectionModel().getSelection());
         System.out.println(id_);
-        sqlite.delete_row_by_id(id_);
-
-        selectedRow.forEach(allRows::remove);
+//        sqlite.delete_row_by_id(id_);
+//        selectedRow.clearSelection();
+//        selectedRow.forEach(allRows::remove);
     }
 
     // File actions
@@ -456,35 +531,35 @@ public class Table_View implements Initializable {
      * record then displays it on the side panel for update.
      */
 
-    private void mouse_listener() {
-        psqlTable.getSelectionModel().selectedItemProperty().addListener((obs, old_selection, new_selection) -> {
-            title_.setText(new_selection.getTitle());
-            name_.setText(new_selection.getFname() + new_selection.getLname());
-            gender_.setText(new_selection.getSex());
-            idNo_.setText(new_selection.getID_Num());
-            children_No_.setText(new_selection.getChildrenNo_());
-            maritial_.setText(new_selection.getM_status());
-            dateJoined_.setText(new_selection.getDatejoined());
-            dob_.setText(new_selection.getDOB());
-            address_.setText(new_selection.getAddress());
-            surbub_.setText(new_selection.getSurbub());
-            homePhone_.setText(new_selection.getHomePhone());
-            workPhone_.setText(new_selection.getWorkPhone());
-            mobilePhone_.setText(new_selection.getCellNumber());
-            employer_.setText(new_selection.getEmployer_());
-            position_.setText(new_selection.getPosition_());
-            email_.setText(new_selection.getEmail());
-            homeGroup_.setText(new_selection.getHomeGroup());
-            depLeader_.setText(new_selection.getDeptLeader_());
-            dep.setText(new_selection.getDept());
-            salvation_.setText(new_selection.getSalvation());
-            water_.setText(new_selection.getWaterBapt());
-            spirit_.setText(new_selection.getSpiritBapt());
-            membersTotal_.setText(recordSize);
-
-            // TODO: Set childrens totals.
-
-        });
+    public void mouse_listener() {
+//        psqlTable.getSelectionModel().selectedItemProperty().addListener((obs, old_selection, new_selection) -> {
+//            title_.setText(new_selection.getTitle());
+//            name_.setText(new_selection.getFname());
+//            gender_.setText(new_selection.getSex());
+//            idNo_.setText(new_selection.getID_Num());
+//            children_No_.setText(new_selection.getChildrenNo_());
+//            maritial_.setText(new_selection.getM_status());
+//            dateJoined_.setText(new_selection.getDatejoined());
+//            dob_.setText(new_selection.getDOB());
+//            address_.setText(new_selection.getAddress());
+//            surbub_.setText(new_selection.getSurbub());
+//            homePhone_.setText(new_selection.getHomePhone());
+//            workPhone_.setText(new_selection.getWorkPhone());
+//            mobilePhone_.setText(new_selection.getCellNumber());
+//            employer_.setText(new_selection.getEmployer_());
+//            position_.setText(new_selection.getPosition_());
+//            email_.setText(new_selection.getEmail());
+//            homeGroup_.setText(new_selection.getHomeGroup());
+//            depLeader_.setText(new_selection.getDeptLeader_());
+//            dep.setText(new_selection.getDept());
+//            salvation_.setText(new_selection.getSalvation());
+//            water_.setText(new_selection.getWaterBapt());
+//            spirit_.setText(new_selection.getSpiritBapt());
+//            membersTotal_.setText(recordSize);
+//
+//            // TODO: Set childrens totals.
+//
+//        });
     }
 
     @FXML
@@ -566,64 +641,64 @@ public class Table_View implements Initializable {
 
     @FXML
     private void export_tableView() {
-        Workbook wb = new HSSFWorkbook();
-        Sheet spreadsheet = wb.createSheet("Current TableView");
-
-        Row row = spreadsheet.createRow(0);
-
-        for (int i = 0; i < psqlTable.getColumns().size(); i++) {
-            row.createCell(i).setCellValue(psqlTable.getColumns().get(i).getText());
-        }
-
-        for (int x = 0; x < psqlTable.getItems().size(); x++) {
-            row = spreadsheet.createRow(x + 1);
-            for (int y = 0; y < psqlTable.getColumns().size(); y++) {
-                if (psqlTable.getColumns().get(y).getCellData(x) != null) {
-                    row.createCell(y).setCellValue(psqlTable.getColumns().get(y).getCellData(x).toString());
-                } else {
-                    row.createCell(y).setCellValue("");
-                }
-            }
-        }
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Export Excel Document");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"),
-                new FileChooser.ExtensionFilter("XLS files (*.xls)", "*.xls"),
-                new FileChooser.ExtensionFilter("ODS files (*.ods)", "*.ods"),
-                new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv"),
-                new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
-        try {
-            File saveFile = fileChooser.showSaveDialog(owner);
-            String savePath = "Exported TableView.xlsx";
-            FileOutputStream save_file = new FileOutputStream(savePath);
-            fileChooser.setInitialFileName("Exported Table");
-            // TODO Set initial filename not working when saving?
-
-            Path src = Paths.get(savePath);
-            Path dest = Paths.get(saveFile.getAbsolutePath());
-
-            StandardCopyOption REPLACE_EXISTING = StandardCopyOption.REPLACE_EXISTING;
-            StandardCopyOption COPY_ATTRIBUTES = StandardCopyOption.COPY_ATTRIBUTES;
-            LinkOption NOFOLLOW_LINKS = LinkOption.NOFOLLOW_LINKS;
-
-            if (saveFile != null) {
-                try {
-                    // try to save workbook
-                    wb.write(save_file);
-
-                    // try to copy and delete file
-                    Files.copy(src, dest, REPLACE_EXISTING, COPY_ATTRIBUTES, NOFOLLOW_LINKS);
-                    Files.delete(src);
-                    wb.close();
-                } catch (IOException e) {
-                    e.getMessage();
-                    e.printStackTrace();
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.getMessage();
-            e.printStackTrace();
-        }
+//        Workbook wb = new HSSFWorkbook();
+//        Sheet spreadsheet = wb.createSheet("Current TableView");
+//
+//        Row row = spreadsheet.createRow(0);
+//
+//        for (int i = 0; i < psqlTable.getColumns().size(); i++) {
+//            row.createCell(i).setCellValue(psqlTable.getColumns().get(i).getText());
+//        }
+//
+//        for (int x = 0; x < psqlTable.getItems().size(); x++) {
+//            row = spreadsheet.createRow(x + 1);
+//            for (int y = 0; y < psqlTable.getColumns().size(); y++) {
+//                if (psqlTable.getColumns().get(y).getCellData(x) != null) {
+//                    row.createCell(y).setCellValue(psqlTable.getColumns().get(y).getCellData(x).toString());
+//                } else {
+//                    row.createCell(y).setCellValue("");
+//                }
+//            }
+//        }
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setTitle("Export Excel Document");
+//        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx"),
+//                new FileChooser.ExtensionFilter("XLS files (*.xls)", "*.xls"),
+//                new FileChooser.ExtensionFilter("ODS files (*.ods)", "*.ods"),
+//                new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv"),
+//                new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html"));
+//        try {
+//            File saveFile = fileChooser.showSaveDialog(owner);
+//            String savePath = "Exported TableView.xlsx";
+//            FileOutputStream save_file = new FileOutputStream(savePath);
+//            fileChooser.setInitialFileName("Exported Table");
+//            // TODO Set initial filename not working when saving?
+//
+//            Path src = Paths.get(savePath);
+//            Path dest = Paths.get(saveFile.getAbsolutePath());
+//
+//            StandardCopyOption REPLACE_EXISTING = StandardCopyOption.REPLACE_EXISTING;
+//            StandardCopyOption COPY_ATTRIBUTES = StandardCopyOption.COPY_ATTRIBUTES;
+//            LinkOption NOFOLLOW_LINKS = LinkOption.NOFOLLOW_LINKS;
+//
+//            if (saveFile != null) {
+//                try {
+//                    // try to save workbook
+//                    wb.write(save_file);
+//
+//                    // try to copy and delete file
+//                    Files.copy(src, dest, REPLACE_EXISTING, COPY_ATTRIBUTES, NOFOLLOW_LINKS);
+//                    Files.delete(src);
+//                    wb.close();
+//                } catch (IOException e) {
+//                    e.getMessage();
+//                    e.printStackTrace();
+//                }
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.getMessage();
+//            e.printStackTrace();
+//        }
     }
 
     /*
@@ -656,4 +731,5 @@ public class Table_View implements Initializable {
     }
 
 }
+
 

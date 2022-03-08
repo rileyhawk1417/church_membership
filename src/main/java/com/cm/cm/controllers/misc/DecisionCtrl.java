@@ -1,20 +1,20 @@
 package com.cm.cm.controllers.misc;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import io.github.palexdev.materialfx.controls.MFXButton;
 
 public class DecisionCtrl {
     SceneCtrl scene_switcher = new SceneCtrl();
 
     @FXML
-    private AnchorPane login_choice;
+    private GridPane login_choice;
 
     @FXML
-    private Button admin_;
+    private MFXButton admin_;
 
     @FXML
-    private Button cashier_;
+    private MFXButton cashier_;
 
     @FXML
     private void admin_btn(){

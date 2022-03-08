@@ -5,28 +5,36 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 
-<AnchorPane fx:id="login_choice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cm.cm.controllers.misc.DecisionCtrl">
-   <children>
-<!--      <Separator layoutX="303.0" layoutY="112.0" orientation="VERTICAL" prefHeight="200.0" />-->
-<!--      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="94.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">-->
-<!--         <image>-->
-<!--            <Image url="@../../images/gear.jpg" />-->
-<!--         </image>-->
-<!--      </ImageView>-->
-<!--      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">-->
-<!--         <image>-->
-<!--            <Image url="@../../images/register.png" />-->
-<!--         </image>-->
-<!--      </ImageView>-->
-      <Button fx:id="admin_" layoutX="119.0" layoutY="318.0" mnemonicParsing="false" onAction="#admin_btn" text="Administration" />
-      <Button fx:id="cashier_" layoutX="425.0" layoutY="318.0" mnemonicParsing="false" onAction="#cashier_btn" text="Employee" />
-      <Label alignment="CENTER" layoutX="41.0" layoutY="51.0" prefHeight="70.0" prefWidth="521.0" text="Ace Hardware" textAlignment="CENTER">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<GridPane fx:id="login_choice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+          stylesheets="@../../css/Buttons.css" styleClass="grid-pane" hgap="15.0" vgap="15.0" alignment="CENTER" fx:controller="com.cm.cm.controllers.misc.DecisionCtrl">
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER"/>
+        <ColumnConstraints halignment="CENTER"/>
+        <ColumnConstraints halignment="CENTER"/>
+        <ColumnConstraints halignment="CENTER"/>
+        <ColumnConstraints halignment="CENTER"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="50.0" prefHeight="30.0"/>
+        <RowConstraints minHeight="5.0" prefHeight="30.0"/>
+        <RowConstraints minHeight="50.0" prefHeight="30.0"/>
+        <RowConstraints minHeight="50.0" prefHeight="30.0"/>
+        <RowConstraints minHeight="50.0" prefHeight="30.0"/>
+    </rowConstraints>
+
+    <MFXButton fx:id="admin_" minHeight="20.0" minWidth="50.0" layoutX="119.0" layoutY="318.0" mnemonicParsing="false" onAction="#admin_btn"
+            text="Admin" buttonType="RAISED" styleClass="outline-button" GridPane.columnIndex="2" GridPane.rowIndex="3"  />
+    <Label alignment="CENTER" layoutX="41.0" layoutY="51.0" prefHeight="70.0" prefWidth="521.0" text="Church Membership"
+           textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+        <font>
+          <Font size="48.0"/>
+        </font>
+    </Label>
+</GridPane>

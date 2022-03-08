@@ -2,13 +2,15 @@ package com.cm.cm.controllers.admin;
 
 import com.cm.cm.controllers.misc.SceneCtrl;
 import com.cm.cm.database.Sqlite;
+import com.cm.cm.app.App;
 import com.cm.cm.modals.AlertModule;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -17,10 +19,16 @@ import java.util.ResourceBundle;
 
 public class LoginCtrl {
     @FXML
-    private TextField userField;
+    private MFXTextField userField;
 
     @FXML
-    private PasswordField passField;
+    private MFXPasswordField passField;
+
+    @FXML
+    private MenuItem closeBtn;
+
+    @FXML
+    private MenuItem aboutBtn;
 
     @FXML
     private URL location;
@@ -28,11 +36,12 @@ public class LoginCtrl {
     private ResourceBundle resources;
 
     @FXML
-    private Button subBtn;
+    private MFXButton subBtn;
 
     Sqlite database = new Sqlite();
     Stage stage = new Stage();
     SceneCtrl scene_switcher = new SceneCtrl();
+    App app = new App();
     // * This is just a reminder for when dealing with events
     // final EventHandler<KeyEvent> submit = new EventHandler<KeyEvent>() {
     // public void handle(KeyEvent e) {
@@ -88,6 +97,16 @@ public class LoginCtrl {
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    private void exitApp(){
+        App.closeApp();
+    }
+
+    @FXML
+    private void aboutApp(){
+        scene_switcher.about_scene();
     }
 
     public void initialize() {

@@ -1,6 +1,7 @@
 package com.cm.cm.controllers.admin;
 
 import com.cm.cm.app.App;
+import com.cm.cm.controllers.misc.ExcelHelper;
 import com.cm.cm.controllers.misc.SceneCtrl;
 import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
@@ -389,7 +390,7 @@ public class TableCtrl implements Initializable {
     @FXML
     private void export_rec(ActionEvent event) throws IOException {
         Window owner = mysqlTable.getScene().getWindow();
-        ExportExcel.exportToExcel(owner);
+        ExcelHelper.exportToExcel(owner);
 
     }
 

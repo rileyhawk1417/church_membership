@@ -5,12 +5,14 @@ import com.cm.cm.controllers.misc.SceneCtrl;
 import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import com.cm.cm.modals.MemberModel;
-import com.cm.cm.controllers.admin.ExportExcel;
+import com.cm.cm.controllers.user.Insert_update;
+import com.cm.cm.controllers.misc.ExcelHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
@@ -21,6 +23,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import javafx.scene.layout.BorderPane;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -39,9 +42,16 @@ public class Kids_Table_View implements Initializable {
     Sqlite sqlite = new Sqlite();
     App app = new App();
     static String recordSize = "";
+    Insert_update update = new Insert_update();
 
     Window owner = stage.getOwner();
     SceneCtrl scene_switcher = new SceneCtrl();
+
+    @FXML
+    private ScrollPane scroll_pane;
+
+    @FXML
+    private BorderPane BP;
 
     @FXML
     private TableView<MemberModel> psqlTable;
@@ -255,6 +265,19 @@ public class Kids_Table_View implements Initializable {
     public void initialize(URL location, ResourceBundle bundle) {
         assert psqlTable != null : "Failed to load table";
 
+
+        try {
+            // reload();
+            records = loadTable();
+            setUpTable();
+            mouse_listener();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setUpTable(){
+
         id_.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("ID"));
         fname.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("fname"));
         lname.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("lname"));
@@ -279,13 +302,16 @@ public class Kids_Table_View implements Initializable {
         WorkPhone.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("WorkPhone"));
         Employer.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Employer_"));
 
-        try {
-            // reload();
-            records = loadTable();
-            mouse_listener();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        scroll_pane.setContent(psqlTable);
+        scroll_pane.setPrefSize(600, 200);
+        scroll_pane.setFitToHeight(true);
+        scroll_pane.setHmax(3);
+        scroll_pane.setHvalue(0);
+        scroll_pane.setDisable(false);
+
+        BP.setCenter(scroll_pane);
+        BorderPane.setMargin(scroll_pane, new Insets(0, 10, 10, 10));
+        psqlTable.setItems(records);
     }
 
     public static ObservableList<MemberModel> loadTable() {
@@ -355,7 +381,9 @@ public class Kids_Table_View implements Initializable {
 
     public void addScreen() {
         try {
+
             scene_switcher.add_scene();
+            update.updateBtn(true);
             loadTable();
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -500,7 +528,7 @@ public class Kids_Table_View implements Initializable {
     @FXML
     private void export_rec(ActionEvent event) throws IOException {
         Window owner = psqlTable.getScene().getWindow();
-        ExportExcel.exportToExcel(owner);
+        ExcelHelper.exportToExcel(owner);
     }
 
     @FXML

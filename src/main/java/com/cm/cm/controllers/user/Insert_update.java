@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Window;
+import io.github.palexdev.materialfx.controls.*;
+import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,83 +20,88 @@ public class Insert_update implements Initializable {
     Sqlite sqlite = new Sqlite();
 
     @FXML
-    private Button cancel_insert;
+    private GridPane gridPane;
 
     @FXML
-    private Button insert_update;
+    private MFXButton cancel_insert;
 
     @FXML
-    private Button insert_update_kids;
+    private MFXButton insert_update;
+
+    @FXML
+    private MFXButton insert_update_kids;
 
     //Start Of TextField
     @FXML
-    private TextField fnameBox;
+    private MFXTextField fnameBox;
 
     @FXML
-    private TextField lnameBox;
+    private MFXTextField lnameBox;
 
     @FXML
-    private TextField idBox;
+    private MFXTextField idBox;
 
     @FXML
-    private TextField num_Children;
+    private MFXTextField num_Children;
 
     @FXML
-    private DatePicker dateJoined;
+    private MFXDatePicker dateJoined;
 
     @FXML
-    private DatePicker dob;
+    private MFXDatePicker dob;
 
     @FXML
-    private TextField address;
+    private MFXTextField address;
 
     @FXML
-    private TextField homePhone;
+    private MFXTextField homePhone;
 
     @FXML
-    private TextField workPhone;
+    private MFXTextField workPhone;
 
     @FXML
-    private TextField mobilePhone;
+    private MFXTextField mobilePhone;
 
     @FXML
-    private TextField employer;
+    private MFXTextField employer;
 
     @FXML
-    private TextField position;
+    private MFXTextField position;
 
     @FXML
-    private TextField email;
+    private MFXTextField email;
 
     @FXML
-    private TextField homeGroupLeader;
+    private MFXTextField homeGroupLeader;
 
     @FXML
-    private TextField departmentLeader;
+    private MFXTextField departmentLeader;
 
     @FXML
-    private ComboBox<String> titleBox;
+    private MFXComboBox<String> titleBox;
 
     @FXML
-    private ComboBox<String> genderBox;
+    private MFXComboBox<String> genderBox;
 
     @FXML
-    private ComboBox<String> maritial_status;
+    private MFXComboBox<String> maritial_status;
 
     @FXML
-    private ComboBox<String> surbub;
+    private MFXComboBox<String> surbub;
 
     @FXML
-    private ComboBox<String> depBox;
+    private MFXComboBox<String> depBox;
 
     @FXML
-    private ComboBox<String> salvationBox;
+    private MFXComboBox<String> salvationBox;
 
     @FXML
-    private ComboBox<String> baptismBox_1;
+    private MFXComboBox<String> baptismBox_1;
 
     @FXML
-    private ComboBox<String> baptismBox_2;
+    private MFXComboBox<String> baptismBox_2;
+
+
 
     // Weekdays
     String titles[] = { "Mr", "Mrs", "Miss" };
@@ -150,12 +157,19 @@ public class Insert_update implements Initializable {
         salvationBox.setItems(truths);
         baptismBox_1.setItems(truths);
         baptismBox_2.setItems(truths);
+
+//        updateBtn();
     }
 
     @FXML
     private void insert_rec(ActionEvent event) {
         Window owner = insert_update.getScene().getWindow();
         grabTxtAdults(owner);
+    }
+
+    public void updateBtn(Boolean res){
+        if (!res) insert_update_kids.setDisable(true);
+        else insert_update.setDisable(false);
     }
 
     @FXML
@@ -244,8 +258,8 @@ public class Insert_update implements Initializable {
                         idBox.getText(),
                         num_Children.getText(),
                         maritial_status.getValue(),
-                        dateJoined.getValue().of(year, month, dayOfMonth).toString(),
-                        dob.getValue().of(year, month, dayOfMonth).toString(),
+                        dateJoined.getValue().toString(),
+                        dob.getValue().toString(),
                         address.getText(),
                         surbub.getValue(),
                         homePhone.getText(),

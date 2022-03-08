@@ -1,11 +1,17 @@
 module com.cm.cm {
+    requires MaterialFX;
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
 
-    requires org.controlsfx.controls;
-    requires org.kordamp.bootstrapfx.core;
+
     requires java.sql;
+
+
     requires org.apache.poi.poi;
+//    requires org.apache.logging.log4j;
+    //requires org.apache.logging.log4j.*; try to fix this import, fails when using jlink
+
     requires org.apache.poi.ooxml;
 
     opens com.cm.cm.app to javafx.fxml;
@@ -16,6 +22,7 @@ module com.cm.cm {
     opens com.cm.cm.modals to javafx.base;
     opens com.cm.cm.database to javafx.base;
 
+    exports com.cm.cm;
     exports com.cm.cm.app;
     exports com.cm.cm.controllers.misc;
     exports com.cm.cm.controllers.admin;
