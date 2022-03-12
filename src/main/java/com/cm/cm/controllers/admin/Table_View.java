@@ -1,22 +1,19 @@
-package com.cm.cm.controllers.user;
+package com.cm.cm.controllers.admin;
 
 import com.cm.cm.app.App;
+import com.cm.cm.controllers.misc.ExcelHelper;
 import com.cm.cm.controllers.misc.SceneCtrl;
+import com.cm.cm.controllers.user.Insert_update;
 import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import com.cm.cm.modals.MemberModel;
-import com.cm.cm.controllers.misc.ExcelHelper;
-import io.github.palexdev.materialfx.selection.base.IMultipleSelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
@@ -27,17 +24,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import com.cm.cm.controllers.user.Insert_update;
-import io.github.palexdev.materialfx.controls.MFXTableView;
-import io.github.palexdev.materialfx.controls.MFXTableColumn;
-import io.github.palexdev.materialfx.controls.MFXScrollPane;
-import io.github.palexdev.materialfx.controls.MFXPaginatedTableView;
-import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
-import io.github.palexdev.materialfx.filter.EnumFilter;
-import io.github.palexdev.materialfx.filter.IntegerFilter;
-import io.github.palexdev.materialfx.filter.StringFilter;
 
-import javafx.geometry.Insets;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -48,8 +35,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Comparator;
 import java.util.ResourceBundle;
+
+
 
 
 public class Table_View implements Initializable {
@@ -272,6 +260,9 @@ public class Table_View implements Initializable {
 
     @FXML
     private MenuItem reload_;
+
+    @FXML
+    private MenuItem show_users_;
 
     // Button Start
     @FXML
@@ -653,6 +644,12 @@ public class Table_View implements Initializable {
     @FXML
     private void exitBtn(ActionEvent event) {
         App.closeApp();
+    }
+
+    @FXML
+    private void show_users(){
+        psqlTable.getScene().getWindow().hide();
+        scene_switcher.displayUsers();
     }
 
 }

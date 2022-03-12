@@ -25,13 +25,18 @@ public class SceneCtrl {
     String cashier_login = "/com/cm/cm/fxml/cashier/login_screen.fxml";
     String decision_screen = "/com/cm/cm/fxml/misc/login_choice.fxml";
     String add_screen = "/com/cm/cm/fxml/user/add_records.fxml";
-    String admin_records = "/com/cm/cm/fxml/user/records_view.fxml";
+    String admin_records = "/com/cm/cm/fxml/admin/records_view.fxml";
     //    String decision_screen = "/test/hello-view.fxml";
     String cashier_records = "/com/cm/cm/fxml/cashier/records_view.fxml";
     String greeting_screen = "/com/cm/cm/fxml/greeting_banner.fxml";
     String bulk_delete_screen = "/com/cm/cm/fxml/admin/delete_by_name.fxml";
     String about_screen = "/com/cm/cm/fxml/misc/about.fxml";
     String kids_records = "/com/cm/cm/fxml/user/kids_records_view.fxml";
+    String users_screen = "/com/cm/cm/fxml/admin/usersCtrl/userList.fxml";
+    String create_user_screen = "/com/cm/cm/fxml/admin/usersCtrl/addUsers.fxml";
+
+    public  Stage stage = new Stage();
+//    public  Window owner = stage.getOwner();
 
     public static void switchScene(Scene scene, boolean truth, String title, boolean option) {
         Stage stage = new Stage();
@@ -73,11 +78,11 @@ public class SceneCtrl {
         }
     }
 
-    public void cashier_login_scene() {
+    public void displayUsers() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(cashier_login));
+            Parent root = FXMLLoader.load(getClass().getResource(users_screen));
             Scene login = new Scene(root);
-            switchScene(login, true, "Employee Login", false);
+            switchScene(login, true, "Registered Users", false);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -96,11 +101,11 @@ public class SceneCtrl {
         }
     }
 
-    public void cashier_rec_scene() {
+    public void createUser() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(cashier_records));
+            Parent root = FXMLLoader.load(getClass().getResource(create_user_screen));
             Scene records = new Scene(root);
-            switchScene(records, true, "View Inventory ", true);
+            switchScene(records, true, "Create User", true);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

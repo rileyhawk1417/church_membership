@@ -324,12 +324,12 @@ public class Kids_Table_View implements Initializable {
 
             while (res.next()) {
                 loadList.add(new MemberModel(res.getString("id"), res.getString("title"), res.getString("fname"),
-                        res.getString("lname"), res.getString("gender"), res.getString("id_no"), res.getString("children_num"),
+                        res.getString("lname"), res.getString("gender"), res.getString("id_no"), res.getString("kids_num"),
                         res.getString("maritial_status"), res.getString("date_joined"), res.getString("dob"),
-                        res.getString("address"), res.getString("surbub"), res.getString("home_phone"), res.getString("work_phone"),
-                        res.getString("mobile_phone"), res.getString("employer"), res.getString("position"), res.getString("email"),
-                        res.getString("home_group_leader"), res.getString("department_leader"), res.getString("department"),
-                        res.getString("salvation"), res.getString("water_baptism"), res.getString("spirit_baptism")));
+                        res.getString("address"), res.getString("surbub"), res.getString("landline"), res.getString("work_num"),
+                        res.getString("cell_num"), res.getString("employer"), res.getString("position"), res.getString("email"),
+                        res.getString("home_group_leader"), res.getString("dept_leader"), res.getString("dept"),
+                        res.getString("salvation"), res.getString("water_bapt"), res.getString("spirit_bapt")));
             }
             int rowSize = loadList.size();
             recordSize = Integer.toString(rowSize);
