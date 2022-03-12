@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -22,15 +23,15 @@
         <ColumnConstraints halignment="CENTER"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="50.0" prefHeight="30.0"/>
-        <RowConstraints minHeight="5.0" prefHeight="30.0"/>
-        <RowConstraints minHeight="50.0" prefHeight="30.0"/>
-        <RowConstraints minHeight="50.0" prefHeight="30.0"/>
-        <RowConstraints minHeight="50.0" prefHeight="30.0"/>
+        <RowConstraints minHeight="50.0" prefHeight="45.0"/>
+        <RowConstraints minHeight="50.0" prefHeight="45.0"/>
+        <RowConstraints minHeight="50.0" prefHeight="45.0"/>
+        <RowConstraints minHeight="50.0" prefHeight="45.0"/>
+        <RowConstraints minHeight="50.0" prefHeight="45.0"/>
     </rowConstraints>
-
-    <MFXButton fx:id="admin_" minHeight="20.0" minWidth="50.0" layoutX="119.0" layoutY="318.0" mnemonicParsing="false" onAction="#admin_btn"
-            text="Admin" buttonType="RAISED" styleClass="outline-button" GridPane.columnIndex="2" GridPane.rowIndex="3"  />
+    <MFXComboBox fx:id="userType" prefWidth="150.0" promptText="Select User" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+    <MFXButton fx:id="SubmitBtn" minHeight="20.0" minWidth="50.0" layoutX="119.0" layoutY="318.0" mnemonicParsing="false" onAction="#submit"
+            text="Submit" buttonType="RAISED" styleClass="outline-button" GridPane.columnIndex="2" GridPane.rowIndex="3"  />
     <Label alignment="CENTER" layoutX="41.0" layoutY="51.0" prefHeight="70.0" prefWidth="521.0" text="Church Membership"
            textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
         <font>

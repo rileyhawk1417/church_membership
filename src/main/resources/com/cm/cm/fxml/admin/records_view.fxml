@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="BP" styleClass="grid-pane" stylesheets="@../../css/TableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cm.cm.controllers.admin.Table_View">
+   <top>
+       <HBox blendMode="SRC_ATOP" prefHeight="33.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+           <MenuBar>
+               <Menu mnemonicParsing="false" text="File">
+                   <MenuItem fx:id="log_out" mnemonicParsing="false" onAction="#switch_user" text="Log out" />
+                   <MenuItem fx:id="close" mnemonicParsing="false" onAction="#exitBtn" text="Exit App" />
+               </Menu>
+               <Menu mnemonicParsing="false" text="Edit">
+                   <MenuItem fx:id="add_rec" mnemonicParsing="false" onAction="#add_screen" text="Add Record" />
+                   <MenuItem fx:id="reload_" mnemonicParsing="false" onAction="#reload" text="Reload Records" />
+                   <Menu mnemonicParsing="false" text="Delete">
+                       <MenuItem fx:id="delete_by_name" mnemonicParsing="false" onAction="#delete_by_name_btn" text="Delete By Name" />
+                       <MenuItem fx:id="delete_by_id" mnemonicParsing="false" onAction="#delete_by_id_btn" text="Delete Selected Record" />
+                   </Menu>
+                    <Menu mnemonicParsing="false" text="Export">
+                        <MenuItem fx:id="export_btn" mnemonicParsing="false" onAction="#export_rec" text="Export All Records" />
+                        <MenuItem fx:id="export_view_btn" mnemonicParsing="false" onAction="#export_tableView" text="Export Selected Records" />
+                    </Menu>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Navigate">
+                   <MenuItem fx:id="switch_user_" mnemonicParsing="false" onAction="#switch_user" text="Switch to Kids Records" />
+                   <MenuItem fx:id="show_users_" mnemonicParsing="false" onAction="#show_users" text="View Users" />
+                   <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitBtn" text="Exit App" />
+               </Menu>
+               <Menu mnemonicParsing="false" text="Help">
+                   <MenuItem fx:id="manual_" mnemonicParsing="false" onAction="#manual_btn" text="Manual" />
+                   <MenuItem fx:id="about_" mnemonicParsing="false" onAction="#about_btn" text="About" />
+               </Menu>
+           </MenuBar>
+           <TextField fx:id="searchBar" prefHeight="27.0" prefWidth="428.0" />
+           <Button fx:id="subQuery" mnemonicParsing="false" onAction="#searchBtn" prefHeight="23.0" prefWidth="76.0" text="Search" />
+       </HBox>
+   </top>
+   <bottom>
+       <HBox alignment="CENTER" prefHeight="264.0" prefWidth="1153.0" spacing="120.0" BorderPane.alignment="CENTER">
+           <opaqueInsets>
+               <Insets />
+           </opaqueInsets>
+           <HBox alignment="CENTER" prefHeight="264.0" prefWidth="258.0" spacing="50.0">
+               <VBox prefHeight="200.0" prefWidth="100.0">
+                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
+                   <Text layoutX="10.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                   <Text layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" />
+                   <Text layoutX="10.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID No." />
+                   <Text layoutX="10.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Children No." />
+                   <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maritial Status" />
+                   <Text layoutX="10.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Joined" />
+                   <Text layoutX="10.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D.O.B" />
+                   <Text layoutX="10.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
+               </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+                  <Text fx:id="title_" layoutX="10.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                  <Text fx:id="name_" layoutX="10.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                  <Text fx:id="gender_" layoutX="10.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                  <Text fx:id="idNo_" layoutX="10.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                  <Text fx:id="children_No_" layoutX="10.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                  <Text fx:id="maritial_" layoutX="10.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                  <Text fx:id="dateJoined_" layoutX="10.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                  <Text fx:id="dob_" layoutX="10.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                  <Text fx:id="address_" layoutX="10.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+            </VBox>
+
+           </HBox>
+           <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surbub" />
+                   <Text layoutX="10.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Phone" />
+                   <Text layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work Phone" />
+                   <Text layoutX="10.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile Phone" />
+                   <Text layoutX="10.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employer" />
+                   <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position" />
+                   <Text layoutX="10.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+                   <Text layoutX="10.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Group Leader" />
+               </VBox>
+               <VBox prefHeight="200.0" prefWidth="100.0">
+                   <Text fx:id="surbub_" layoutX="10.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                   <Text fx:id="homePhone_" layoutX="10.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                   <Text fx:id="workPhone_" layoutX="10.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                   <Text fx:id="mobilePhone_" layoutX="10.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                   <Text fx:id="employer_" layoutX="10.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                   <Text fx:id="position_" layoutX="10.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                   <Text fx:id="email_" layoutX="10.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                   <Text fx:id="homeGroup_" layoutX="10.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+               </VBox>
+           </HBox>
+           <HBox alignment="CENTER" layoutX="210.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <VBox prefHeight="200.0" prefWidth="100.0">
+                   <Text layoutX="10.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department Leader" />
+                   <Text layoutX="10.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department" />
+                   <Text layoutX="10.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salvation" />
+                   <Text layoutX="10.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Water Baptism" />
+                   <Text layoutX="10.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spirit Baptism" />
+                   <Text layoutX="10.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total No. of Members" />
+                   <Text layoutX="10.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total No. of Children" />
+               </VBox>
+               <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                   <children>
+                       <Text fx:id="depLeader_" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                       <Text fx:id="dep" layoutX="10.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                       <Text fx:id="salvation_" layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                       <Text fx:id="water_" layoutX="10.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                       <Text fx:id="spirit_" layoutX="10.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                       <Text fx:id="membersTotal_" layoutX="10.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" />
+                       <!-- <Text fx:id="childrenTotal_" layoutX="10.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Data" /> -->
+                   </children>
+               </VBox>
+           </HBox>
+       </HBox>
+   </bottom>
+   <center>
+       <ScrollPane fx:id="scroll_pane" fitToHeight="true" fitToWidth="true" hmax="0.0" pannable="true" pickOnBounds="false" prefHeight="437.0" prefWidth="1205.0" vmax="0.0" BorderPane.alignment="CENTER">
+           <TableView fx:id="psqlTable" editable="true" fixedCellSize="20.0" pickOnBounds="false" tableMenuButtonVisible="true">
+               <columns>
+                   <TableColumn fx:id="id_" maxWidth="1.7976931348623157E308" prefWidth="55.0" text="ID" />
+                   <TableColumn fx:id="Title_" maxWidth="1.7976931348623157E308" prefWidth="64.0" text="Title" />
+                   <TableColumn fx:id="fname" maxWidth="1.7976931348623157E308" prefWidth="69.0" text="Name" />
+                   <TableColumn fx:id="lname" maxWidth="1.7976931348623157E308" prefWidth="69.0" text="Surname" />
+                   <TableColumn fx:id="Sex" maxWidth="1.7976931348623157E308" prefWidth="73.0" text="Gender" />
+                   <TableColumn fx:id="IDNum" maxWidth="1.7976931348623157E308" prefWidth="73.0" text="ID No" />
+                   <TableColumn fx:id="KidsNo_" maxWidth="1.7976931348623157E308" prefWidth="117.68994140625" text="No. of Children" />
+                   <TableColumn fx:id="MStatus_" maxWidth="1.7976931348623157E308" prefWidth="106.71878051757812" text="Maritial Status" />
+                   <TableColumn fx:id="DateJoined_" maxWidth="1.7976931348623157E308" prefWidth="106.71878051757812" text="Date Joined" />
+                   <TableColumn fx:id="DOB_" maxWidth="1.7976931348623157E308" prefWidth="89.76348876953125" text="D.O.B" />
+                   <TableColumn fx:id="Address" maxWidth="1.7976931348623157E308" prefWidth="109.7109375" text="Address" />
+                   <TableColumn fx:id="Surbub" maxWidth="1.7976931348623157E308" prefWidth="101.73193359375" text="Surbub" />
+                   <TableColumn fx:id="Homephone" maxWidth="1.7976931348623157E308" prefWidth="110.70831298828125" text="Home Phone" />
+                   <TableColumn fx:id="WorkPhone" maxWidth="1.7976931348623157E308" prefWidth="101.73193359375" text="Work Phone" />
+                   <TableColumn fx:id="MobilePhone" maxWidth="1.7976931348623157E308" prefWidth="107.7161865234375" text="Mobile Phone" />
+                   <TableColumn fx:id="Email" maxWidth="1.7976931348623157E308" prefWidth="107.7161865234375" text="Email" />
+                   <TableColumn fx:id="Employer" maxWidth="1.7976931348623157E308" prefWidth="138.634765625" text="Employer" />
+                   <TableColumn fx:id="HomeGroup" maxWidth="1.7976931348623157E308" prefWidth="138.634765625" text="Home Group Leader" />
+                   <TableColumn fx:id="DeptLeader" maxWidth="1.7976931348623157E308" prefWidth="105.0562744140625" text="Dept Leader" />
+                   <TableColumn fx:id="Dept" maxWidth="1.7976931348623157E308" prefWidth="110.0433349609375" text="Department" />
+                   <TableColumn fx:id="Salvation" maxWidth="1.7976931348623157E308" prefWidth="82.1170654296875" text="Salvation" />
+                   <TableColumn fx:id="waterBapt" maxWidth="1.7976931348623157E308" prefWidth="103.3944091796875" text="Water Baptism" />
+                   <TableColumn fx:id="SpiritBapt" maxWidth="1.7976931348623157E308" prefWidth="103.39453125" text="Spirit Baptism" />
+               </columns>
+              <opaqueInsets>
+                  <Insets top="25.0" />
+              </opaqueInsets>
+              <contextMenu>
+                  <ContextMenu>
+                      <items>
+                                               <!--  <MenuItem fx:id="update_option" mnemonicParsing="false" text="Update Record" /> -->
+                          <MenuItem fx:id="export_current_view" mnemonicParsing="false" onAction="#export_tableView" text="Export Current Records" />
+                          <MenuItem fx:id="delete_by_id_context" mnemonicParsing="false" onAction="#delete_by_id_btn" text="Delete Selected Record" />
+                      </items>
+                  </ContextMenu>
+              </contextMenu>
+           </TableView>
+       </ScrollPane>
+   </center>
+</BorderPane>

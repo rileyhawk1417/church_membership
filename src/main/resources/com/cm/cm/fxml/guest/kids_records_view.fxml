@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<BorderPane fx:id="BP" stylesheets="@../../css/TableStyle.css" styleClass="grid-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cm.cm.controllers.user.Kids_Table_View">
+<BorderPane fx:id="BP" stylesheets="@../../css/TableStyle.css" styleClass="grid-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cm.cm.controllers.guest.Kids_Table_View">
    <top>
        <HBox blendMode="SRC_ATOP" prefHeight="33.0" prefWidth="750.0" BorderPane.alignment="CENTER">
            <MenuBar>
@@ -42,7 +42,7 @@
                </Menu>
                <Menu mnemonicParsing="false" text="Navigate">
                    <MenuItem fx:id="switch_user_" mnemonicParsing="false" onAction="#switch_user"
-                             text="Switch to Adult Records"/>
+                             text="Switch to Kids Records"/>
                    <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitBtn" text="Exit App"/>
                </Menu>
                <Menu mnemonicParsing="false" text="Help">
