@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+
+
+
+<GridPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.cm.cm.controllers.admin.usersCtrl.AddUsers"
+            alignment="CENTER"
+          styleClass="grid-pane"
+          vgap="30.0"
+          hgap="15.0"
+          stylesheets="@../../../css/Buttons.css"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" />
+    </columnConstraints>
+
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="25.0" />
+        <RowConstraints minHeight="10.0" prefHeight="25.0" />
+        <RowConstraints minHeight="10.0" prefHeight="25.0" />
+        <RowConstraints minHeight="10.0" prefHeight="25.0" />
+        <RowConstraints minHeight="10.0" prefHeight="25.0" />
+        <RowConstraints minHeight="10.0" prefHeight="25.0" />
+        <RowConstraints minHeight="10.0" prefHeight="25.0" />
+        <RowConstraints minHeight="10.0" prefHeight="25.0" />
+    </rowConstraints>
+
+    <padding>
+        <Insets bottom="20.0" top="20.0" />
+    </padding>
+
+    <GridPane.margin>
+        <Insets bottom="25.0" top="15.0" />
+    </GridPane.margin>
+
+    <MFXTextField fx:id="userName" promptText="User Name" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3"  />
+    <MFXTextField fx:id="passWord" promptText="Password" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <MFXComboBox fx:id="tables"  promptText="Choose Table" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <MFXComboBox fx:id="userType"  promptText="Choose User Type" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <MFXButton buttonType="RAISED" fx:id="submitBtn" text="Accept" onAction="#addUser" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <MFXButton buttonType="RAISED" fx:id="cancelBtn" text="Cancel" onAction="#cancelUser" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+
+</GridPane>
