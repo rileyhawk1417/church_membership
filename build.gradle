@@ -14,6 +14,11 @@ plugins {
 repositories {
     //mavenLocal()
     mavenCentral()
+    maven {
+        url = uri('https://jitpack.io')
+    }
+    
+
     /* 
     * There are conflicts having multiple repos. 
     * Using local repos results in syntax and conflict errors.
@@ -41,17 +46,27 @@ jlink {
         mainClass = "com.cm.cm.Launcher"
         name = 'CCI Admin'
     }
+
+    imageName = 'CCI Admin 0.0.1'
+    imageZip = file("$buildDir/myapp-image.zip")
+    mergedModuleName = 'com.merged.module'
+    customImage{
+        jdkModules = ['java.xml', 'jdk.zipfs']
+        appModules = ['com.merged.module']
+    }
 //    jpackage {
 //        imageOptions = ['--icon', 'src/main/resources/logo.ico']
 //    }
 
     targetPlatform("linux-x64") {
         jdkHome = '/home/riley/Downloads/Compressed/jdks/jdk17_linux_x64'
+//        jdkModules = ['java.xml', 'jdk.zipfs']
         addExtraModulePath("/home/riley/Downloads/Compressed/jmods/linux_x64")
     }
 
     targetPlatform("win") {
         jdkHome = '/home/riley/Downloads/Compressed/jdks/jdk17_win_x64'
+//        jdkModules= ['java.xml', 'jdk.zipfs']
         addExtraModulePath("/home/riley/Downloads/Compressed/jmods/win_x64")
     }
 }
@@ -66,12 +81,11 @@ application {
 dependencies {
     implementation 'org.apache.poi:poi:5.2.1'
     implementation 'org.apache.poi:poi-ooxml:5.2.1'
-    
+    implementation 'com.github.Dansoftowner:PDFViewerFX:0.8' 
     implementation 'org.apache.xmlbeans:xmlbeans:5.0.1'
-//    implementation 'org.apache.logging.log4j:log4j-core:2.14.1'
-//    implementation 'org.apache.logging.log4j:log4j-1.2-api:2.14.1'
+    implementation 'io.github.palexdev:virtualizedfx:11.2.4'
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.36.0.3'
-
+    implementation 'org.update4j:update4j:1.5.9'
     implementation 'io.github.palexdev:materialfx:11.13.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
@@ -96,4 +110,5 @@ publishing {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
 }
