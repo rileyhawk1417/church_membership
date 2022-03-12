@@ -4,7 +4,7 @@ package com.cm.cm.database;
 import java.sql.*;
 
 public class Sqlite {
-    private final static String db = "jdbc:sqlite:sqlite/sqlite_sample.db";
+    private final static String db = "jdbc:sqlite:sqlite/church.db";
 
     public static Connection connector() throws SQLException {
         return DriverManager.getConnection(db);
@@ -51,9 +51,9 @@ public class Sqlite {
         return false;
     }
 
-    public boolean validateCashier(String user, String pass) throws SQLException {
+    public boolean validateUser(String user, String pass) throws SQLException {
 
-        String QUERY = "SELECT * FROM employee_login WHERE name = ? AND password = ? ";
+        String QUERY = "SELECT * FROM user_login WHERE name = ? AND password = ? ";
 
         try (Connection conn = connector();
 
@@ -74,14 +74,14 @@ public class Sqlite {
     }
 
     public void searchDB(String query) {
-        String search = "select * from members WHERE name LIKE '" + query + "%'";
+        String search = "select * from members WHERE fname LIKE '" + query + "%'";
         try (Connection conn = connector();
 
              PreparedStatement pstmt = conn.prepareStatement(search);) {
             ResultSet res = pstmt.executeQuery();
             try {
                 while (res.next()) {
-                    System.out.println(res.getString("id") + res.getString("name") + res.getString("detail"));
+                    System.out.println(res.getString("id") + res.getString("fname"));
                 }
                 if (!res.next()) {
                     System.out.println("Search failed");
@@ -97,14 +97,14 @@ public class Sqlite {
     }
 
     public void searchDBKids(String query) {
-        String search = "select * from kids_members WHERE name LIKE '" + query + "%'";
+        String search = "select * from kids_members WHERE fname LIKE '" + query + "%'";
         try (Connection conn = connector();
 
              PreparedStatement pstmt = conn.prepareStatement(search);) {
             ResultSet res = pstmt.executeQuery();
             try {
                 while (res.next()) {
-                    System.out.println(res.getString("id") + res.getString("name") + res.getString("detail"));
+                    System.out.println(res.getString("id") + res.getString("fname"));
                 }
                 if (!res.next()) {
                     System.out.println("Search failed");
@@ -119,11 +119,75 @@ public class Sqlite {
         }
     }
 
+    public void insertUserAdmin(String userName, String passWord){
+        String sql = "INSERT OR IGNORE INTO admin_login (user_name, password) VALUES (?, ?)";
+
+        try{
+            Connection conn = connector();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, userName);
+            pstmt.setString(2, passWord);
+
+            pstmt.execute();
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void insertUser(String userName, String passWord){
+        String sql = "INSERT OR IGNORE INTO user_login (user_name, password) VALUES (?, ?)";
+
+        try{
+            Connection conn = connector();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, userName);
+            pstmt.setString(2, passWord);
+
+            pstmt.execute();
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteUserAdmin(String id){
+        String sql = "DELETE FROM admin_login WHERE id = ?";
+
+        try{
+            Connection conn = connector();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, id);
+            pstmt.execute();
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteUser(String id){
+        String sql = "DELETE FROM user_login WHERE id =?";
+
+        try{
+            Connection conn = connector();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, id);
+            pstmt.execute();
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     public void insertValues(String title, String fname, String lname, String gender, String id_no, String children_num,
                              String maritial_status, String date_joined, String dob, String address, String surbub, String homePhone,
                              String workPhone, String mobilePhone, String employer, String position, String email, String homeLeader,
                              String deptLeader, String dept, String salvation, String water_bapt, String spirit_bapt) {
-        String values = "INSERT INTO members (title, fname, lname, gender, id_no, children_num, maritial_status, date_joined, dob, address, surbub, home_phone, work_phone, mobile_phone, employer, position, email, home_group_leader, department_leader, department, salvation, water_baptism, spirit_baptism)"
+        String values = "INSERT OR IGNORE INTO members (title, fname, lname, gender, id_no, kids_num, maritial_status, date_joined, dob, address, surbub, landline, work_num, cell_num, employer, position, email, home_group_leader, department_leader, dept, salvation, water_bapt, spirit_bapt)"
                 + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
         try {
@@ -167,7 +231,7 @@ public class Sqlite {
                                  String maritial_status, String date_joined, String dob, String address, String surbub, String homePhone,
                                  String workPhone, String mobilePhone, String employer, String position, String email, String homeLeader,
                                  String deptLeader, String dept, String salvation, String water_bapt, String spirit_bapt) {
-        String values = "INSERT INTO kids_members (title, fname, lname, gender, id_no, children_num, maritial_status, date_joined, dob, address, surbub, home_phone, work_phone, mobile_phone, employer, position, email, home_group_leader, department_leader, department, salvation, water_baptism, spirit_baptism)"
+        String values = "INSERT OR IGNORE INTO kids_members (title, fname, lname, gender, id_no, kids_num, maritial_status, date_joined, dob, address, surbub, landline, work_num, cell_num, employer, position, email, home_group_leader, dept_leader, dept, salvation, water_bapt, spirit_bapt)"
                 + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
         try {
@@ -212,7 +276,7 @@ public class Sqlite {
                              String workPhone, String mobilePhone, String employer, String position, String email, String homeLeader,
                              String deptLeader, String dept, String salvation, String water_bapt, String spirit_bapt) {
 
-        String values = "UPDATE kids_members SET title=?, fname=?, lname=? gender=?, id_no=?, children_num=?, maritial_status=?, date_joined=?, dob=?, address=?, surbub=?, home_phone=?, work_phone=?, mobile_phone=?, employer=?, position=?, email=?, home_group_leader=?, department_leader=?, department=?, salvation=?, water_baptism=?, spirit_baptism=? ";
+        String values = "UPDATE kids_members SET title=?, fname=?, lname=? gender=?, id_no=?, kids_num=?, maritial_status=?, date_joined=?, dob=?, address=?, surbub=?, landline=?, work_num=?, cell_num=?, employer=?, position=?, email=?, home_group_leader=?, dept_leader=?, dept=?, salvation=?, water_bapt=?, spirit_bapt=? WHERE id =?";
 
         try {
             Connection conn = connector();
@@ -253,9 +317,9 @@ public class Sqlite {
     public void updateValuesKids(String title, String fname, String lname, String gender, String id_no, String children_num,
                                  String maritial_status, String date_joined, String dob, String address, String surbub, String homePhone,
                                  String workPhone, String mobilePhone, String employer, String position, String email, String homeLeader,
-                                 String deptLeader, String dept, String salvation, String water_bapt, String spirit_bapt) {
+                                 String deptLeader, String dept, String salvation, String water_bapt, String spirit_bapt, String id) {
 
-        String values = "UPDATE kids_members SET title=?, fname=?, lname=? gender=?, id_no=?, children_num=?, maritial_status=?, date_joined=?, dob=?, address=?, surbub=?, home_phone=?, work_phone=?, mobile_phone=?, employer=?, position=?, email=?, home_group_leader=?, department_leader=?, department=?, salvation=?, water_baptism=?, spirit_baptism=? ";
+        String values = "UPDATE kids_members SET title=?, fname=?, lname=? gender=?, id_no=?, kids_num=?, maritial_status=?, date_joined=?, dob=?, address=?, surbub=?, landline=?, work_num=?, cell_num=?, employer=?, position=?, email=?, home_group_leader=?, dept_leader=?, dept=?, salvation=?, water_bapt=?, spirit_bapt=? WHERE id = ? ";
 
         try {
             Connection conn = connector();
@@ -283,6 +347,7 @@ public class Sqlite {
             pstmt.setString(21, salvation);
             pstmt.setString(22, water_bapt);
             pstmt.setString(23, spirit_bapt);
+            pstmt.setString(24, id);
 
             pstmt.execute();
 
