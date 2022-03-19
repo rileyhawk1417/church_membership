@@ -50,6 +50,10 @@ public class Table_View implements Initializable {
 
     Window owner = stage.getOwner();
     SceneCtrl scene_switcher = new SceneCtrl();
+    AlertModule alertBox = new AlertModule();
+
+    ExcelHelper excelFunc = new ExcelHelper();
+
 
     @FXML
     private ScrollPane scroll_pane;
@@ -235,6 +239,9 @@ public class Table_View implements Initializable {
     private MenuItem export_view_btn;
 
     @FXML
+    private MenuItem import_;
+
+    @FXML
     private MenuItem about_;
 
     @FXML
@@ -284,7 +291,7 @@ public class Table_View implements Initializable {
         }
     }
 
-    public static ObservableList<MemberModel> loadTable() {
+    public ObservableList<MemberModel> loadTable() {
         ObservableList<MemberModel> loadList = FXCollections.observableArrayList();
 
         try {
@@ -312,20 +319,6 @@ public class Table_View implements Initializable {
         }
         return loadList;
     }
-
-    // public static String childrenSize(){
-    // try{Connection con = Psql.connector();
-
-    // Statement stmt = con.createStatement();
-    // ResultSet res = stmt.executeQuery("SELECT SUM (children_num) FROM members");
-    // ResultSetMetaData rs = res.getMetaData();
-    // int children =
-    // } catch (Exception e){
-    // e.printStackTrace();
-    // };
-
-    // return children = childrenSize;
-    // }
 
     private void setUpTable(){
 
@@ -366,7 +359,7 @@ public class Table_View implements Initializable {
         psqlTable.setItems(records);
     }
 
-    public static ObservableList<MemberModel> searchDB(String query, Window owner) {
+    public ObservableList<MemberModel> searchDB(String query, Window owner) {
         ObservableList<MemberModel> queryList = FXCollections.observableArrayList();
         String search = "select * from members WHERE fname LIKE '" + query + "%'";
         try (Connection conn = Sqlite.connector(); PreparedStatement pstmt = conn.prepareStatement(search);) {
@@ -374,6 +367,7 @@ public class Table_View implements Initializable {
 
             try {
                 while (res.next()) {
+                    //Find a way to get tableName then load it into members
                     queryList.add(new MemberModel(res.getString("id_num"), res.getString("title"), res.getString("fname"),
                             res.getString("lname"), res.getString("gender"), res.getString("id_no"), res.getString("kids_num"),
                             res.getString("maritial_status"), res.getString("date_joined"), res.getString("dob"),
@@ -391,7 +385,7 @@ public class Table_View implements Initializable {
                 // System.out.println("Search failed");
                 // }
             } catch (Exception e) {
-                AlertModule.showAlert(Alert.AlertType.ERROR, owner, "System Error", "Nothing matches your search");
+                alertBox.showMFXAlert( owner, "System Error", "Nothing matches your search", AlertModule.dialogType.ERR, BP);
                 System.out.println(e);
                 System.out.println("Nothing found");
             }
@@ -405,7 +399,7 @@ public class Table_View implements Initializable {
     public void addScreen() {
         try {
 
-            scene_switcher.add_scene();
+            scene_switcher.admin_add_rec();
             update.updateBtn(false);
             loadTable();
         } catch (Exception e) {
@@ -415,16 +409,19 @@ public class Table_View implements Initializable {
         }
     }
 
-    public void deleteRow() {
+    @FXML
+    private void deleteRow(){
         ObservableList<MemberModel> allRows, selectedRow;
         allRows = psqlTable.getItems();
         selectedRow = psqlTable.getSelectionModel().getSelectedItems();
         String id_ = psqlTable.getSelectionModel().getSelectedItem().getID();
 
-        System.out.println(id_);
-        sqlite.delete_row_by_id(id_);
-
+        deletePopup(id_);
         selectedRow.forEach(allRows::remove);
+    }
+
+    public void deletePopup(String id) {
+        alertBox.deleteRecDialog(owner, AlertModule.dialogType.ERR, BP, id, "members");
     }
 
     // File actions
@@ -486,10 +483,9 @@ public class Table_View implements Initializable {
             // side_units_used_entry.getText(), side_units_left_entry.getText(),
             // side_unit_price_entry.getText(), side_restock_entry.getText(),
             // side_id_entry.getText());
-            AlertModule.showAlert(Alert.AlertType.CONFIRMATION, owner, "Action Completed", "Record updated successfully");
             reloadBtn();
         } catch (Exception e) {
-            AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Failed to complete action", "Failed to update record");
+            alertBox.showMFXAlert(owner, "Failed to complete action", "Failed to update record", AlertModule.dialogType.ERR, BP);
             e.getMessage();
             e.printStackTrace();
         }
@@ -513,7 +509,7 @@ public class Table_View implements Initializable {
 
     @FXML
     private void delete_by_name_btn() {
-        scene_switcher.bulk_delete_scene();
+
     }
 
     @FXML
@@ -525,7 +521,7 @@ public class Table_View implements Initializable {
             psqlTable.setItems(records);
         } catch (Exception e) {
             e.printStackTrace();
-            AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Action Error", "Unable to complete search");
+            alertBox.showMFXAlert(owner, "Search Failed", "Nothing matches your search", AlertModule.dialogType.ERR, BP);
         }
     }
 
@@ -552,7 +548,7 @@ public class Table_View implements Initializable {
     @FXML
     private void export_rec(ActionEvent event) throws IOException {
         Window owner = psqlTable.getScene().getWindow();
-        ExcelHelper.exportToExcel(owner);
+        excelFunc.exportToExcel(owner);
     }
 
     @FXML
@@ -617,6 +613,11 @@ public class Table_View implements Initializable {
         }
     }
 
+    @FXML
+    private void importer(){
+        excelFunc.importToDBKids(owner, BP);
+    }
+
     /*
      * User actions
      */
@@ -638,7 +639,7 @@ public class Table_View implements Initializable {
     @FXML
     private void switch_user() {
         psqlTable.getScene().getWindow().hide();
-        scene_switcher.kids_records_scene();
+        scene_switcher.kids_records_Admin();
     }
 
     @FXML

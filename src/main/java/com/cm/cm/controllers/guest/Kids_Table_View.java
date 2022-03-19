@@ -1,21 +1,19 @@
-package com.cm.cm.controllers.user;
+package com.cm.cm.controllers.guest;
 
 import com.cm.cm.app.App;
+import com.cm.cm.controllers.misc.ExcelHelper;
 import com.cm.cm.controllers.misc.SceneCtrl;
+import com.cm.cm.controllers.user.Insert_update;
 import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import com.cm.cm.modals.MemberModel;
-import com.cm.cm.controllers.misc.ExcelHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
@@ -27,7 +25,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import javafx.geometry.Insets;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -40,9 +37,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-
-public class Table_View implements Initializable {
-
+public class Kids_Table_View implements Initializable {
     Stage stage = new Stage();
     Sqlite sqlite = new Sqlite();
     App app = new App();
@@ -59,79 +54,77 @@ public class Table_View implements Initializable {
     @FXML
     private BorderPane BP;
 
+    @FXML
+    private TableView<MemberModel> psqlTable;
 
-    // Start Of Table Properties
-   @FXML
-   private TableView<MemberModel> psqlTable;
+    @FXML
+    private TableColumn<MemberModel, String> id_;
 
-   @FXML
-   private TableColumn<MemberModel, String> id_;
+    @FXML
+    private TableColumn<MemberModel, String> fname;
 
-   @FXML
-   private TableColumn<MemberModel, String> fname;
+    @FXML
+    private TableColumn<MemberModel, String> lname;
 
-   @FXML
-   private TableColumn<MemberModel, String> lname;
+    @FXML
+    private TableColumn<MemberModel, String> Title_;
 
-   @FXML
-   private TableColumn<MemberModel, String> Title_;
+    @FXML
+    private TableColumn<MemberModel, String> Address;
 
-   @FXML
-   private TableColumn<MemberModel, String> Address;
+    @FXML
+    private TableColumn<MemberModel, String> DOB_;
 
-   @FXML
-   private TableColumn<MemberModel, String> DOB_;
+    @FXML
+    private TableColumn<MemberModel, String> DateJoined_;
 
-   @FXML
-   private TableColumn<MemberModel, String> DateJoined_;
+    @FXML
+    private TableColumn<MemberModel, String> Dept;
 
-   @FXML
-   private TableColumn<MemberModel, String> Dept;
+    @FXML
+    private TableColumn<MemberModel, String> DeptLeader;
 
-   @FXML
-   private TableColumn<MemberModel, String> DeptLeader;
+    @FXML
+    private TableColumn<MemberModel, String> HomeGroup;
 
-   @FXML
-   private TableColumn<MemberModel, String> HomeGroup;
+    @FXML
+    private TableColumn<MemberModel, String> Homephone;
 
-   @FXML
-   private TableColumn<MemberModel, String> Homephone;
+    @FXML
+    private TableColumn<MemberModel, String> IDNum;
 
-   @FXML
-   private TableColumn<MemberModel, String> IDNum;
+    @FXML
+    private TableColumn<MemberModel, String> KidsNo_;
 
-   @FXML
-   private TableColumn<MemberModel, String> KidsNo_;
+    @FXML
+    private TableColumn<MemberModel, String> MStatus_;
 
-   @FXML
-   private TableColumn<MemberModel, String> MStatus_;
+    @FXML
+    private TableColumn<MemberModel, String> MobilePhone;
 
-   @FXML
-   private TableColumn<MemberModel, String> MobilePhone;
+    @FXML
+    private TableColumn<MemberModel, String> Email;
 
-   @FXML
-   private TableColumn<MemberModel, String> Email;
+    @FXML
+    private TableColumn<MemberModel, String> Salvation;
 
-   @FXML
-   private TableColumn<MemberModel, String> Salvation;
+    @FXML
+    private TableColumn<MemberModel, String> Sex;
 
-   @FXML
-   private TableColumn<MemberModel, String> Sex;
+    @FXML
+    private TableColumn<MemberModel, String> waterBapt;
 
-   @FXML
-   private TableColumn<MemberModel, String> waterBapt;
+    @FXML
+    private TableColumn<MemberModel, String> SpiritBapt;
 
-   @FXML
-   private TableColumn<MemberModel, String> SpiritBapt;
+    @FXML
+    private TableColumn<MemberModel, String> Surbub;
 
-   @FXML
-   private TableColumn<MemberModel, String> Surbub;
+    @FXML
+    private TableColumn<MemberModel, String> Employer;
 
-   @FXML
-   private TableColumn<MemberModel, String> Employer;
-
-   @FXML
-   private TableColumn<MemberModel, String> WorkPhone;
+    @FXML
+    private TableColumn<MemberModel, String> WorkPhone;
 
     // Table Properties End
 
@@ -273,6 +266,7 @@ public class Table_View implements Initializable {
     public void initialize(URL location, ResourceBundle bundle) {
         assert psqlTable != null : "Failed to load table";
 
+
         try {
             // reload();
             records = loadTable();
@@ -282,49 +276,6 @@ public class Table_View implements Initializable {
             e.printStackTrace();
         }
     }
-
-    public ObservableList<MemberModel> loadTable() {
-        ObservableList<MemberModel> loadList = FXCollections.observableArrayList();
-
-        try {
-            Connection con = Sqlite.connector();
-
-            ResultSet res = con.createStatement().executeQuery("SELECT * FROM members");
-
-            while (res.next()) {
-                loadList.add(new MemberModel(res.getString("id"), res.getString("title"), res.getString("fname"),
-                        res.getString("lname"), res.getString("gender"), res.getString("id_no"), res.getString("kids_num"),
-                        res.getString("maritial_status"), res.getString("date_joined"), res.getString("dob"),
-                        res.getString("address"), res.getString("surbub"), res.getString("landline"), res.getString("work_num"),
-                        res.getString("cell_num"), res.getString("employer"), res.getString("position"), res.getString("email"),
-                        res.getString("home_group_leader"), res.getString("dept_leader"), res.getString("dept"),
-                        res.getString("salvation"), res.getString("water_bapt"), res.getString("spirit_bapt")));
-            }
-            int rowSize = loadList.size();
-            recordSize = Integer.toString(rowSize);
-            System.out.println(loadList.size());
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-            System.out.println("Error loading Table");
-        }
-        return loadList;
-    }
-
-    // public static String childrenSize(){
-    // try{Connection con = Psql.connector();
-
-    // Statement stmt = con.createStatement();
-    // ResultSet res = stmt.executeQuery("SELECT SUM (children_num) FROM members");
-    // ResultSetMetaData rs = res.getMetaData();
-    // int children =
-    // } catch (Exception e){
-    // e.printStackTrace();
-    // };
-
-    // return children = childrenSize;
-    // }
 
     private void setUpTable(){
 
@@ -352,7 +303,6 @@ public class Table_View implements Initializable {
         WorkPhone.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("WorkPhone"));
         Employer.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("Employer_"));
 
-//        psqlTable.setTableMenuButtonVisible(true);
         scroll_pane.setContent(psqlTable);
         scroll_pane.setPrefSize(600, 200);
         scroll_pane.setFitToHeight(true);
@@ -365,22 +315,51 @@ public class Table_View implements Initializable {
         psqlTable.setItems(records);
     }
 
+    public ObservableList<MemberModel> loadTable() {
+        ObservableList<MemberModel> loadList = FXCollections.observableArrayList();
+
+        try {
+            Connection con = Sqlite.connector();
+
+            ResultSet res = con.createStatement().executeQuery("SELECT * FROM guest_data");
+
+            while (res.next()) {
+                loadList.add(new MemberModel(res.getString("id"), res.getString("title"), res.getString("fname"),
+                        res.getString("lname"), res.getString("gender"), res.getString("id_no"), res.getString("kids_num"),
+                        res.getString("maritial_status"), res.getString("date_joined"), res.getString("dob"),
+                        res.getString("address"), res.getString("surbub"), res.getString("landline"), res.getString("work_num"),
+                        res.getString("cell_num"), res.getString("employer"), res.getString("position"), res.getString("email"),
+                        res.getString("home_group_leader"), res.getString("dept_leader"), res.getString("dept"),
+                        res.getString("salvation"), res.getString("water_bapt"), res.getString("spirit_bapt")));
+            }
+            int rowSize = loadList.size();
+            recordSize = Integer.toString(rowSize);
+            System.out.println(loadList.size());
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            System.out.println("Error loading Table");
+        }
+        return loadList;
+    }
+
     public ObservableList<MemberModel> searchDB(String query, Window owner) {
         ObservableList<MemberModel> queryList = FXCollections.observableArrayList();
-        String search = "select * from members WHERE fname LIKE '" + query + "%'";
+        String search = "select * from guest_data WHERE fname LIKE '" + query + "%'";
         try (Connection conn = Sqlite.connector(); PreparedStatement pstmt = conn.prepareStatement(search);) {
             ResultSet res = pstmt.executeQuery();
 
             try {
                 while (res.next()) {
                     queryList.add(new MemberModel(res.getString("id_num"), res.getString("title"), res.getString("fname"),
-                            res.getString("lname"), res.getString("gender"), res.getString("id_no"), res.getString("kids_num"),
+                            res.getString("lname"), res.getString("gender"), res.getString("id_no"), res.getString("children_num"),
                             res.getString("maritial_status"), res.getString("date_joined"), res.getString("dob"),
-                            res.getString("address"), res.getString("surbub"), res.getString("landline"),
-                            res.getString("work_num"), res.getString("cell_num"), res.getString("employer"),
+                            res.getString("address"), res.getString("surbub"), res.getString("home_phone"),
+                            res.getString("work_phone"), res.getString("mobile_phone"), res.getString("employer"),
                             res.getString("position"), res.getString("email"), res.getString("home_group_leader"),
-                            res.getString("dept_leader"), res.getString("dept"), res.getString("salvation"),
-                            res.getString("water_bapt"), res.getString("spirit_bapt")));
+                            res.getString("department_leader"), res.getString("department"), res.getString("salvation"),
+                            res.getString("water_baptism"), res.getString("spirit_baptism")));
                 }
                 // TODO:Error still triggered even if results are found
                 // if(!res.next()){
@@ -391,7 +370,6 @@ public class Table_View implements Initializable {
                 // }
             } catch (Exception e) {
                 alertBox.showMFXAlert(owner, "System Error", "Nothing matches your search", AlertModule.dialogType.ERR, BP);
-
                 System.out.println(e);
                 System.out.println("Nothing found");
             }
@@ -405,8 +383,8 @@ public class Table_View implements Initializable {
     public void addScreen() {
         try {
 
-            scene_switcher.user_add_rec();
-            update.updateBtn(false);
+//            scene_switcher.add_scene();
+            update.updateBtn(true);
             loadTable();
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -416,14 +394,13 @@ public class Table_View implements Initializable {
     }
 
     public void deleteRow() {
-        ObservableList<MemberModel> allRows, selectedRow;
+        ObservableList<MemberModel> selectedRow, allRows;
         allRows = psqlTable.getItems();
         selectedRow = psqlTable.getSelectionModel().getSelectedItems();
+
         String id_ = psqlTable.getSelectionModel().getSelectedItem().getID();
-
         System.out.println(id_);
-        sqlite.delete_row_by_id(id_);
-
+        sqlite.delete_row_by_id_kids(id_);
         selectedRow.forEach(allRows::remove);
     }
 
@@ -447,10 +424,10 @@ public class Table_View implements Initializable {
      * record then displays it on the side panel for update.
      */
 
-    private void mouse_listener() {
+    public void mouse_listener() {
         psqlTable.getSelectionModel().selectedItemProperty().addListener((obs, old_selection, new_selection) -> {
             title_.setText(new_selection.getTitle());
-            name_.setText(new_selection.getFname() + new_selection.getLname());
+            name_.setText(new_selection.getFname());
             gender_.setText(new_selection.getSex());
             idNo_.setText(new_selection.getID_Num());
             children_No_.setText(new_selection.getChildrenNo_());
@@ -481,11 +458,10 @@ public class Table_View implements Initializable {
     @FXML
     private void confirm_update() {
         try {
-            // TODO: Fix this function
             alertBox.showMFXAlert(owner, "Action Completed", "Record updated successfully", AlertModule.dialogType.INFO, BP);
             reloadBtn();
         } catch (Exception e) {
-            alertBox.showMFXAlert(owner, "Action Failed", "Failed to add record", AlertModule.dialogType.ERR, BP);
+            alertBox.showMFXAlert(owner, "Action Failed", "Failed to update record", AlertModule.dialogType.ERR, BP);
             e.getMessage();
             e.printStackTrace();
         }
@@ -509,7 +485,7 @@ public class Table_View implements Initializable {
 
     @FXML
     private void delete_by_name_btn() {
-
+//        scene_switcher.bulk_delete_scene();
     }
 
     @FXML
@@ -521,7 +497,7 @@ public class Table_View implements Initializable {
             psqlTable.setItems(records);
         } catch (Exception e) {
             e.printStackTrace();
-            alertBox.showMFXAlert(owner, "Action Error", "Unable to complete search", AlertModule.dialogType.ERR, BP);
+            alertBox.showMFXAlert(owner, "Search failed", "Unable to complete search", AlertModule.dialogType.ERR, BP);
         }
     }
 
@@ -634,13 +610,11 @@ public class Table_View implements Initializable {
     @FXML
     private void switch_user() {
         psqlTable.getScene().getWindow().hide();
-        scene_switcher.kids_records_Admin();
+        scene_switcher.admin_rec_scene();
     }
 
     @FXML
     private void exitBtn(ActionEvent event) {
         App.closeApp();
     }
-
 }
-

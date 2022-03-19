@@ -2,30 +2,30 @@ package com.cm.cm.modals;
 
 public class MemberModel {
 
-    public String ID = new String();
-    public String fname = new String();
-    public String lname = new String();
-    public String Title = new String();
-    public String Address = new String();
-    public String DOB = new String();
-    public String Datejoined = new String();
-    public String Dept = new String();
-    public String deptLeader_ = new String();
-    public String HomeGroup = new String();
-    public String HomePhone = new String();
-    public String ID_Num = new String();
-    public String childrenNo_ = new String();
-    public String M_status = new String();
-    public String cellNumber = new String();
-    public String Email = new String();
-    public String Salvation = new String();
-    public String Sex = new String();
-    public String waterBapt = new String();
-    public String SpiritBapt = new String();
-    public String Surbub = new String();
-    public String WorkPhone = new String();
-    public String Employer_ = new String();
-    public String Position_ = new String();
+    public String ID;
+    public String fname;
+    public String lname;
+    public String Title;
+    public String Address;
+    public String DOB;
+    public String Datejoined;
+    public String Dept;
+    public String deptLeader_;
+    public String HomeGroup;
+    public String HomePhone;
+    public String ID_Num;
+    public String childrenNo_;
+    public String M_status;
+    public String cellNumber;
+    public String Email;
+    public String Salvation;
+    public String Sex;
+    public String waterBapt;
+    public String SpiritBapt;
+    public String Surbub;
+    public String WorkPhone;
+    public String Employer_;
+    public String Position_;
 
     public String getID() {
         return this.ID;

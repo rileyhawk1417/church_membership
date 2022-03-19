@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
 import javafx.stage.Window;
 import io.github.palexdev.materialfx.controls.*;
 import javafx.scene.layout.GridPane;
@@ -18,6 +17,9 @@ import java.util.ResourceBundle;
 public class Insert_update implements Initializable {
 
     Sqlite sqlite = new Sqlite();
+    AlertModule alertBox = new AlertModule();
+    Kids_Table_View kidsTable = new Kids_Table_View();
+    Table_View adultTable = new Table_View();
 
     @FXML
     private GridPane gridPane;
@@ -101,9 +103,6 @@ public class Insert_update implements Initializable {
     @FXML
     private MFXComboBox<String> baptismBox_2;
 
-
-
-    // Weekdays
     String titles[] = { "Mr", "Mrs", "Miss" };
 
     String maritial_status_[] = { "Single", "Married" };
@@ -130,18 +129,8 @@ public class Insert_update implements Initializable {
 
     String bools[] = { "Yes", "No" };
 
-    int year = 2024;
-    int month = 12;
-    int dayOfMonth = 02;
-    // Create a combo box
-    //   ComboBox combo_box = new ComboBox(
-    //     FXCollections.observableArrayList(week_days)
-    //   );
-
     ObservableList<String> title = FXCollections.observableArrayList(titles);
-    ObservableList<String> status = FXCollections.observableArrayList(
-            maritial_status_
-    );
+    ObservableList<String> status = FXCollections.observableArrayList(maritial_status_);
     ObservableList<String> sex = FXCollections.observableArrayList(gender);
     ObservableList<String> region = FXCollections.observableArrayList(surbubs);
     ObservableList<String> dep = FXCollections.observableArrayList(deps);
@@ -157,8 +146,6 @@ public class Insert_update implements Initializable {
         salvationBox.setItems(truths);
         baptismBox_1.setItems(truths);
         baptismBox_2.setItems(truths);
-
-//        updateBtn();
     }
 
     @FXML
@@ -182,12 +169,7 @@ public class Insert_update implements Initializable {
     public void grabTxtAdults(Window owner) {
         try {
             if (fnameBox.getText().isEmpty() || lnameBox.getText().isEmpty()) {
-                AlertModule.showAlert(
-                        Alert.AlertType.ERROR,
-                        owner,
-                        "Input Error",
-                        "Please enter all fields"
-                );
+                alertBox.showMFXAlert(owner, "Input Error", "Please Enter all fields", AlertModule.dialogType.ERR, gridPane);
             } else {
                 sqlite.insertValues(
                         titleBox.getValue(),
@@ -214,27 +196,12 @@ public class Insert_update implements Initializable {
                         baptismBox_1.getValue(),
                         baptismBox_2.getValue()
                 );
-                // System.out.println(dob.getValue() + " " + dateJoined.getValue());
-                AlertModule.showAlert(
-                        Alert.AlertType.INFORMATION,
-                        owner,
-                        "Record Added",
-                        "Record added successfully"
-                );
-                // TODO cannot auto reload results after entry
-                // TODO Reload is done manually after window closes
-                // TableCtrl.reloadTable();;
+                alertBox.showMFXAlert(owner, "Record Added", "Recorded Successfully Added", AlertModule.dialogType.INFO, gridPane);
+                adultTable.loadTable();
                 insert_update.getScene().getWindow().hide();
             }
-            // choiceSelector();
-
         } catch (Exception e) {
-            AlertModule.showAlert(
-                    Alert.AlertType.ERROR,
-                    owner,
-                    "System Error",
-                    "Something is broken :("
-            );
+            alertBox.showMFXAlert(owner, "System Error", "Could not add record", AlertModule.dialogType.ERR, gridPane);
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -243,12 +210,7 @@ public class Insert_update implements Initializable {
     public void grabTxtKids(Window owner) {
         try {
             if (fnameBox.getText().isEmpty() || lnameBox.getText().isEmpty()) {
-                AlertModule.showAlert(
-                        Alert.AlertType.ERROR,
-                        owner,
-                        "Input Error",
-                        "Please enter all fields"
-                );
+                alertBox.showMFXAlert(owner, "Input Error", "Please Enter all fields", AlertModule.dialogType.ERR, gridPane);
             } else {
                 sqlite.insertValuesKids(
                         titleBox.getValue(),
@@ -275,27 +237,12 @@ public class Insert_update implements Initializable {
                         baptismBox_1.getValue(),
                         baptismBox_2.getValue()
                 );
-                // System.out.println(dob.getValue() + " " + dateJoined.getValue());
-                AlertModule.showAlert(
-                        Alert.AlertType.INFORMATION,
-                        owner,
-                        "Record Added",
-                        "Record added successfully"
-                );
-                // TODO cannot auto reload results after entry
-                // TODO Reload is done manually after window closes
-                // TableCtrl.reloadTable();;
+                alertBox.showMFXAlert(owner, "Record Added", "Recorded Successfully Added", AlertModule.dialogType.INFO, gridPane);
+                kidsTable.loadTable();
                 insert_update.getScene().getWindow().hide();
             }
-            // choiceSelector();
-
         } catch (Exception e) {
-            AlertModule.showAlert(
-                    Alert.AlertType.ERROR,
-                    owner,
-                    "System Error",
-                    "Something is broken :("
-            );
+            alertBox.showMFXAlert(owner, "System Error", "Could not add record", AlertModule.dialogType.ERR, gridPane);
             System.out.println(e.getMessage());
             e.printStackTrace();
         }

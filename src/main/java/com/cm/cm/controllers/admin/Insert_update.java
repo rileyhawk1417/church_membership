@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 public class Insert_update implements Initializable {
 
     Sqlite sqlite = new Sqlite();
+    AlertModule alertBox = new AlertModule();
 
     @FXML
     private GridPane gridPane;
@@ -185,12 +186,7 @@ public class Insert_update implements Initializable {
     public void grabTxtAdults(Window owner) {
         try {
             if (fnameBox.getText().isEmpty() || lnameBox.getText().isEmpty()) {
-                AlertModule.showAlert(
-                        Alert.AlertType.ERROR,
-                        owner,
-                        "Input Error",
-                        "Please enter all fields"
-                );
+                alertBox.showMFXAlert(owner, "Input Error", "Please enter all fields", AlertModule.dialogType.ERR, gridPane);
             } else {
                 sqlite.insertValues(
                         titleBox.getValue(),
@@ -218,26 +214,16 @@ public class Insert_update implements Initializable {
                         baptismBox_2.getValue()
                 );
                 // System.out.println(dob.getValue() + " " + dateJoined.getValue());
-                AlertModule.showAlert(
-                        Alert.AlertType.INFORMATION,
-                        owner,
-                        "Record Added",
-                        "Record added successfully"
-                );
-                // TODO cannot auto reload results after entry
-                // TODO Reload is done manually after window closes
-                // TableCtrl.reloadTable();;
+                alertBox.showMFXAlert(owner, "Record Added", "Record added successfully", AlertModule.dialogType.INFO, gridPane);
+                //TODO: Add adult or kids table view
                 insert_update.getScene().getWindow().hide();
             }
             // choiceSelector();
 
         } catch (Exception e) {
-            AlertModule.showAlert(
-                    Alert.AlertType.ERROR,
-                    owner,
-                    "System Error",
-                    "Something is broken :("
-            );
+            alertBox.showMFXAlert(owner, "Action Failed", "Failed To add record", AlertModule.dialogType.ERR, gridPane);
+
+
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -246,12 +232,7 @@ public class Insert_update implements Initializable {
     public void grabTxtKids(Window owner) {
         try {
             if (fnameBox.getText().isEmpty() || lnameBox.getText().isEmpty()) {
-                AlertModule.showAlert(
-                        Alert.AlertType.ERROR,
-                        owner,
-                        "Input Error",
-                        "Please enter all fields"
-                );
+                alertBox.showMFXAlert(owner, "Input Error", "Please enter all fields", AlertModule.dialogType.ERR, gridPane);
             } else {
                 sqlite.insertValuesKids(
                         titleBox.getValue(),
@@ -278,27 +259,12 @@ public class Insert_update implements Initializable {
                         baptismBox_1.getValue(),
                         baptismBox_2.getValue()
                 );
-                // System.out.println(dob.getValue() + " " + dateJoined.getValue());
-                AlertModule.showAlert(
-                        Alert.AlertType.INFORMATION,
-                        owner,
-                        "Record Added",
-                        "Record added successfully"
-                );
-                // TODO cannot auto reload results after entry
-                // TODO Reload is done manually after window closes
-                // TableCtrl.reloadTable();;
+                alertBox.showMFXAlert(owner, "Record Added", "Record added successfully", AlertModule.dialogType.INFO, gridPane);
                 insert_update.getScene().getWindow().hide();
             }
-            // choiceSelector();
 
         } catch (Exception e) {
-            AlertModule.showAlert(
-                    Alert.AlertType.ERROR,
-                    owner,
-                    "System Error",
-                    "Something is broken :("
-            );
+            alertBox.showMFXAlert(owner, "System Error", "Failed to add record", AlertModule.dialogType.ERR, gridPane);
             System.out.println(e.getMessage());
             e.printStackTrace();
         }

@@ -54,20 +54,9 @@ public class AddUsers implements Initializable {
 
     private void selectTable(String selected_) {
         switch (selected_) {
-            case "admin_login" -> {
+            case "admin", "user_login" -> {
                 try {
-                    sqlite.insertUserAdmin(userName.getText(), passWord.getText());
-                    System.out.println("Admin User added" + userName.getText() + passWord.getText());
-                    submitBtn.getScene().getWindow().hide();
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-
-            case "user_login" -> {
-                try {
-                    sqlite.insertUser(userName.getText(), passWord.getText());
+                    sqlite.insertUser(userName.getText(), passWord.getText(), tables.getValue());
                     System.out.println("User added" + userName.getText() + passWord.getText());
                     submitBtn.getScene().getWindow().hide();
                 } catch (Exception e) {

@@ -1,6 +1,5 @@
 package com.cm.cm.database;
 
-
 import java.sql.*;
 
 public class Sqlite {
@@ -10,56 +9,16 @@ public class Sqlite {
         return DriverManager.getConnection(db);
     }
 
-    public boolean check(String search) throws SQLException {
-        String QUERY = "SELECT * FROM user_login WHERE name LIKE ?";
+    public boolean validateUser(String user, String pass, String userType) throws SQLException {
+
+        String QUERY = "SELECT * FROM user_login WHERE user_name = ? AND password = ? AND user_type = ?";
 
         try (Connection conn = connector();
 
-             PreparedStatement pstmt = conn.prepareStatement(QUERY);) {
-
-            ResultSet res = pstmt.executeQuery();
-            if (res.next()) {
-                return true;
-            }
-
-        } catch (SQLException e) {
-            printSQLException(e);
-            // TODO: handle exception
-        }
-        return false;
-    }
-
-    public boolean validateAdmin(String user, String pass) throws SQLException {
-
-        String QUERY = "SELECT * FROM admin_login WHERE user_name = ? AND password = ? ";
-
-        try (Connection conn = Sqlite.connector();
-
-             PreparedStatement pstmt = conn.prepareStatement(QUERY);) {
+             PreparedStatement pstmt = conn.prepareStatement(QUERY)) {
             pstmt.setString(1, user);
             pstmt.setString(2, pass);
-
-            ResultSet res = pstmt.executeQuery();
-            if (res.next()) {
-                return true;
-            }
-
-        } catch (SQLException e) {
-            printSQLException(e);
-            // TODO: handle exception
-        }
-        return false;
-    }
-
-    public boolean validateUser(String user, String pass) throws SQLException {
-
-        String QUERY = "SELECT * FROM user_login WHERE name = ? AND password = ? ";
-
-        try (Connection conn = connector();
-
-             PreparedStatement pstmt = conn.prepareStatement(QUERY);) {
-            pstmt.setString(1, user);
-            pstmt.setString(2, pass);
+            pstmt.setString(3, userType);
 
             ResultSet res = pstmt.executeQuery();
             if (res.next()) {
@@ -119,8 +78,10 @@ public class Sqlite {
         }
     }
 
-    public void insertUserAdmin(String userName, String passWord){
-        String sql = "INSERT OR IGNORE INTO admin_login (user_name, password) VALUES (?, ?)";
+
+
+    public void insertUser(String userName, String passWord, String userType){
+        String sql = "INSERT OR IGNORE INTO user_login (user_name, password, user_type) VALUES (?, ?, ?)";
 
         try{
             Connection conn = connector();
@@ -128,6 +89,7 @@ public class Sqlite {
 
             pstmt.setString(1, userName);
             pstmt.setString(2, passWord);
+            pstmt.setString(3, userType);
 
             pstmt.execute();
         } catch(SQLException e){
@@ -136,46 +98,16 @@ public class Sqlite {
         }
     }
 
-    public void insertUser(String userName, String passWord){
-        String sql = "INSERT OR IGNORE INTO user_login (user_name, password) VALUES (?, ?)";
 
-        try{
-            Connection conn = connector();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-
-            pstmt.setString(1, userName);
-            pstmt.setString(2, passWord);
-
-            pstmt.execute();
-        } catch(SQLException e){
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteUserAdmin(String id){
-        String sql = "DELETE FROM admin_login WHERE id = ?";
+    public void deleteUser(String id, String userType){
+        String sql = "DELETE FROM user_login WHERE id = ? AND user_type = ?";
 
         try{
             Connection conn = connector();
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, id);
-            pstmt.execute();
-        } catch(SQLException e){
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteUser(String id){
-        String sql = "DELETE FROM user_login WHERE id =?";
-
-        try{
-            Connection conn = connector();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-
-            pstmt.setString(1, id);
+            pstmt.setString(2, userType);
             pstmt.execute();
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -358,27 +290,6 @@ public class Sqlite {
 
     }
 
-    // public void updateValues( String name, String detail, String units_used,
-    // String units_left, String unit_price, String restock, String id){
-    // String update = "UPDATE ace_hardware SET name=?, detail=?, units_used=?,
-    // units_left=?, unit_price=?, restock=? WHERE id=?";
-    // try{
-    // Connection conn = connector();
-    // PreparedStatement pstmt = conn.prepareStatement(update);
-    // pstmt.setString(1, name);
-    // pstmt.setString(2, detail);
-    // pstmt.setString(3, units_used);
-    // pstmt.setString(4, units_left);
-    // pstmt.setString(5, unit_price);
-    // pstmt.setString(6, restock);
-    // pstmt.setString(7, id);
-
-    // pstmt.execute();
-    // } catch(SQLException e){
-    // System.out.println(e.getMessage());
-    // e.printStackTrace();
-    // }
-    // }
 
     public void delete_row_by_id(String id_) {
         String update = "DELETE FROM members WHERE id = ? ";
@@ -407,24 +318,6 @@ public class Sqlite {
             e.printStackTrace();
         }
     }
-
-    // TODO: Rewrite function to avoid deletion of names
-    public void delete_row_by_name(String name_) {
-        // String update = "DELETE FROM members WHERE name LIKE '" +name_ + "%'";
-
-        // try(
-        // Connection conn = connector();
-        // PreparedStatement pstmt = conn.prepareStatement(update);){
-        // // pstmt.setString(1, name_);
-
-        // pstmt.executeQuery();
-        // } catch(SQLException e){
-        // System.out.println(e.getMessage());
-        // e.printStackTrace();
-        // }
-        System.out.println("'Delete By Name' : Function needs to be fixed");
-    }
-
 
     public void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

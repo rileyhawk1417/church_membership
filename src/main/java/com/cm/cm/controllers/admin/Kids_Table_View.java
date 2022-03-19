@@ -43,9 +43,10 @@ public class Kids_Table_View implements Initializable {
     App app = new App();
     static String recordSize = "";
     Insert_update update = new Insert_update();
-
+    AlertModule alertBox = new AlertModule();
     Window owner = stage.getOwner();
     SceneCtrl scene_switcher = new SceneCtrl();
+    ExcelHelper excelFunc = new ExcelHelper();
 
     @FXML
     private ScrollPane scroll_pane;
@@ -314,7 +315,7 @@ public class Kids_Table_View implements Initializable {
         psqlTable.setItems(records);
     }
 
-    public static ObservableList<MemberModel> loadTable() {
+    public ObservableList<MemberModel> loadTable() {
         ObservableList<MemberModel> loadList = FXCollections.observableArrayList();
 
         try {
@@ -343,7 +344,7 @@ public class Kids_Table_View implements Initializable {
         return loadList;
     }
 
-    public static ObservableList<MemberModel> searchDB(String query, Window owner) {
+    public  ObservableList<MemberModel> searchDB(String query, Window owner) {
         ObservableList<MemberModel> queryList = FXCollections.observableArrayList();
         String search = "select * from kids_members WHERE fname LIKE '" + query + "%'";
         try (Connection conn = Sqlite.connector(); PreparedStatement pstmt = conn.prepareStatement(search);) {
@@ -368,7 +369,8 @@ public class Kids_Table_View implements Initializable {
                 // System.out.println("Search failed");
                 // }
             } catch (Exception e) {
-                AlertModule.showAlert(Alert.AlertType.ERROR, owner, "System Error", "Nothing matches your search");
+                alertBox.showMFXAlert(owner, "System Error", "Nothing matches your search", AlertModule.dialogType.INFO, BP);
+//                alertBox.showMFXAlert(owner, "System Error", "Nothing matches your search", AlertModule.dialogType.ERR, );
                 System.out.println(e);
                 System.out.println("Nothing found");
             }
@@ -382,7 +384,7 @@ public class Kids_Table_View implements Initializable {
     public void addScreen() {
         try {
 
-            scene_switcher.add_scene();
+            scene_switcher.admin_add_rec();
             update.updateBtn(true);
             loadTable();
         } catch (Exception e) {
@@ -392,15 +394,19 @@ public class Kids_Table_View implements Initializable {
         }
     }
 
-    public void deleteRow() {
+    @FXML
+    private void deleteRow() {
         ObservableList<MemberModel> selectedRow, allRows;
         allRows = psqlTable.getItems();
         selectedRow = psqlTable.getSelectionModel().getSelectedItems();
-
         String id_ = psqlTable.getSelectionModel().getSelectedItem().getID();
-        System.out.println(id_);
-        sqlite.delete_row_by_id_kids(id_);
+
+        deletePopup(id_);
         selectedRow.forEach(allRows::remove);
+    }
+
+    private void deletePopup(String id){
+        alertBox.deleteRecDialog(owner, AlertModule.dialogType.ERR, BP, id, "kids_members");
     }
 
     // File actions
@@ -457,15 +463,10 @@ public class Kids_Table_View implements Initializable {
     @FXML
     private void confirm_update() {
         try {
-            // TODO: Fix this function
-            // psql.updateValues(side_name_entry.getText(), side_detail_entry.getText(),
-            // side_units_used_entry.getText(), side_units_left_entry.getText(),
-            // side_unit_price_entry.getText(), side_restock_entry.getText(),
-            // side_id_entry.getText());
-            AlertModule.showAlert(Alert.AlertType.CONFIRMATION, owner, "Action Completed", "Record updated successfully");
+            //TODO: Grab selected values then push to add screen
             reloadBtn();
         } catch (Exception e) {
-            AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Failed to complete action", "Failed to update record");
+            alertBox.showMFXAlert(owner, "Failed to complete action", "Failed to update record", AlertModule.dialogType.ERR, BP);
             e.getMessage();
             e.printStackTrace();
         }
@@ -489,7 +490,7 @@ public class Kids_Table_View implements Initializable {
 
     @FXML
     private void delete_by_name_btn() {
-        scene_switcher.bulk_delete_scene();
+
     }
 
     @FXML
@@ -501,11 +502,10 @@ public class Kids_Table_View implements Initializable {
             psqlTable.setItems(records);
         } catch (Exception e) {
             e.printStackTrace();
-            AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Action Error", "Unable to complete search");
+            alertBox.showMFXAlert(owner, "Action Error", "Unable to complete search", AlertModule.dialogType.ERR, BP);
         }
     }
 
-    // TODO cannot make static reference to FXML as they would crash program
     // @FXML
     private void reloadBtn() {
         // Clear current view then load results
@@ -528,7 +528,7 @@ public class Kids_Table_View implements Initializable {
     @FXML
     private void export_rec(ActionEvent event) throws IOException {
         Window owner = psqlTable.getScene().getWindow();
-        ExcelHelper.exportToExcel(owner);
+        excelFunc.exportToExcel(owner);
     }
 
     @FXML

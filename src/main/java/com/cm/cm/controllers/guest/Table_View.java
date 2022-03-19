@@ -1,21 +1,19 @@
-package com.cm.cm.controllers.user;
+package com.cm.cm.controllers.guest;
 
 import com.cm.cm.app.App;
+import com.cm.cm.controllers.misc.ExcelHelper;
 import com.cm.cm.controllers.misc.SceneCtrl;
+import com.cm.cm.controllers.user.Insert_update;
 import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import com.cm.cm.modals.MemberModel;
-import com.cm.cm.controllers.misc.ExcelHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
@@ -27,7 +25,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import javafx.geometry.Insets;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -312,20 +309,6 @@ public class Table_View implements Initializable {
         return loadList;
     }
 
-    // public static String childrenSize(){
-    // try{Connection con = Psql.connector();
-
-    // Statement stmt = con.createStatement();
-    // ResultSet res = stmt.executeQuery("SELECT SUM (children_num) FROM members");
-    // ResultSetMetaData rs = res.getMetaData();
-    // int children =
-    // } catch (Exception e){
-    // e.printStackTrace();
-    // };
-
-    // return children = childrenSize;
-    // }
-
     private void setUpTable(){
 
         id_.setCellValueFactory(new PropertyValueFactory<MemberModel, String>("ID"));
@@ -391,7 +374,6 @@ public class Table_View implements Initializable {
                 // }
             } catch (Exception e) {
                 alertBox.showMFXAlert(owner, "System Error", "Nothing matches your search", AlertModule.dialogType.ERR, BP);
-
                 System.out.println(e);
                 System.out.println("Nothing found");
             }
@@ -405,7 +387,7 @@ public class Table_View implements Initializable {
     public void addScreen() {
         try {
 
-            scene_switcher.user_add_rec();
+//            scene_switcher.add_scene();
             update.updateBtn(false);
             loadTable();
         } catch (Exception e) {
@@ -481,8 +463,7 @@ public class Table_View implements Initializable {
     @FXML
     private void confirm_update() {
         try {
-            // TODO: Fix this function
-            alertBox.showMFXAlert(owner, "Action Completed", "Record updated successfully", AlertModule.dialogType.INFO, BP);
+            alertBox.showMFXAlert(owner, "Action Completed", "Successfully Added Record", AlertModule.dialogType.INFO, BP);
             reloadBtn();
         } catch (Exception e) {
             alertBox.showMFXAlert(owner, "Action Failed", "Failed to add record", AlertModule.dialogType.ERR, BP);
@@ -509,7 +490,7 @@ public class Table_View implements Initializable {
 
     @FXML
     private void delete_by_name_btn() {
-
+//        scene_switcher.bulk_delete_scene();
     }
 
     @FXML

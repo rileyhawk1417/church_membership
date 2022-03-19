@@ -3,8 +3,14 @@ package com.cm.cm.controllers.misc;
 import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.Window;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -13,6 +19,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.*;
 import java.nio.file.*;
 import java.sql.*;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,8 +30,12 @@ import java.util.logging.Logger;
  */
 
 public class ExcelHelper {
+    
+    Stage stage = new Stage();
+    AlertModule diag = new AlertModule();
 
-    public static void exportToExcelAdults(Window owner){
+
+    public void exportToExcelAdults(Window owner, Pane ownerPane){
         try {
 //Fix function to export to excel whether kids table or adults table
             String query = "SELECT * FROM members";
@@ -150,9 +161,11 @@ public class ExcelHelper {
                         Files.copy(src, dest, REPLACE_EXISTING, COPY_ATTRIBUTES, NOFOLLOW_LINKS);
                         Files.delete(src);
                     } catch (IOException e){
+                        diag.showMFXAlert(owner, "Export Failed", "Failed to export database", AlertModule.dialogType.ERR, ownerPane ); //Recheck with IDE
                         e.printStackTrace();
                     }
                 } catch(IOException e){
+                    diag.showMFXAlert(owner, "Export Failed", "Failed to write to file", AlertModule.dialogType.ERR, ownerPane ); //Recheck with IDE
                     e.printStackTrace();
 
                 }
@@ -168,7 +181,7 @@ public class ExcelHelper {
         }
     }
 
- public static void exportToExcelKids(Window owner) {
+ public void exportToExcelKids(Window owner, Pane ownerPane) {
      try {
 //Fix function to export to excel whether kids table or adults table
          String query = "SELECT * FROM kids_members";
@@ -294,9 +307,12 @@ public class ExcelHelper {
                      Files.copy(src, dest, REPLACE_EXISTING, COPY_ATTRIBUTES, NOFOLLOW_LINKS);
                      Files.delete(src);
                  } catch (IOException e) {
+                     diag.showMFXAlert(owner, "Export Failed", "Failed to export database", AlertModule.dialogType.ERR, ownerPane ); //Recheck with IDE
+
                      e.printStackTrace();
                  }
              } catch (IOException e) {
+                 diag.showMFXAlert(owner, "Export Failed", "Failed to export database", AlertModule.dialogType.ERR, ownerPane ); //Recheck with IDE
                  e.printStackTrace();
 
              }
@@ -312,15 +328,14 @@ public class ExcelHelper {
      }
  }
 
-    public static void importToDBKids(Window owner) {
+    public void importToDBKids(Window owner, Pane ownerPane) {
         try {
-            //Fix DB values
-            String query = "INSERT INTO kids_members (title, fname, lname, gender, id_no, children_num, maritial_status, date_joined, dob, address, surbub, home_phone, work_phone, mobile_phone, employer, position, email, home_group_leader, department_leader, department, salvation, water_baptism, spirit_baptism)"
+            String query = "INSERT INTO kids_members (title, fname, lname, gender, id_no, kids_num, maritial_status, date_joined, dob, address, surbub, landline, work_num, cell_num, employer, position, email, home_group_leader, dept_leader, dept, salvation, water_bapt, spirit_bapt)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
             Connection conn = Sqlite.connector();
-            PreparedStatement pst = conn.prepareStatement(query);
-            ResultSet res = conn.createStatement().executeQuery(query);
+            PreparedStatement statement = conn.prepareStatement(query);
+//            ResultSet res = conn.createStatement().executeQuery(query);
 
             //TODO: Use file chooser to get absolute path and load custom File
             /*
@@ -374,67 +389,153 @@ public class ExcelHelper {
 
             */
 
-            //TODO: Fix input stream
-            FileInputStream fileIn = new FileInputStream(new File("UserInfo.xlsx"));
+            //Reference Code
+/*
+            try {
+            int batchSize = 20;
+            Connection connection = null;
 
-            XSSFWorkbook wb = new XSSFWorkbook(fileIn);
-            XSSFSheet sheet = wb.getSheetAt(0);
-            XSSFRow row;
-            for(int i=1; i<=sheet.getLastRowNum(); i++){
-                row = sheet.getRow(i);
-                pst.setInt(1, (int) row.getCell(0).getNumericCellValue());
-                pst.setString(2, row.getCell(1).getStringCellValue());
-                pst.setString(3, row.getCell(2).getStringCellValue());
-                pst.setString(4, row.getCell(3).getStringCellValue());
-                pst.setString(5, row.getCell(4).getStringCellValue());
-                pst.setString(6, row.getCell(5).getStringCellValue());
-                pst.setString(7, row.getCell(6).getStringCellValue());
-                pst.setString(8, row.getCell(7).getStringCellValue());
-                pst.setString(9, row.getCell(8).getStringCellValue());
-                pst.setString(10, row.getCell(9).getStringCellValue());
-                pst.setString(11, row.getCell(10).getStringCellValue());
-                pst.setString(12, row.getCell(11).getStringCellValue());
-                pst.setString(13, row.getCell(12).getStringCellValue());
-                pst.setString(14, row.getCell(13).getStringCellValue());
-                pst.setString(15, row.getCell(14).getStringCellValue());
-                pst.setString(16, row.getCell(15).getStringCellValue());
-                pst.setString(17, row.getCell(16).getStringCellValue());
-                pst.setString(18, row.getCell(17).getStringCellValue());
-                pst.setString(19, row.getCell(18).getStringCellValue());
-                pst.setString(20, row.getCell(19).getStringCellValue());
-                pst.setString(21, row.getCell(20).getStringCellValue());
-                pst.setString(22, row.getCell(21).getStringCellValue());
-                pst.setString(23, row.getCell(22).getStringCellValue());
-                pst.setString(24, row.getCell(23).getStringCellValue());
-                pst.setString(25, row.getCell(24).getStringCellValue());
-                pst.execute();
+            long start = System.currentTimeMillis();
+            FileInputStream inputStream = new FileInputStream(filePath);
+            Workbook workbook = new XSSFWorkbook(inputStream);
+
+            sheet firstSheet = workbook.getSheetAt(0);
+            Itertator<Row> rowIterator = firstSheet.iterator();
+            
+            connection = DriverManager.getConnection(jdbcURL, username, password);
+            connection.setAutoCommit(false);
+            
+String sql = "INSERT INTO students (name, enrolled, progress) VALUES (?, ?, ?)";
+            PreparedStatement = statement = connection.prepareStatement(sql);
+            int count = 0;
+            rowIterator.next(); //skip header row
+            while (rowIterator.hasNext()){
+            Row nextRow = rowIterator.next();
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+            while (cellIterator.hasNext()){
+            Cell nextCell = cellIterator.next();
+            int columnIndex = nextCell.getColumnIndex();
+
+            switch (columnIndex){
+                case 0:
+                    String name = nextCell.getStringCellValue();
+                    statement.setString(1, name);
+                    break;
+                case 1:
+                    Date enrollDate = nextCell.getStringCellValue();
+                    statement.setString (1, new Timestamp(enrollDate.getTime()));
+                case 2:
+                    int progress = (int) nextCell.getNumericCellValue();
+                    statement.setInt(3, progress);
+                }            
+            }    
+            statement.addBatch();
+
+            if (count % batchSize == 0){
+                statement.executeBatch();            
             }
-            //TODO: Replace dialog with popup Model
-//            Alert alert = new Alert(AlertType.INFORMATION);
-//            alert.setTitle("Information Dialog");
-//            alert.setHeaderText(null);
-//            alert.setContentText("User Details Imported From Excel Sheet To Database.");
-//            alert.showAndWait();
+        }
+        worbook.close();
+        statement.executeBatch(); //Execute remaining batch tasks
+        connection.commit();
+        connection.close();
+}
+*/
 
-            wb.close();
-            fileIn.close();
-            pst.close();
-            res.close();
-        } catch (SQLException | FileNotFoundException ex) {
-            //TODO: Fix loggers
-                            AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Program Error", "Database Error");
-            Logger.getLogger(ExcelHelper.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-                                        AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Program Error", "File I/O Error");
-            Logger.getLogger(ExcelHelper.class.getName()).log(Level.SEVERE, null, ex);
+            //TODO: Fix input stream
+            FileInputStream fileIn = new FileInputStream(new File("sample.xlsx"));
+
+            long start = System.currentTimeMillis();
+            Workbook workbook = new XSSFWorkbook(fileIn);
+
+            Sheet getSheet = workbook.getSheetAt(0);
+            Iterator<Row> rowIterator = getSheet.iterator();
+            conn.setAutoCommit(false);
+            int count = 0;
+            rowIterator.next();
+            while(rowIterator.hasNext()){
+                Row nextRow = rowIterator.next();
+                Iterator<Cell> cellIterator = nextRow.cellIterator();
+                while(cellIterator.hasNext()){
+                    Cell nextCell = cellIterator.next();
+                    int columnIndex = nextCell.getColumnIndex();
+
+                    switch(columnIndex){
+                        case 0:
+                            String fname = nextCell.getStringCellValue();
+                            statement.setString(1, fname);
+                            break;
+                        case 1:
+                            String lname = nextCell.getStringCellValue();
+                            statement.setString(2, lname);
+                        case 2:
+                            String gender = nextCell.getStringCellValue();
+                            statement.setString(3, gender);
+                        case 3:
+                            String id_ = nextCell.getStringCellValue();
+                            statement.setString(4, id_);
+                        case 4:
+                            String no_kids = nextCell.getStringCellValue();
+                            statement.setString(5, no_kids);
+                        case 5:
+                            String mStatus = nextCell.getStringCellValue();
+                            statement.setString(6, mStatus);
+                        case 6:
+                            String dateJoined = nextCell.getStringCellValue();
+                            statement.setString(7, dateJoined);
+                        case 7:
+                            String dob_ = nextCell.getStringCellValue();
+                            statement.setString(8, dob_);
+                        case 8:
+                            String address_ = nextCell.getStringCellValue();
+                            statement.setString(9, address_);
+                        case 9:
+                            String surbub_ = nextCell.getStringCellValue();
+                            statement.setString(10, surbub_);
+                        case 10:
+                            String cell_ = nextCell.getStringCellValue();
+                            statement.setString(11, cell_);
+                        case 11:
+                            String employer_ = nextCell.getStringCellValue();
+                            statement.setString(12, employer_);
+                        case 12:
+                            String email_ = nextCell.getStringCellValue();
+                            statement.setString(13, email_);
+                        case 13:
+                            String cell_leader = nextCell.getStringCellValue();
+                            statement.setString(14, cell_leader);
+                        case 14:
+                            String depLeader = nextCell.getStringCellValue();
+                            statement.setString(15, depLeader);
+                        case 15:
+                            String dept = nextCell.getStringCellValue();
+                            statement.setString(16, dept);
+                        case 16:
+                            String salvation_ = nextCell.getStringCellValue();
+                            statement.setString(17, salvation_);
+
+
+                    }
+                }
+            }
+
+            diag.showMFXAlert(owner, "Sucess", "Imported Database", AlertModule.dialogType.INFO, ownerPane);
+
+            } catch (FileNotFoundException ex) {
+               //TODO: Fix loggers
+
+               diag.showMFXAlert(owner, "Import Failed", "Failed to import database", AlertModule.dialogType.ERR, ownerPane ); //Recheck with IDE
+               Logger.getLogger(ExcelHelper.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
         }
     }
 
 
-    public static void importToDBAdults (Window owner) {
+    public void importToDBAdults (Window owner, Pane ownerPane) {
         try {
-            //Fix DB values
-            String query = "INSERT INTO kids_members (title, fname, lname, gender, id_no, children_num, maritial_status, date_joined, dob, address, surbub, home_phone, work_phone, mobile_phone, employer, position, email, home_group_leader, department_leader, department, salvation, water_baptism, spirit_baptism)"
+
+            String query = "INSERT INTO kids_members (title, fname, lname, gender, id_no, kids_num, maritial_status, date_joined, dob, address, surbub, landline, work_num, cell_num, employer, position, email, home_group_leader, dept_leader, dept, salvation, water_bapt, spirit_bapt)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
             Connection conn = Sqlite.connector();
@@ -442,7 +543,7 @@ public class ExcelHelper {
             ResultSet res = conn.createStatement().executeQuery(query);
 
             //TODO: Fix input stream
-            FileInputStream fileIn = new FileInputStream(new File("UserInfo.xlsx"));
+            FileInputStream fileIn = new FileInputStream(new File("sample.xlsx"));
 
             XSSFWorkbook wb = new XSSFWorkbook(fileIn);
             XSSFSheet sheet = wb.getSheetAt(0);
@@ -476,28 +577,22 @@ public class ExcelHelper {
                 pst.setString(25, row.getCell(24).getStringCellValue());
                 pst.execute();
             }
-            //TODO: Replace dialog with popup Model
-//            Alert alert = new Alert(AlertType.INFORMATION);
-//            alert.setTitle("Information Dialog");
-//            alert.setHeaderText(null);
-//            alert.setContentText("User Details Imported From Excel Sheet To Database.");
-//            alert.showAndWait();
-
+            diag.showMFXAlert(owner, "Sucess", "Imported Database", AlertModule.dialogType.INFO, ownerPane);
             wb.close();
             fileIn.close();
             pst.close();
             res.close();
         } catch (SQLException | FileNotFoundException ex) {
             //TODO: Fix loggers
-                            AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Program Error", "Database Error");
+            diag.showMFXAlert(owner, "Import Failed", "Failed to import database", AlertModule.dialogType.ERR, ownerPane ); //Recheck with IDE
             Logger.getLogger(ExcelHelper.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-                                        AlertModule.showAlert(Alert.AlertType.ERROR, owner, "Program Error", "File I/O Error");
+            diag.showMFXAlert(owner, "Import Failed", "Failed to read from file", AlertModule.dialogType.ERR, ownerPane ); //Recheck with IDE
             Logger.getLogger(ExcelHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void exportToExcel(Window owner) {
+    public void exportToExcel(Window owner) {
     }
 }
 

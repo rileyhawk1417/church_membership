@@ -1,27 +1,27 @@
 package com.cm.cm.app;
 
 import com.cm.cm.controllers.misc.SceneCtrl;
-//import main.java.com.c_m.cm.database.Sqlite;
+import com.cm.cm.database.SqliteSetup;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
+import com.dansoftware.pdfdisplayer.PDFDisplayer;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class App extends Application {
-
-    //    public static Stage stage = new Stage();
-//    public static Sqlite database = new Sqlite();
     SceneCtrl scene_switcher = new SceneCtrl();
+    Stage stage = new Stage();
 
     @Override
     public void start(Stage stage) throws Exception {
-        // scene_switcher.rec_scene();
         scene_switcher.decision_scene();
     }
 
     public static void main(String[] args) throws SQLException {
-//        Sqlite.main(args);
+        SqliteSetup.main(args);
         launch(args);
     }
 
@@ -30,16 +30,15 @@ public class App extends Application {
     }
 
     public void manual_pdf(){
-//        PDFViewer pdf_ = new PDFViewer();
-//        try {
-//            pdf_.loadPDF(getClass().getResource("/resources/pdf/sample.pdf"));
-//            Scene pdf_manual = new Scene(pdf_);
-//            stage.setScene(pdf_manual);
-//            stage.show();
-//        } catch (PDFException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
+        PDFDisplayer pdf_ = new PDFDisplayer();
+        try {
+            pdf_.loadPDF(getClass().getResource("/resources/pdf/sample.pdf"));
+            Scene pdf_manual = new Scene(pdf_.toNode());
+            stage.setScene(pdf_manual);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void closeApp() {
