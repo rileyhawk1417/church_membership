@@ -3,13 +3,11 @@ module com.cm.cm {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
-
-
     requires java.sql;
-
-
+    requires org.update4j;
     requires org.apache.poi.ooxml;
     requires virtualizedfx;
+    requires PDFViewerFX;
 
     opens com.cm.cm.app to javafx.fxml;
     opens com.cm.cm.controllers.misc to javafx.fxml;
@@ -17,6 +15,7 @@ module com.cm.cm {
     opens com.cm.cm.controllers.admin to javafx.fxml;
     opens com.cm.cm.modals to javafx.base;
     opens com.cm.cm.database to javafx.base;
+    opens com.cm.cm.updater.config to javafx.base;
 
     exports com.cm.cm;
     exports com.cm.cm.app;
@@ -26,6 +25,7 @@ module com.cm.cm {
     exports com.cm.cm.database;
     exports com.cm.cm.modals;
     exports com.cm.cm.controllers.admin.usersCtrl;
+    exports com.cm.cm.updater.config;
     opens com.cm.cm.controllers.admin.usersCtrl to javafx.fxml;
 
 }
