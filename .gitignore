@@ -15,4 +15,7 @@ target/
 build
 target
 gradle
-src/main/java/com/cm/cm/updater
+src/main/resources/com/cm/cm/fxml/misc/update_window.fxml
+src/main/resources/com/cm/cm/fxml/misc/startup_view.fxml
+src/main/java/com/cm/cm/updateConfig
+target
