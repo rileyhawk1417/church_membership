@@ -12,6 +12,7 @@
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../../../css/ListViews.css"
             styleClass="grid-pane"
+            fx:id="Grid"
             fx:controller="com.cm.cm.controllers.admin.usersCtrl.userCtrl"
             prefHeight="400.0" prefWidth="800.0" vgap="20.0" hgap="20.0" alignment="CENTER">
 
@@ -25,8 +26,8 @@
         <RowConstraints minHeight="10.0" prefHeight="32.0"/>
         <RowConstraints minHeight="10.0" prefHeight="32.0"/>
     </rowConstraints>
-    <Label alignment="CENTER" text="Registered Users" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-    <MFXListView id="custList" fx:id="adminUserList" prefHeight="300" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="10">
+    <Label alignment="CENTER" text="Regular Users" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+    <MFXTableView  fx:id="userTable" prefHeight="300" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="10">
         <contextMenu>
             <ContextMenu>
                 <items>
@@ -38,24 +39,12 @@
         <GridPane.margin>
             <Insets bottom="5.0" />
         </GridPane.margin>
-    </MFXListView>
-    <MFXListView id="custList" fx:id="userList" prefHeight="300" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="10">
-        <contextMenu>
-            <ContextMenu>
-                <items>
-                    <MenuItem fx:id="refresh" mnemonicParsing="false" onAction="#refreshList" text="Refresh List"/>
-                    <MenuItem fx:id="deleteUser" mnemonicParsing="false" onAction="#deleteSelected" text="Delete Selected"/>
-                </items>
-            </ContextMenu>
-        </contextMenu>
-        <GridPane.margin>
-            <Insets bottom="5.0" />
-        </GridPane.margin>
-    </MFXListView>
+    </MFXTableView>
     <padding>
         <Insets bottom="-150.0" top="-150.0"/>
     </padding>
     <MFXButton buttonType="RAISED" fx:id="createUser" mnemonicParsing="false" text="Create New User" onAction="#newUser" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2"/>
     <MFXButton buttonType="RAISED" fx:id="refreshUser" mnemonicParsing="false" text="Refresh List" onAction="#refreshList" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="2"/>
-    <MFXButton buttonType="RAISED" fx:id="close" mnemonicParsing="false" text="Exit" onAction="#closeList" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2"/>
+    <MFXButton buttonType="RAISED" fx:id="deleteBtn" mnemonicParsing="false" text="Delete Selected" onAction="#deleteSelected" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2"/>
+    <MFXButton buttonType="RAISED" fx:id="close" mnemonicParsing="false" text="Exit" onAction="#closeList" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.rowSpan="2"/>
 </GridPane>

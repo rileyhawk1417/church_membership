@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
-
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.RowConstraints?>
 <GridPane fx:id="login_choice" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
@@ -29,9 +30,11 @@
         <RowConstraints minHeight="50.0" prefHeight="45.0"/>
         <RowConstraints minHeight="50.0" prefHeight="45.0"/>
     </rowConstraints>
-    <MFXComboBox fx:id="userType" prefWidth="150.0" promptText="Select User" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+    <MFXTextField fx:id="userField" promptText="User Name" prefWidth="150.0" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+    <MFXPasswordField fx:id="passField" promptText="Password" prefWidth="150.0" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+    <MFXFilterComboBox fx:id="userType" prefWidth="150.0" promptText="Select User" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
     <MFXButton fx:id="SubmitBtn" minHeight="20.0" minWidth="50.0" layoutX="119.0" layoutY="318.0" mnemonicParsing="false" onAction="#submit"
-            text="Submit" buttonType="RAISED" styleClass="outline-button" GridPane.columnIndex="2" GridPane.rowIndex="3"  />
+            text="Submit" buttonType="RAISED" styleClass="outline-button" GridPane.columnIndex="2" GridPane.rowIndex="5"  />
     <Label alignment="CENTER" layoutX="41.0" layoutY="51.0" prefHeight="70.0" prefWidth="521.0" text="Church Membership"
            textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
         <font>

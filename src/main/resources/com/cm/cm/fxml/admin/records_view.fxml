@@ -30,9 +30,10 @@
                        <MenuItem fx:id="delete_by_name" mnemonicParsing="false" onAction="#delete_by_name_btn" text="Delete By Name" />
                        <MenuItem fx:id="delete_by_id" mnemonicParsing="false" onAction="#delete_by_id_btn" text="Delete Selected Record" />
                    </Menu>
-                    <Menu mnemonicParsing="false" text="Export">
+                    <Menu mnemonicParsing="false" text="Export/Import">
                         <MenuItem fx:id="export_btn" mnemonicParsing="false" onAction="#export_rec" text="Export All Records" />
                         <MenuItem fx:id="export_view_btn" mnemonicParsing="false" onAction="#export_tableView" text="Export Selected Records" />
+                        <MenuItem fx:id="import_" mnemonicParsing="false" onAction="#importer" text="Import Records"/>
                     </Menu>
                </Menu>
                <Menu mnemonicParsing="false" text="Navigate">
@@ -41,7 +42,7 @@
                    <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitBtn" text="Exit App" />
                </Menu>
                <Menu mnemonicParsing="false" text="Help">
-                   <MenuItem fx:id="manual_" mnemonicParsing="false" onAction="#manual_btn" text="Manual" />
+<!--                   <MenuItem fx:id="manual_" mnemonicParsing="false" onAction="#manual_btn" text="Manual" />-->
                    <MenuItem fx:id="about_" mnemonicParsing="false" onAction="#about_btn" text="About" />
                </Menu>
            </MenuBar>

@@ -33,11 +33,12 @@
                        <MenuItem fx:id="delete_by_id" mnemonicParsing="false" onAction="#delete_by_id_btn"
                                  text="Delete Selected Record"/>
                    </Menu>
-                    <Menu mnemonicParsing="false" text="Export">
+                    <Menu mnemonicParsing="false" text="Export/Import">
                         <MenuItem fx:id="export_btn" mnemonicParsing="false" onAction="#export_rec"
                                   text="Export All Records"/>
                         <MenuItem fx:id="export_view_btn" mnemonicParsing="false" onAction="#export_tableView"
                                   text="Export Selected Records"/>
+                        <MenuItem fx:id="importToDB" mnemonicParsing="false" onAction="#importFromExcel" text="Import From Excel" />
                     </Menu>
                </Menu>
                <Menu mnemonicParsing="false" text="Navigate">

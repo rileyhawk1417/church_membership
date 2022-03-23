@@ -40,7 +40,7 @@
                    <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitBtn" text="Exit App" />
                </Menu>
                <Menu mnemonicParsing="false" text="Help">
-                   <MenuItem fx:id="manual_" mnemonicParsing="false" onAction="#manual_btn" text="Manual" />
+<!--                   <MenuItem fx:id="manual_" mnemonicParsing="false" onAction="#manual_btn" text="Manual" />-->
                    <MenuItem fx:id="about_" mnemonicParsing="false" onAction="#about_btn" text="About" />
                </Menu>
            </MenuBar>
