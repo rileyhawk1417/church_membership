@@ -28,13 +28,13 @@ public class DecisionCtrl implements Initializable {
     Stage stage = new Stage();
     Window owner = stage.getOwner();
 
-    String users[] = {
+    String[] users = {
             "Admin",
             "User",
             "Guest",
     };
 
-    String sqlUsers[] = {
+    String[] sqlUsers = {
             "admin",
             "user",
     };
@@ -117,7 +117,7 @@ public class DecisionCtrl implements Initializable {
         boolean val = sqlite.validateUser(userField.getText(), passField.getText(), user_);
 
         if (val) {
-            System.out.println("User name and Password are correct");
+            System.out.println("User name and Password are correct: " + val + userField.getText() + passField.getText() + user_);
             return true;
         } else {
             System.out.println("Incorrect user and password");

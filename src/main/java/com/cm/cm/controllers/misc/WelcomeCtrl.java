@@ -18,8 +18,8 @@ public class WelcomeCtrl {
     @FXML
     private void cashier_login(){
         // scene_switcher.
-    };
+    }
 
     @FXML
-    private void admin_login(){};
+    private void admin_login(){}
 }

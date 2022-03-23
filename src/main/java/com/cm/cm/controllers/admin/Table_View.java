@@ -46,7 +46,7 @@ public class Table_View implements Initializable {
     Sqlite sqlite = new Sqlite();
     App app = new App();
     static String recordSize = "";
-    Insert_update update = new Insert_update();
+//    Insert_update Insert_update = new Insert_update();
 
     Window owner = stage.getOwner();
     SceneCtrl scene_switcher = new SceneCtrl();
@@ -312,7 +312,6 @@ public class Table_View implements Initializable {
             recordSize = Integer.toString(rowSize);
             System.out.println(loadList.size());
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
             System.out.println(e.getMessage());
             System.out.println("Error loading Table");
@@ -362,7 +361,7 @@ public class Table_View implements Initializable {
     public ObservableList<MemberModel> searchDB(String query, Window owner) {
         ObservableList<MemberModel> queryList = FXCollections.observableArrayList();
         String search = "select * from members WHERE fname LIKE '" + query + "%'";
-        try (Connection conn = Sqlite.connector(); PreparedStatement pstmt = conn.prepareStatement(search);) {
+        try (Connection conn = Sqlite.connector(); PreparedStatement pstmt = conn.prepareStatement(search)) {
             ResultSet res = pstmt.executeQuery();
 
             try {
@@ -391,7 +390,6 @@ public class Table_View implements Initializable {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // TODO: handle exception
         }
         return queryList;
     }
@@ -400,10 +398,9 @@ public class Table_View implements Initializable {
         try {
 
             scene_switcher.admin_add_rec();
-            update.updateBtn(false);
+            Insert_update.updateBtn(false);
             loadTable();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -432,10 +429,10 @@ public class Table_View implements Initializable {
 
     /*
      * Reference methods or reminders to show that when dealing with private values
-     * they cant be passed to another class //TODO Method 1 //
+     * they cant be passed to another class Method 1
      * update.setField("150", "25", "3", "4", "5");
      *
-     * //TODO Method 2 // UpdateCtrl update = new UpdateCtrl("1", "2", "3", "4",
+     * UpdateCtrl update = new UpdateCtrl("1", "2", "3", "4",
      * "5");
      */
 
@@ -469,9 +466,6 @@ public class Table_View implements Initializable {
             water_.setText(new_selection.getWaterBapt());
             spirit_.setText(new_selection.getSpiritBapt());
             membersTotal_.setText(recordSize);
-
-            // TODO: Set childrens totals.
-
         });
     }
 
@@ -479,10 +473,6 @@ public class Table_View implements Initializable {
     private void confirm_update() {
         try {
             // TODO: Fix this function
-            // psql.updateValues(side_name_entry.getText(), side_detail_entry.getText(),
-            // side_units_used_entry.getText(), side_units_left_entry.getText(),
-            // side_unit_price_entry.getText(), side_restock_entry.getText(),
-            // side_id_entry.getText());
             reloadBtn();
         } catch (Exception e) {
             alertBox.showMFXAlert(owner, "Failed to complete action", "Failed to update record", AlertModule.dialogType.ERR, BP);
@@ -525,10 +515,7 @@ public class Table_View implements Initializable {
         }
     }
 
-    // TODO cannot make static reference to FXML as they would crash program
-    // @FXML
     private void reloadBtn() {
-        // Clear current view then load results
         records.removeAll();
         records = loadTable();
         psqlTable.setItems(records);
@@ -584,7 +571,6 @@ public class Table_View implements Initializable {
             String savePath = "Exported TableView.xlsx";
             FileOutputStream save_file = new FileOutputStream(savePath);
             fileChooser.setInitialFileName("Exported Table");
-            // TODO Set initial filename not working when saving?
 
             Path src = Paths.get(savePath);
             Path dest = Paths.get(saveFile.getAbsolutePath());
@@ -615,7 +601,7 @@ public class Table_View implements Initializable {
 
     @FXML
     private void importer(){
-        excelFunc.importToDBKids(owner, BP);
+        excelFunc.importToDBAdults(owner, BP);
     }
 
     /*
@@ -626,7 +612,6 @@ public class Table_View implements Initializable {
         try {
             app.manual_pdf();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

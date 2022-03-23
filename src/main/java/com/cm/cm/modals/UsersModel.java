@@ -27,7 +27,7 @@ public class UsersModel {
 
     public String getUserType() {return userType;}
 
-    public void setUserType(String user_Type){ this.userType = user_Type;};
+    public void setUserType(String user_Type){ this.userType = user_Type;}
 
     public String getPass() {
         return pass;

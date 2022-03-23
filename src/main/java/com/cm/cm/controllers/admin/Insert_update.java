@@ -108,13 +108,13 @@ public class Insert_update implements Initializable {
 
 
     // Weekdays
-    String titles[] = { "Mr", "Mrs", "Miss" };
+    String[] titles = { "Mr", "Mrs", "Miss" };
 
-    String maritial_status_[] = { "Single", "Married" };
+    String[] maritial_status_ = { "Single", "Married" };
 
-    String gender[] = { "Male", "Female" };
+    String[] gender = { "Male", "Female" };
 
-    String surbubs[] = {
+    String[] surbubs = {
             "Aerodrome",
             "Mkhosana",
             "Mfelandawonye",
@@ -124,7 +124,7 @@ public class Insert_update implements Initializable {
             "Monde",
     };
 
-    String deps[] = {
+    String[] deps = {
             "Ushers",
             "Worship/Music Team",
             "Media",
@@ -132,7 +132,7 @@ public class Insert_update implements Initializable {
             "Hosting",
     };
 
-    String bools[] = { "Yes", "No" };
+    String[] bools = { "Yes", "No" };
 
     int year = 2024;
     int month = 12;

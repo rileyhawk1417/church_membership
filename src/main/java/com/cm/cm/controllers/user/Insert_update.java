@@ -28,10 +28,10 @@ public class Insert_update implements Initializable {
     private MFXButton cancel_insert;
 
     @FXML
-    private MFXButton insert_update;
+    private static MFXButton insert_update;
 
     @FXML
-    private MFXButton insert_update_kids;
+    private static MFXButton insert_update_kids;
 
     //Start Of TextField
     @FXML
@@ -103,13 +103,13 @@ public class Insert_update implements Initializable {
     @FXML
     private MFXComboBox<String> baptismBox_2;
 
-    String titles[] = { "Mr", "Mrs", "Miss" };
+    String[] titles = { "Mr", "Mrs", "Miss" };
 
-    String maritial_status_[] = { "Single", "Married" };
+    String[] maritial_status_ = { "Single", "Married" };
 
-    String gender[] = { "Male", "Female" };
+    String[] gender = { "Male", "Female" };
 
-    String surbubs[] = {
+    String[] surbubs = {
             "Aerodrome",
             "Mkhosana",
             "Mfelandawonye",
@@ -119,7 +119,7 @@ public class Insert_update implements Initializable {
             "Monde",
     };
 
-    String deps[] = {
+    String[] deps = {
             "Ushers",
             "Worship/Music Team",
             "Media",
@@ -127,7 +127,7 @@ public class Insert_update implements Initializable {
             "Hosting",
     };
 
-    String bools[] = { "Yes", "No" };
+    String[] bools = { "Yes", "No" };
 
     ObservableList<String> title = FXCollections.observableArrayList(titles);
     ObservableList<String> status = FXCollections.observableArrayList(maritial_status_);
@@ -154,7 +154,7 @@ public class Insert_update implements Initializable {
         grabTxtAdults(owner);
     }
 
-    public void updateBtn(Boolean res){
+    public static void updateBtn(Boolean res){
         if (!res) insert_update_kids.setDisable(true);
         else insert_update.setDisable(false);
     }

@@ -98,7 +98,7 @@ public class SqliteSetup {
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         createFolder();
         createDB("church.db");
         setUpDB();

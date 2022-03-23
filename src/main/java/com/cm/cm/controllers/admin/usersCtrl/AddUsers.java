@@ -19,7 +19,7 @@ public class AddUsers implements Initializable {
 
     Sqlite sqlite = new Sqlite();
 
-    String tableNames[] = {
+    String[] tableNames = {
             "admin_login",
             "user_login"
     };

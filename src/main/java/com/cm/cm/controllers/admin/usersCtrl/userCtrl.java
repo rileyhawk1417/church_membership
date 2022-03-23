@@ -23,7 +23,6 @@ import javafx.util.StringConverter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.scene.layout.GridPane;
-import com.cm.cm.updater.config.UpdateConfig;
 
 @SuppressWarnings("unchecked")
 public class userCtrl implements Initializable {
@@ -39,9 +38,8 @@ public class userCtrl implements Initializable {
     Stage stage = new Stage();
     Window owner = stage.getOwner();
     SceneCtrl scene_switcher = new SceneCtrl();
-    UpdateConfig update = new UpdateConfig();
     AlertModule diag = new AlertModule();
-    String sample[] ={
+    String[] sample ={
             "hello",
             "Mike"
     };
@@ -75,7 +73,6 @@ public class userCtrl implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resource){
-        //TODO: Add code to load list.
         try {
 
             usersList = loadUsers();
@@ -133,7 +130,6 @@ public class userCtrl implements Initializable {
 
     @FXML
     private void deleteSelected(){
-//TODO: Rewrite entire function to work with tableview
 
         ObservableMap<Integer, UsersModel> tableMap = userTable.getSelectionModel().getSelection();
         ObservableList<UsersModel> tableList = FXCollections.observableArrayList(tableMap.values());

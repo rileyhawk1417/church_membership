@@ -164,7 +164,7 @@ public class SceneCtrl {
     public void decision_scene() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            Parent root = loader.load(getClass().getResource(decision_screen));
+            Parent root = FXMLLoader.load(getClass().getResource(decision_screen));
             Scene login = new Scene(root);
             switchScene(login, true, "Select Login Type", false);
         } catch (IOException e) {

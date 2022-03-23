@@ -43,7 +43,7 @@ public class Kids_Table_View implements Initializable {
     App app = new App();
     AlertModule alertBox = new AlertModule();
     static String recordSize = "";
-    Insert_update update = new Insert_update();
+//    Insert_update update = new Insert_update();
     ExcelHelper excelFunc = new ExcelHelper();
     Window owner = stage.getOwner();
     SceneCtrl scene_switcher = new SceneCtrl();
@@ -230,6 +230,9 @@ public class Kids_Table_View implements Initializable {
     private MenuItem export_view_btn;
 
     @FXML
+    private MenuItem importToDB;
+
+    @FXML
     private MenuItem about_;
 
     @FXML
@@ -336,7 +339,6 @@ public class Kids_Table_View implements Initializable {
             recordSize = Integer.toString(rowSize);
             System.out.println(loadList.size());
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
             System.out.println(e.getMessage());
             System.out.println("Error loading Table");
@@ -347,7 +349,7 @@ public class Kids_Table_View implements Initializable {
     public ObservableList<MemberModel> searchDB(String query, Window owner) {
         ObservableList<MemberModel> queryList = FXCollections.observableArrayList();
         String search = "select * from kids_members WHERE fname LIKE '" + query + "%'";
-        try (Connection conn = Sqlite.connector(); PreparedStatement pstmt = conn.prepareStatement(search);) {
+        try (Connection conn = Sqlite.connector(); PreparedStatement pstmt = conn.prepareStatement(search)) {
             ResultSet res = pstmt.executeQuery();
 
             try {
@@ -376,7 +378,8 @@ public class Kids_Table_View implements Initializable {
         try {
 
             scene_switcher.user_add_rec();
-            update.updateBtn(true);
+            Insert_update.updateBtn(true);
+//            update.updateBtn(true);
             loadTable();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -407,10 +410,10 @@ public class Kids_Table_View implements Initializable {
 
     /*
      * Reference methods or reminders to show that when dealing with private values
-     * they cant be passed to another class //TODO Method 1 //
+     * they cant be passed to another class Method 1
      * update.setField("150", "25", "3", "4", "5");
      *
-     * //TODO Method 2 // UpdateCtrl update = new UpdateCtrl("1", "2", "3", "4",
+     * Method 2 UpdateCtrl update = new UpdateCtrl("1", "2", "3", "4",
      * "5");
      */
 
@@ -444,9 +447,6 @@ public class Kids_Table_View implements Initializable {
             water_.setText(new_selection.getWaterBapt());
             spirit_.setText(new_selection.getSpiritBapt());
             membersTotal_.setText(recordSize);
-
-            // TODO: Set childrens totals.
-
         });
     }
 
@@ -507,6 +507,11 @@ public class Kids_Table_View implements Initializable {
     }
 
     @FXML
+    private void importFromExcel(){
+        excelFunc.importToDBKids(owner, BP);
+    }
+
+    @FXML
     private void reload() {
         reloadBtn();
     }
@@ -556,7 +561,6 @@ public class Kids_Table_View implements Initializable {
             String savePath = "Exported TableView.xlsx";
             FileOutputStream save_file = new FileOutputStream(savePath);
             fileChooser.setInitialFileName("Exported Table");
-            // TODO Set initial filename not working when saving?
 
             Path src = Paths.get(savePath);
             Path dest = Paths.get(saveFile.getAbsolutePath());
@@ -593,7 +597,6 @@ public class Kids_Table_View implements Initializable {
         try {
             app.manual_pdf();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

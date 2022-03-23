@@ -1,6 +1,5 @@
 package com.cm.cm.database;
 
-//TODO: Fix up file and the functions.
 import java.sql.*;
 
 public class Psql {
@@ -17,7 +16,7 @@ public class Psql {
 
         try (Connection conn = connector();
 
-             PreparedStatement pstmt = conn.prepareStatement(QUERY);) {
+             PreparedStatement pstmt = conn.prepareStatement(QUERY)) {
 
             ResultSet res = pstmt.executeQuery();
             if (res.next()) {
@@ -26,7 +25,6 @@ public class Psql {
 
         } catch (SQLException e) {
             printSQLException(e);
-            // TODO: handle exception
         }
         return false;
     }
@@ -37,7 +35,7 @@ public class Psql {
 
         try (Connection conn = Psql.connector();
 
-             PreparedStatement pstmt = conn.prepareStatement(QUERY);) {
+             PreparedStatement pstmt = conn.prepareStatement(QUERY)) {
             pstmt.setString(1, user);
             pstmt.setString(2, pass);
 
@@ -48,7 +46,6 @@ public class Psql {
 
         } catch (SQLException e) {
             printSQLException(e);
-            // TODO: handle exception
         }
         return false;
     }
@@ -59,7 +56,7 @@ public class Psql {
 
         try (Connection conn = connector();
 
-             PreparedStatement pstmt = conn.prepareStatement(QUERY);) {
+             PreparedStatement pstmt = conn.prepareStatement(QUERY)) {
             pstmt.setString(1, user);
             pstmt.setString(2, pass);
 
@@ -70,7 +67,6 @@ public class Psql {
 
         } catch (SQLException e) {
             printSQLException(e);
-            // TODO: handle exception
         }
         return false;
     }
@@ -79,7 +75,7 @@ public class Psql {
         String search = "select * from members WHERE name LIKE '" + query + "%'";
         try (Connection conn = connector();
 
-             PreparedStatement pstmt = conn.prepareStatement(search);) {
+             PreparedStatement pstmt = conn.prepareStatement(search)) {
             ResultSet res = pstmt.executeQuery();
             try {
                 while (res.next()) {
@@ -94,7 +90,6 @@ public class Psql {
             }
         } catch (SQLException e) {
             printSQLException(e);
-            // TODO: handle exception
         }
     }
 
@@ -102,7 +97,7 @@ public class Psql {
         String search = "select * from kids_members WHERE name LIKE '" + query + "%'";
         try (Connection conn = connector();
 
-             PreparedStatement pstmt = conn.prepareStatement(search);) {
+             PreparedStatement pstmt = conn.prepareStatement(search)) {
             ResultSet res = pstmt.executeQuery();
             try {
                 while (res.next()) {
@@ -117,7 +112,6 @@ public class Psql {
             }
         } catch (SQLException e) {
             printSQLException(e);
-            // TODO: handle exception
         }
     }
 
@@ -295,28 +289,6 @@ public class Psql {
 
     }
 
-    // public void updateValues( String name, String detail, String units_used,
-    // String units_left, String unit_price, String restock, String id){
-    // String update = "UPDATE ace_hardware SET name=?, detail=?, units_used=?,
-    // units_left=?, unit_price=?, restock=? WHERE id=?";
-    // try{
-    // Connection conn = connector();
-    // PreparedStatement pstmt = conn.prepareStatement(update);
-    // pstmt.setString(1, name);
-    // pstmt.setString(2, detail);
-    // pstmt.setString(3, units_used);
-    // pstmt.setString(4, units_left);
-    // pstmt.setString(5, unit_price);
-    // pstmt.setString(6, restock);
-    // pstmt.setString(7, id);
-
-    // pstmt.execute();
-    // } catch(SQLException e){
-    // System.out.println(e.getMessage());
-    // e.printStackTrace();
-    // }
-    // }
-
     public void delete_row_by_id(String id_) {
         String update = "DELETE FROM members WHERE id = ? ";
         try {
@@ -347,18 +319,6 @@ public class Psql {
 
     // TODO: Rewrite function to avoid deletion of names
     public void delete_row_by_name(String name_) {
-        // String update = "DELETE FROM members WHERE name LIKE '" +name_ + "%'";
-
-        // try(
-        // Connection conn = connector();
-        // PreparedStatement pstmt = conn.prepareStatement(update);){
-        // // pstmt.setString(1, name_);
-
-        // pstmt.executeQuery();
-        // } catch(SQLException e){
-        // System.out.println(e.getMessage());
-        // e.printStackTrace();
-        // }
         System.out.println("'Delete By Name' : Function needs to be fixed");
     }
 
@@ -393,7 +353,6 @@ public class Psql {
             }
 
         } catch (Exception e) {
-            // TODO: handle exception
             System.out.println(e.getMessage());
         }
         return conn;

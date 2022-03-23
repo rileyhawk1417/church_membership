@@ -2,13 +2,13 @@ package com.cm.cm.modals;
 
 public class TableModel {
 
-    public String idCol = new String();
-    public String item_name = new String();
-    public String desc = new String();
-    public String units_used = new String();
-    public String units_left = new String();
-    public String unit_price = new String();
-    public String restock = new String();
+    public String idCol = "";
+    public String item_name = "";
+    public String desc = "";
+    public String units_used = "";
+    public String units_left = "";
+    public String unit_price = "";
+    public String restock = "";
 
 
     public String getIdCol() {

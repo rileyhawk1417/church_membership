@@ -27,7 +27,6 @@ public class Sqlite {
 
         } catch (SQLException e) {
             printSQLException(e);
-            // TODO: handle exception
         }
         return false;
     }
@@ -36,7 +35,7 @@ public class Sqlite {
         String search = "select * from members WHERE fname LIKE '" + query + "%'";
         try (Connection conn = connector();
 
-             PreparedStatement pstmt = conn.prepareStatement(search);) {
+             PreparedStatement pstmt = conn.prepareStatement(search)) {
             ResultSet res = pstmt.executeQuery();
             try {
                 while (res.next()) {
@@ -51,7 +50,6 @@ public class Sqlite {
             }
         } catch (SQLException e) {
             printSQLException(e);
-            // TODO: handle exception
         }
     }
 
@@ -59,7 +57,7 @@ public class Sqlite {
         String search = "select * from kids_members WHERE fname LIKE '" + query + "%'";
         try (Connection conn = connector();
 
-             PreparedStatement pstmt = conn.prepareStatement(search);) {
+             PreparedStatement pstmt = conn.prepareStatement(search)) {
             ResultSet res = pstmt.executeQuery();
             try {
                 while (res.next()) {
@@ -74,7 +72,6 @@ public class Sqlite {
             }
         } catch (SQLException e) {
             printSQLException(e);
-            // TODO: handle exception
         }
     }
 
@@ -350,7 +347,6 @@ public class Sqlite {
             }
 
         } catch (Exception e) {
-            // TODO: handle exception
             System.out.println(e.getMessage());
         }
         return conn;

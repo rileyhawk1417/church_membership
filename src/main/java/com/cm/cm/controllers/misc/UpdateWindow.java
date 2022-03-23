@@ -2,7 +2,7 @@ package com.cm.cm.controllers.misc;
 
 import javafx.scene.layout.GridPane;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import com.cm.cm.updater.delegates.StartupView;
+//import com.cm.cm.updater.delegates.StartupView;
 import com.cm.cm.controllers.misc.SceneCtrl;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
@@ -46,12 +46,12 @@ public class UpdateWindow implements Launcher{
     @InjectTarget
     private Stage primaryStage;
 
-    private StartupView startup;
+//    private StartupView startup;
 
-    @PostInject
-    private void getStartupView(StartupView view){
-        startup = view;
-    }
+//    @PostInject
+//    private void getStartupView(StartupView view){
+//        startup = view;
+//    }
 
     //    private LoadingView loading;
     private static Stage stage;

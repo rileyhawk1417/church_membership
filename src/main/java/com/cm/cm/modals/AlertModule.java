@@ -15,7 +15,7 @@ import java.util.Map;
 
 /*
  * *This module is responsible for pop up messages
- * TODO: Fix a better Dialog that actually works
+ *
  */
 public class AlertModule {
     Sqlite sqlite = new Sqlite();
@@ -90,7 +90,6 @@ public class AlertModule {
                                 sqlite.delete_row_by_id_kids(id);
                             } catch(Exception e){
                                 System.out.println(e.getMessage());
-                                //TODO: Add error dialog if fails
                                 showMFXAlert(win, "Error", "Failed to delete record", dialogType.ERR, ownerPane);
                             }
                             dialog.close();
