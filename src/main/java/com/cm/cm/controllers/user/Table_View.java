@@ -618,7 +618,10 @@ public class Table_View implements Initializable {
         psqlTable.getScene().getWindow().hide();
         scene_switcher.kids_records_Admin();
     }
-
+    @FXML
+    private void logout(){
+        owner.hide();
+        scene_switcher.decision_scene(); }
     @FXML
     private void exitBtn(ActionEvent event) {
         App.closeApp();

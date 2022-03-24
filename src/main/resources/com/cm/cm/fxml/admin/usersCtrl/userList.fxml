@@ -45,6 +45,6 @@
     </padding>
     <MFXButton buttonType="RAISED" fx:id="createUser" mnemonicParsing="false" text="Create New User" onAction="#newUser" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2"/>
     <MFXButton buttonType="RAISED" fx:id="refreshUser" mnemonicParsing="false" text="Refresh List" onAction="#refreshList" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="2"/>
-    <MFXButton buttonType="RAISED" fx:id="deleteBtn" mnemonicParsing="false" text="Delete Selected" onAction="#deleteSelected" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2"/>
+<!--    <MFXButton buttonType="RAISED" fx:id="deleteBtn" mnemonicParsing="false" text="Delete Selected" onAction="#deleteSelected" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2"/>-->
     <MFXButton buttonType="RAISED" fx:id="close" mnemonicParsing="false" text="Exit" onAction="#closeList" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.rowSpan="2"/>
 </GridPane>

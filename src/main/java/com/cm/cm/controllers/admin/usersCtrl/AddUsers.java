@@ -24,6 +24,8 @@ public class AddUsers implements Initializable {
             "user_login"
     };
 
+    String userType="";
+
     @FXML
     private MFXButton submitBtn;
 
@@ -53,10 +55,14 @@ public class AddUsers implements Initializable {
     }
 
     private void selectTable(String selected_) {
+        if(tables.getValue() == "admin_login" ) userType = "admin";
+
+        else if (tables.getValue() == "user_login") userType = "user";
+
         switch (selected_) {
-            case "admin", "user_login" -> {
+            case "admin_login", "user_login" -> {
                 try {
-                    sqlite.insertUser(userName.getText(), passWord.getText(), tables.getValue());
+                    sqlite.insertUser(userName.getText(), passWord.getText(), userType);
                     System.out.println("User added" + userName.getText() + passWord.getText());
                     submitBtn.getScene().getWindow().hide();
                 } catch (Exception e) {

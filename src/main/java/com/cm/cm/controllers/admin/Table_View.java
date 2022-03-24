@@ -628,6 +628,11 @@ public class Table_View implements Initializable {
     }
 
     @FXML
+    private void logout(){
+        owner.hide();
+        scene_switcher.decision_scene(); }
+
+    @FXML
     private void exitBtn(ActionEvent event) {
         App.closeApp();
     }

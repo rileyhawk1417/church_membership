@@ -21,7 +21,7 @@
        <HBox blendMode="SRC_ATOP" prefHeight="33.0" prefWidth="750.0" BorderPane.alignment="CENTER">
            <MenuBar>
                <Menu mnemonicParsing="false" text="File">
-                   <MenuItem fx:id="log_out" mnemonicParsing="false" onAction="#switch_user" text="Log out"/>
+                   <MenuItem fx:id="log_out" mnemonicParsing="false" onAction="#logout" text="Log out"/>
                    <MenuItem fx:id="close" mnemonicParsing="false" onAction="#exitBtn" text="Exit App"/>
                </Menu>
                <Menu mnemonicParsing="false" text="Edit">

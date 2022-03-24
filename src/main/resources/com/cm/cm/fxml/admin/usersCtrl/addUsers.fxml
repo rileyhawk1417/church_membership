@@ -47,8 +47,7 @@
 
     <MFXTextField fx:id="userName" promptText="User Name" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3"  />
     <MFXTextField fx:id="passWord" promptText="Password" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-    <MFXComboBox fx:id="tables"  promptText="Choose Table" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-    <MFXComboBox fx:id="userType"  promptText="Choose User Type" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <MFXComboBox fx:id="tables"  promptText="Choose Table" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.rowSpan="2" />
     <MFXButton buttonType="RAISED" fx:id="submitBtn" text="Accept" onAction="#addUser" GridPane.columnIndex="0" GridPane.rowIndex="6" />
     <MFXButton buttonType="RAISED" fx:id="cancelBtn" text="Cancel" onAction="#cancelUser" GridPane.columnIndex="0" GridPane.rowIndex="7" />
 
