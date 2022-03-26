@@ -20,101 +20,89 @@ import java.util.ResourceBundle;
 
 public class Insert_update implements Initializable {
 
-    Sqlite sqlite = new Sqlite();
-    AlertModule alertBox = new AlertModule();
-
+     String ID_;
+     String Fname_;
+     String Lname_;
+     String Title_;
+     String Address_;
+     String DOB_;
+     String DateJoined_;
+     String Dept_;
+     String DeptLeader_;
+     String IDNum_;
+     String KidsNo_;
+     String MStatus_;
+     String Cell_Num_;
+     String Landline_;
+     String Email_;
+     String Salvation_;
+     String Gender_;
+     String WaterBapt_;
+     String SpiritBapt_;
+     String Surbub_;
+     String Employer_;
+     String WorkPhone_;
+     String Position_;
+     String Cell_Leader_;
+     boolean updateValue;
     @FXML
-    private GridPane gridPane;
-
+    private  MFXButton insert_update;
     @FXML
-    private MFXButton cancel_insert;
-
-    @FXML
-    private MFXButton insert_update;
-
-    @FXML
-    private MFXButton insert_update_kids;
-
+    private  MFXButton insert_update_kids;
     //Start Of TextField
     @FXML
-    private MFXTextField fnameBox;
-
+    private  MFXTextField fnameBox;
     @FXML
-    private MFXTextField lnameBox;
-
+    private  MFXTextField lnameBox;
     @FXML
-    private MFXTextField idBox;
-
+    private  MFXTextField idBox;
     @FXML
-    private MFXTextField num_Children;
-
+    private  MFXTextField num_Children;
     @FXML
-    private MFXDatePicker dateJoined;
-
+    private  MFXDatePicker dateJoined;
     @FXML
-    private MFXDatePicker dob;
-
+    private  MFXDatePicker dob;
     @FXML
-    private MFXTextField address;
-
+    private  MFXTextField address;
     @FXML
-    private MFXTextField homePhone;
-
+    private  MFXTextField homePhone;
     @FXML
-    private MFXTextField workPhone;
-
+    private  MFXTextField workPhone;
     @FXML
-    private MFXTextField mobilePhone;
-
+    private  MFXTextField employer;
     @FXML
-    private MFXTextField employer;
-
+    private  MFXTextField position;
     @FXML
-    private MFXTextField position;
-
+    private  MFXTextField email;
     @FXML
-    private MFXTextField email;
-
+    private  MFXTextField homeGroupLeader;
     @FXML
-    private MFXTextField homeGroupLeader;
-
+    private  MFXTextField departmentLeader;
     @FXML
-    private MFXTextField departmentLeader;
-
+    private  MFXComboBox<String> titleBox;
     @FXML
-    private MFXComboBox<String> titleBox;
-
+    private  MFXComboBox<String> genderBox;
+    // Create a combo box
+    //   ComboBox combo_box = new ComboBox(
+    //     FXCollections.observableArrayList(week_days)
+    //   );
     @FXML
-    private MFXComboBox<String> genderBox;
-
+    private  MFXComboBox<String> maritial_status;
     @FXML
-    private MFXComboBox<String> maritial_status;
-
+    private  MFXComboBox<String> depBox;
     @FXML
-    private MFXComboBox<String> surbub;
-
+    private  MFXComboBox<String> salvationBox;
     @FXML
-    private MFXComboBox<String> depBox;
-
+    private  MFXComboBox<String> baptismBox_1;
     @FXML
-    private MFXComboBox<String> salvationBox;
-
-    @FXML
-    private MFXComboBox<String> baptismBox_1;
-
-    @FXML
-    private MFXComboBox<String> baptismBox_2;
-
-
-
+    private  MFXComboBox<String> baptismBox_2;
+    Sqlite sqlite = new Sqlite();
+    AlertModule alertBox = new AlertModule();
     // Weekdays
-    String[] titles = { "Mr", "Mrs", "Miss" };
-
-    String[] maritial_status_ = { "Single", "Married" };
-
-    String[] gender = { "Male", "Female" };
-
-    String[] surbubs = {
+    public  String[] titles = {"Mr", "Mrs", "Miss"};
+    public  String[] maritial_status_ = {"Single", "Married"};
+    public  String[] gender = {"Male", "Female"};
+    public  String[] surbubs = {
             "Aerodrome",
             "Mkhosana",
             "Mfelandawonye",
@@ -123,36 +111,106 @@ public class Insert_update implements Initializable {
             "Industrial",
             "Monde",
     };
-
-    String[] deps = {
+    public  String[] deps = {
             "Ushers",
             "Worship/Music Team",
             "Media",
             "Intercessors",
             "Hosting",
     };
-
-    String[] bools = { "Yes", "No" };
-
+    public  String[] bools = {"Yes", "No"};
     int year = 2024;
     int month = 12;
     int dayOfMonth = 02;
-    // Create a combo box
-    //   ComboBox combo_box = new ComboBox(
-    //     FXCollections.observableArrayList(week_days)
-    //   );
+    public  ObservableList<String> title = FXCollections.observableArrayList(titles);
+    public  ObservableList<String> status = FXCollections.observableArrayList(maritial_status_);
+    public  ObservableList<String> sex = FXCollections.observableArrayList(gender);
+    public  ObservableList<String> region = FXCollections.observableArrayList(surbubs);
+    public  ObservableList<String> dep = FXCollections.observableArrayList(deps);
+    public  ObservableList<String> truths = FXCollections.observableArrayList(bools);
+    @FXML
+    private GridPane gridPane;
+    @FXML
+    private MFXButton cancel_insert;
+    @FXML
+    private  MFXTextField mobilePhone;
+    @FXML
+    private  MFXComboBox<String> surbub;
 
-    ObservableList<String> title = FXCollections.observableArrayList(titles);
-    ObservableList<String> status = FXCollections.observableArrayList(
-            maritial_status_
-    );
-    ObservableList<String> sex = FXCollections.observableArrayList(gender);
-    ObservableList<String> region = FXCollections.observableArrayList(surbubs);
-    ObservableList<String> dep = FXCollections.observableArrayList(deps);
-    ObservableList<String> truths = FXCollections.observableArrayList(bools);
+    public  void receiveTxt(
+            String id_,
+            String fname_,
+            String lname_,
+            String title_,
+            String address_,
+            String dob_,
+            String dateJoined_,
+            String dept_,
+            String deptLeader_,
+            String idNum_,
+            String kidsNum_,
+            String mStatus,
+            String cell_num_,
+            String landline_,
+            String email_,
+            String salvation_,
+            String gender_,
+            String waterBapt_,
+            String spiritBapt_,
+            String surbub_,
+            String employer_,
+            String workPhone_,
+            String position_,
+            String cell_leader_,
+            boolean updateOption
+    ) {
+        //TODO Change method to write values to strings
+        ID_ = id_;
+        Fname_ = fname_;
+        Lname_ = lname_;
+        Title_ = title_;
+        Address_ = address_;
+        DOB_ = dob_;
+        DateJoined_ = dateJoined_;
+        Dept_ = dept_;
+        DeptLeader_ = deptLeader_;
+        IDNum_ = idNum_;
+        KidsNo_ = kidsNum_;
+        MStatus_ = mStatus;
+        Cell_Num_ = cell_num_;
+        Landline_ = landline_;
+        Email_ = email_;
+        Salvation_ = salvation_;
+        Gender_ = gender_;
+        WaterBapt_ = waterBapt_;
+        SpiritBapt_ = spiritBapt_;
+        Surbub_ = surbub_;
+        Employer_ = employer_;
+        WorkPhone_ = workPhone_;
+        Position_ = position_;
+        Cell_Leader_ = cell_leader_;
+        updateValue = updateOption;
+
+    }
+
+    public  void updateBtn(Boolean res) {
+        if (!res) insert_update_kids.setDisable(true);
+        else insert_update.setDisable(false);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
+//        if (updateValue == true) setStrings();
+
+//        else if(updateValue == false) setupComboBoxes();
+        setupComboBoxes();
+
+//        else System.out.println("Failed");
+
+//        updateBtn();
+    }
+
+    public  void setupComboBoxes() {
         titleBox.setItems(title);
         maritial_status.setItems(status);
         genderBox.setItems(sex);
@@ -161,19 +219,38 @@ public class Insert_update implements Initializable {
         salvationBox.setItems(truths);
         baptismBox_1.setItems(truths);
         baptismBox_2.setItems(truths);
+    }
 
-//        updateBtn();
+    private  void setStrings() {
+        fnameBox.setText(Fname_);
+        lnameBox.setText(Lname_);
+        idBox.setText(ID_);
+        num_Children.setText(KidsNo_);
+        dateJoined.setText(DateJoined_);
+        dob.setText(DOB_);
+        address.setText(Address_);
+        homePhone.setText(Landline_);
+        workPhone.setText(WorkPhone_);
+        employer.setText(Employer_);
+        position.setText(Position_);
+        email.setText(Email_);
+        homeGroupLeader.setText(Cell_Leader_);
+        departmentLeader.setText(DeptLeader_);
+        //How to set combobox X_X
+        titleBox.setText(Title_);
+        genderBox.setText(Gender_);
+        maritial_status.setText(MStatus_);
+        depBox.setText(Dept_);
+        salvationBox.setText(Salvation_);
+        baptismBox_1.setText(WaterBapt_);
+        baptismBox_2.setText(SpiritBapt_);
+
     }
 
     @FXML
     private void insert_rec(ActionEvent event) {
         Window owner = insert_update.getScene().getWindow();
         grabTxtAdults(owner);
-    }
-
-    public void updateBtn(Boolean res){
-        if (!res) insert_update_kids.setDisable(true);
-        else insert_update.setDisable(false);
     }
 
     @FXML
