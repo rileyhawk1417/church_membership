@@ -327,7 +327,7 @@ public class ExcelHelper {
 
     public void importToDBKids(Window owner, Pane ownerPane) {
         try {
-            String query = "INSERT INTO kids_members (fname, lname, gender, id_no, kids_num, maritial_status, dob, address, cell_num,dept)"
+            String query = "INSERT OR IGNORE INTO kids_members (fname, lname, gender, id_no, kids_num, maritial_status, dob, address, cell_num,dept)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
             Connection conn = Sqlite.connector();
@@ -428,7 +428,7 @@ public class ExcelHelper {
 
     public void importToDBAdults(Window owner, Pane ownerPane) {
         try {
-            String query = "INSERT INTO kids_members (fname, lname, gender, id_no, kids_num, maritial_status, dob, address, cell_num,dept)"
+            String query = "INSERT OR IGNORE INTO members (fname, lname, gender, id_no, kids_num, maritial_status, dob, address, cell_num,dept)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
             Connection conn = Sqlite.connector();
