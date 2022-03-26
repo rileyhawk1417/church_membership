@@ -10,112 +10,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="385a77f0-11ed-4435-9e3c-151558ac84db" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/misc/ExcelHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_woodstox_woodstox_core_5_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_06.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_thoughtworks_qdox_qdox_1_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_SparseBitSet_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_1_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__de_rototor_pdfbox_graphics2d_0_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_bsf_bsf_api_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_1_2_api_2_14_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_14_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_14_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_5_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_5_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_lite_5_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_4_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_santuario_xmlsec_2_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_5_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_all_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_anim_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_awt_util_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_bridge_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_codec_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_constants_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_css_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_dom_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_ext_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_extension_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_gui_util_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_gvt_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_i18n_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_js_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_parser_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_rasterizer_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_rasterizer_ext_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_script_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_shared_resources_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_slideshow_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_squiggle_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_squiggle_ext_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_svg_dom_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_svgbrowser_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_svggen_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_svgpp_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_svgrasterizer_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_swing_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_transcoder_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_ttf2svg_1_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_util_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_batik_xml_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_fop_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_fop_core_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_fop_events_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_fop_util_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlgraphics_xmlgraphics_commons_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcpkix_jdk15on_1_68.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_68.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_controlsfx_controlsfx_11_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_7_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_kordamp_bootstrapfx_bootstrapfx_core_0_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_linux_17_0_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_linux_17_0_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xalan_xalan_2_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_3_04.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_ext_1_3_04.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/app_library.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_2_2022,_15_31_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_2_2022__15_31__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/ExportExcel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/LoginCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/LoginCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/TableCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/TableCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/misc/DecisionCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/misc/DecisionCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Insert_update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Insert_update.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Kids_Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Kids_Table_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/user/Table_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/admin/login_screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/admin/login_screen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/misc/login_choice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/misc/login_choice.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/add_records.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/add_records.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/kids_records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/kids_records_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bin/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/Launcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/app/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/admin/BulkDeleteCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/admin/Insert_Update.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/admin/LoginCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/admin/TableCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/cashier/LoginCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/cashier/TableCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/misc/AboutCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/misc/DecisionCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/misc/ExcelHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/misc/SceneCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/misc/WelcomeCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/user/Insert_update.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/user/Kids_Table_View.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/user/MFXControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/controllers/user/Table_View.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/database/Psql.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/database/Sqlite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/modals/AlertModule.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/modals/MemberModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cm/cm/modals/TableModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/admin/login_screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/admin/login_screen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/misc/login_choice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/misc/login_choice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/user/add_records.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/user/add_records.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/user/kids_records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/user/kids_records_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/user/records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/target/classes/com/cm/cm/fxml/user/records_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/Insert_update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/Insert_update.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin/Table_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/misc/ExcelHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/misc/ExcelHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/admin/records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/admin/records_view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user/records_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/admin/delete_by_name.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/admin/insert_screen.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/admin/login_screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/admin/login_screen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/admin/records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/admin/records_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/cashier/login_screen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/cashier/records_view.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/misc/login_choice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/misc/login_choice.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/user/add_records.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/user/add_records.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/user/kids_records_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cm/cm/fxml/user/kids_records_view.fxml" afterDir="false" />
@@ -158,99 +95,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.poi:poi-ooxml-lite:5.0.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.poi:poi-ooxml:5.0.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-all:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-all:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-codec:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-all:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-codec:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-transcoder:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-all:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-slideshow:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="runtimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="runtimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.poi:poi-ooxml-lite:5.0.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="runtimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.poi:poi-ooxml:5.0.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="runtimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.xmlgraphics:batik-all:1.14" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="testCompileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="testCompileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.logging.log4j:log4j-1.2-api:2.14.1" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="testCompileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.apache.poi:poi-ooxml:5.0.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="cm" type="f1a62948:ProjectNode" />
                 <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
@@ -264,8 +108,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -285,6 +129,15 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="l0fv1pek" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="25MpakvJDXxgO1QPi2l5BHFa8t2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -301,16 +154,36 @@
     <property name="Repository.Attach.Sources" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="full.screen.before.presentation.mode" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/guest" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.40075377" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/guest" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/admin" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/guest" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/user" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/cm/cm/controllers/admin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/misc" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/cm/cm/fxml/admin/users" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/cm/cm" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cm.cm.updater.config" />
+      <recent name="com.cm.cm.controllers.guest" />
+      <recent name="com.cm.cm.controllers.user" />
+      <recent name="com.cm.cm.controllers.admin" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -325,19 +198,22 @@
       <command value="gradle --build-cache" />
       <command value="gradle build cache" />
       <command value="gradle --build-cache compileJava" />
-      <command value="gradle clean" />
       <command value="gradle cleanidea" />
       <command value="gradle cleanIdea" />
       <command value="gradle idea" />
-      <command value="gradle run" />
       <command value="gradle build" />
-      <command value="gradlew run" />
       <command value="./gradlew run" />
-      <command value="gradle clean build" />
+      <command value="gradle clean" />
+      <command value="gradle clean build run" />
       <command value="gradlew jlink" />
+      <command value="gradlew jlinkZip" />
+      <command value="gradle jar" />
+      <command value="gradle run" />
+      <command value="gradlew run" />
+      <command value="gradle clean build" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.church_membership [jlink]">
+  <component name="RunManager" selected="Gradle.church_membership [clean build]">
     <configuration name="Gradle Run" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -379,7 +255,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="church_membership [cleanIdea]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="church_membership [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -390,7 +266,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="cleanIdea" />
+            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" value="" />
@@ -400,7 +276,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="church_membership [cleanidea]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="church_membership [jlinkZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -411,7 +287,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="cleanidea" />
+            <option value="jlinkZip" />
           </list>
         </option>
         <option name="vmOptions" value="" />
@@ -465,19 +341,19 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.Gradle Run" />
-      <item itemvalue="Gradle.church_membership [cleanidea]" />
-      <item itemvalue="Gradle.church_membership [cleanIdea]" />
-      <item itemvalue="Gradle.church_membership [run]" />
       <item itemvalue="Gradle.church_membership [clean build]" />
+      <item itemvalue="Gradle.church_membership [jar]" />
+      <item itemvalue="Gradle.church_membership [jlinkZip]" />
       <item itemvalue="Gradle.church_membership [jlink]" />
+      <item itemvalue="Gradle.church_membership [run]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.church_membership [jlink]" />
-        <item itemvalue="Gradle.church_membership [clean build]" />
         <item itemvalue="Gradle.church_membership [run]" />
-        <item itemvalue="Gradle.church_membership [cleanIdea]" />
-        <item itemvalue="Gradle.church_membership [cleanidea]" />
+        <item itemvalue="Gradle.church_membership [jlink]" />
+        <item itemvalue="Gradle.church_membership [jlinkZip]" />
+        <item itemvalue="Gradle.church_membership [jar]" />
+        <item itemvalue="Gradle.church_membership [clean build]" />
       </list>
     </recent_temporary>
   </component>
@@ -502,7 +378,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
