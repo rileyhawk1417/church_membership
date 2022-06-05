@@ -2,7 +2,6 @@ package com.cm.cm.controllers.admin;
 
 import com.cm.cm.database.Sqlite;
 import com.cm.cm.modals.AlertModule;
-import com.cm.cm.modals.MemberModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
@@ -12,40 +11,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Window;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Insert_update implements Initializable {
-
-     String ID_;
-     String Fname_;
-     String Lname_;
-     String Title_;
-     String Address_;
-     String DOB_;
-     String DateJoined_;
-     String Dept_;
-     String DeptLeader_;
-     String IDNum_;
-     String KidsNo_;
-     String MStatus_;
-     String Cell_Num_;
-     String Landline_;
-     String Email_;
-     String Salvation_;
-     String Gender_;
-     String WaterBapt_;
-     String SpiritBapt_;
-     String Surbub_;
-     String Employer_;
-     String WorkPhone_;
-     String Position_;
-     String Cell_Leader_;
-     boolean updateValue;
+public class Add_Record implements Initializable {
     @FXML
     private  MFXButton insert_update;
     @FXML
@@ -83,10 +55,6 @@ public class Insert_update implements Initializable {
     private  MFXComboBox<String> titleBox;
     @FXML
     private  MFXComboBox<String> genderBox;
-    // Create a combo box
-    //   ComboBox combo_box = new ComboBox(
-    //     FXCollections.observableArrayList(week_days)
-    //   );
     @FXML
     private  MFXComboBox<String> maritial_status;
     @FXML
@@ -99,7 +67,6 @@ public class Insert_update implements Initializable {
     private  MFXComboBox<String> baptismBox_2;
     Sqlite sqlite = new Sqlite();
     AlertModule alertBox = new AlertModule();
-    // Weekdays
     public  String[] titles = {"Mr", "Mrs", "Miss"};
     public  String[] maritial_status_ = {"Single", "Married"};
     public  String[] gender = {"Male", "Female"};
@@ -120,9 +87,6 @@ public class Insert_update implements Initializable {
             "Hosting",
     };
     public  String[] bools = {"Yes", "No"};
-    int year = 2024;
-    int month = 12;
-    int dayOfMonth = 02;
     public  ObservableList<String> title = FXCollections.observableArrayList(titles);
     public  ObservableList<String> status = FXCollections.observableArrayList(maritial_status_);
     public  ObservableList<String> sex = FXCollections.observableArrayList(gender);
@@ -138,64 +102,6 @@ public class Insert_update implements Initializable {
     @FXML
     private  MFXComboBox<String> surbub;
 
-    public void sample(String word){Fname_ = word;}
-
-    public  void receiveTxt(
-            String id_,
-            String fname_,
-            String lname_,
-            String title_,
-            String address_,
-            String dob_,
-            String dateJoined_,
-            String dept_,
-            String deptLeader_,
-            String idNum_,
-            String kidsNum_,
-            String mStatus,
-            String cell_num_,
-            String landline_,
-            String email_,
-            String salvation_,
-            String gender_,
-            String waterBapt_,
-            String spiritBapt_,
-            String surbub_,
-            String employer_,
-            String workPhone_,
-            String position_,
-            String cell_leader_,
-            boolean updateOption
-    ) {
-        //TODO Change method to write values to strings
-        ID_ = id_;
-        Fname_ = fname_;
-        Lname_ = lname_;
-        Title_ = title_;
-        Address_ = address_;
-        DOB_ = dob_;
-        DateJoined_ = dateJoined_;
-        Dept_ = dept_;
-        DeptLeader_ = deptLeader_;
-        IDNum_ = idNum_;
-        KidsNo_ = kidsNum_;
-        MStatus_ = mStatus;
-        Cell_Num_ = cell_num_;
-        Landline_ = landline_;
-        Email_ = email_;
-        Salvation_ = salvation_;
-        Gender_ = gender_;
-        WaterBapt_ = waterBapt_;
-        SpiritBapt_ = spiritBapt_;
-        Surbub_ = surbub_;
-        Employer_ = employer_;
-        WorkPhone_ = workPhone_;
-        Position_ = position_;
-        Cell_Leader_ = cell_leader_;
-        updateValue = updateOption;
-
-    }
-
     public  void updateBtn(Boolean res) {
         if (!res) insert_update_kids.setDisable(true);
         else insert_update.setDisable(false);
@@ -203,16 +109,7 @@ public class Insert_update implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
-
-        System.out.println(Fname_);
-//        if (updateValue == true) setStrings();
-//
-//        else if(updateValue == false) setupComboBoxes();
-////        setupComboBoxes();
-//
-//        else System.out.println("Failed");
-//
-//        updateBtn(true);
+        setupComboBoxes();
     }
 
     public  void setupComboBoxes() {
@@ -224,32 +121,6 @@ public class Insert_update implements Initializable {
         salvationBox.setItems(truths);
         baptismBox_1.setItems(truths);
         baptismBox_2.setItems(truths);
-    }
-
-    private  void setStrings() {
-        fnameBox.setText(Fname_);
-        lnameBox.setText(Lname_);
-        idBox.setText(ID_);
-        num_Children.setText(KidsNo_);
-        dateJoined.setText(DateJoined_);
-        dob.setText(DOB_);
-        address.setText(Address_);
-        homePhone.setText(Landline_);
-        workPhone.setText(WorkPhone_);
-        employer.setText(Employer_);
-        position.setText(Position_);
-        email.setText(Email_);
-        homeGroupLeader.setText(Cell_Leader_);
-        departmentLeader.setText(DeptLeader_);
-        //How to set combobox X_X
-        titleBox.setText(Title_);
-        genderBox.setText(Gender_);
-        maritial_status.setText(MStatus_);
-        depBox.setText(Dept_);
-        salvationBox.setText(Salvation_);
-        baptismBox_1.setText(WaterBapt_);
-        baptismBox_2.setText(SpiritBapt_);
-
     }
 
     @FXML

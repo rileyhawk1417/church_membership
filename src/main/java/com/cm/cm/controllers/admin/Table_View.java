@@ -356,7 +356,6 @@ public class Table_View implements Initializable {
         BP.setCenter(scroll_pane);
         BorderPane.setMargin(scroll_pane, new Insets(0, 10, 10, 10));
         psqlTable.setItems(records);
-        loadStrings();
     }
 
     public ObservableList<MemberModel> searchDB(String query, Window owner) {
@@ -539,6 +538,7 @@ public class Table_View implements Initializable {
         excelFunc.exportToExcel(owner);
     }
 
+    //TODO: Refactor the function for excel
     @FXML
     private void export_tableView() {
         Workbook wb = new HSSFWorkbook();
@@ -604,91 +604,10 @@ public class Table_View implements Initializable {
     private void importer(){
         excelFunc.importToDBAdults(owner, BP);
     }
-
-  static  String selectedID;
-  static  String selectedFname;
-  static  String selectedLname;
-  static  String selectedTitle;
-  static  String selectedAddress;
-  static  String selectedDOB; 
-  static  String selectedDateJoined;
-  static  String selectedDept;
-  static  String selectedDepLeader;
-  static  String selectedCellGroup;
-  static  String selectedLandline;
-  static  String selectedIDNum;
-  static  String selectedKidsNo;
-  static  String selectedStatus;
-  static  String selectedCellNum;
-  static  String selectedEmail;
-  static  String selectedSalvation;
-  static  String selectedGender;
-  static  String selectedWaterBapt;
-  static  String selectedSpiritBapt;
-  static  String selectedSurbub;
-  static  String selectedEmployer;
-  static  String selectedWorkPhone;
-  static  String selectedPosition;
-
-    private void loadStrings(){
-       selectedID = psqlTable.getSelectionModel().getSelectedItem().getID();
-       selectedFname = psqlTable.getSelectionModel().getSelectedItem().getFname();
-       selectedLname = psqlTable.getSelectionModel().getSelectedItem().getLname();
-       selectedTitle = psqlTable.getSelectionModel().getSelectedItem().getTitle();
-       selectedAddress = psqlTable.getSelectionModel().getSelectedItem().getAddress();
-       selectedDOB = psqlTable.getSelectionModel().getSelectedItem().getDOB();
-       selectedDateJoined = psqlTable.getSelectionModel().getSelectedItem().getDatejoined();
-       selectedDept = psqlTable.getSelectionModel().getSelectedItem().getDept();
-       selectedDepLeader = psqlTable.getSelectionModel().getSelectedItem().getDeptLeader_();
-       selectedCellGroup = psqlTable.getSelectionModel().getSelectedItem().getHomeGroup();
-       selectedLandline = psqlTable.getSelectionModel().getSelectedItem().getHomePhone();
-       selectedIDNum = psqlTable.getSelectionModel().getSelectedItem().getID_Num();
-       selectedKidsNo = psqlTable.getSelectionModel().getSelectedItem().getChildrenNo_();
-       selectedStatus = psqlTable.getSelectionModel().getSelectedItem().getM_status();
-       selectedCellNum = psqlTable.getSelectionModel().getSelectedItem().getCellNumber();
-       selectedEmail = psqlTable.getSelectionModel().getSelectedItem().getEmail();
-       selectedSalvation = psqlTable.getSelectionModel().getSelectedItem().getSalvation();
-       selectedGender = psqlTable.getSelectionModel().getSelectedItem().getSex();
-       selectedWaterBapt = psqlTable.getSelectionModel().getSelectedItem().getWaterBapt();
-       selectedSpiritBapt = psqlTable.getSelectionModel().getSelectedItem().getSpiritBapt();
-       selectedSurbub = psqlTable.getSelectionModel().getSelectedItem().getSurbub();
-       selectedEmployer = psqlTable.getSelectionModel().getSelectedItem().getEmployer_();
-       selectedWorkPhone = psqlTable.getSelectionModel().getSelectedItem().getWorkPhone();
-       selectedPosition = psqlTable.getSelectionModel().getSelectedItem().getPosition_();
-
-    }
-
     @FXML
     private void update_row(){
-        loadStrings();
-        updateWin.receiveTxt(
-            selectedID,
-                selectedFname,
-                selectedLname,
-                selectedTitle,
-                selectedAddress,
-                selectedDOB,
-                selectedDateJoined,
-                selectedDept,
-                selectedDepLeader,
-                selectedIDNum,
-                selectedKidsNo,
-                selectedStatus,
-                selectedCellNum,
-                selectedLandline,
-                selectedEmail,
-                selectedSalvation,
-                selectedGender,
-                selectedWaterBapt,
-                selectedSpiritBapt,
-                selectedSurbub,
-                selectedEmployer,
-                selectedWorkPhone,
-                selectedPosition,
-                selectedCellGroup,
-               false
-        );
-        scene_switcher.admin_add_rec();
+        //TODO: Add a switcher for update screen
+//        scene_switcher.admin_add_rec();
     }
 
 

@@ -23,6 +23,8 @@ public class SceneCtrl {
 
     public String admin_records = "/com/cm/cm/fxml/admin/records_view.fxml";
     public String add_screen_admin = "/com/cm/cm/fxml/admin/add_records.fxml";
+    public String update_screen_admin = "/com/cm/fxml/admin/update_records.fxml";
+
     public String kidsRecordsAdmin = "/com/cm/cm/fxml/admin/kids_records_view.fxml";
     public String users_screen = "/com/cm/cm/fxml/admin/usersCtrl/userList.fxml";
     public String create_user_screen = "/com/cm/cm/fxml/admin/usersCtrl/addUsers.fxml";
@@ -45,6 +47,9 @@ public class SceneCtrl {
     //TODO: Build user and guest screens for table entry.
     public Stage stage = new Stage();
 
+    /**
+     * This Function takes in any fxml path and several arguments for the scene.
+     * */
     public void switchScene(Scene scene, boolean truth, String title, boolean option) {
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -90,6 +95,15 @@ public class SceneCtrl {
         }
     }
 
+    public void admin_update_rec() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(update_screen_admin));
+            Scene add = new Scene(root);
+            switchScene(add, true, "Admin: Update Record", false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void admin_rec_scene() {
         try {

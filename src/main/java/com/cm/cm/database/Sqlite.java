@@ -116,7 +116,7 @@ public class Sqlite {
                              String maritial_status, String date_joined, String dob, String address, String surbub, String homePhone,
                              String workPhone, String mobilePhone, String employer, String position, String email, String homeLeader,
                              String deptLeader, String dept, String salvation, String water_bapt, String spirit_bapt) {
-        String values = "INSERT OR IGNORE INTO members (title, fname, lname, gender, id_no, kids_num, maritial_status, date_joined, dob, address, surbub, landline, work_num, cell_num, employer, position, email, home_group_leader, department_leader, dept, salvation, water_bapt, spirit_bapt)"
+        String values = "INSERT OR IGNORE INTO members (title, fname, lname, gender, id_no, kids_num, maritial_status, date_joined, dob, address, surbub, landline, work_num, cell_num, employer, position, email, home_group_leader, dept_leader, dept, salvation, water_bapt, spirit_bapt)"
                 + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
         try {

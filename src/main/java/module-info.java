@@ -16,8 +16,8 @@ module com.cm.cm {
     opens com.cm.cm.controllers.admin to javafx.fxml;
     opens com.cm.cm.modals to javafx.base;
     opens com.cm.cm.database to javafx.base;
-    opens com.cm.cm.updateConfig.view to javafx.fxml;
-    opens com.cm.cm.updateConfig.services to javafx.base;
+//    opens com.cm.cm.updateConfig.view to javafx.fxml;
+//    opens com.cm.cm.updateConfig.services to javafx.base;
     opens com.cm.cm.controllers.admin.usersCtrl to javafx.fxml;
 
     exports com.cm.cm;
@@ -27,9 +27,11 @@ module com.cm.cm {
     exports com.cm.cm.controllers.user;
     exports com.cm.cm.database;
     exports com.cm.cm.modals;
+    /*
     exports com.cm.cm.updateConfig.view;
     exports com.cm.cm.updateConfig.services;
     exports com.cm.cm.updateConfig.misc;
+    */
     exports com.cm.cm.controllers.admin.usersCtrl;
 //    exports com.cm.cm.updater.config;
 
